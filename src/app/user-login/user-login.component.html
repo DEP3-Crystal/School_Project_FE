@@ -33,10 +33,13 @@
                 <span class="input-group-text" id="basic-addon1">
                   <em class="bi bi-key-fill"></em>
                 </span>
-                <input type="password" id="typePassword" placeholder="Password"
+                <input [type]="changetype?'password':'text'" id="typePassword" placeholder="Password"
                   class="form-control form-control-lg border-end-0" />
+                  
                 <button class="bg-white border-0 d-block">
-                  <i class="bi bi-eye-fill text-muted d-block"></i>
+                  <span class="eyeicon" (click)="viewPassword()">
+                  <i [ngClass]="visible?'bi bi-eye-fill text-muted d-block':'fa fa-eye-slash'"></i>
+                </span>
                 </button>
                 <button class="input-group-text" id="basic-addon1">
                   <em class="bi bi-trash-fill"></em>

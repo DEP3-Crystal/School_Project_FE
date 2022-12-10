@@ -10,7 +10,8 @@ import { User } from '../user';
 export class UserLoginComponent implements OnInit {
 
   user:User = new User();
-
+  visible:boolean = true;
+  changetype:boolean = true;
   constructor(private loginuserservice:LoginUserService) { }
 
   ngOnInit(): void {
@@ -21,6 +22,12 @@ export class UserLoginComponent implements OnInit {
     this.loginuserservice.loginUser(this.user).subscribe(data=>{
       alert("Login Successfully")
     }
-    ,error=>alert("Please enter your correct email and password"));
+    );
+  }
+
+
+  viewPassword(){
+    this.visible = !this.visible;
+    this.changetype=!this.changetype;
   }
 }
