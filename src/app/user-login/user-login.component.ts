@@ -23,7 +23,17 @@ export class UserLoginComponent implements OnInit {
     );
   }
  hide=true;
+ 
+  emailValue:string = ' ';
+  passwordValue:string = ' ';
+  clearEmailInput(){
+    this.emailValue = '';
+  }
 
+  clearPasswordInput(){ 
+    this.passwordValue='';
+  }
+  
   
 
 }

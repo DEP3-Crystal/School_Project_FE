@@ -14,3 +14,12 @@ body
 .bg-dark {
     --bs-bg-opacity: 0.2;
 }
+.inputH5{
+    text-align: start;
+}
+.bi:hover{
+    color: red;
+}
+.material-icons:hover{
+    color:rgb(100, 166, 189);
+}

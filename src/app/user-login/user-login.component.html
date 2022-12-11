@@ -19,26 +19,28 @@
 
               <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
               <p class="text-white-50 mb-5">Please enter your login credentials!</p>
+              <h5 class="inputH5">Email</h5>
               <div class="form-outline input-group form-white mb-4">
                 <span class="input-group-text" id="basic-addon1">
                   <em class="bi bi-person-fill"></em>
                 </span>
-                <input type="email" id="typeEmail" class="form-control form-control-lg" placeholder="Email"
-                  aria-label="Input group example" aria-describedby="basic-addon1">
-                  <button class="input-group-text" id="basic-addon1">
-                    <em class="bi bi-trash-fill"></em>
+                <input type="email" id="typeEmail" class="form-control form-control-lg" placeholder="Email" 
+                  aria-label="Input group example" aria-describedby="basic-addon1" [(ngModel)]="emailValue">
+                  <button class="input-group-text" id="basic-addon1" (click)="clearEmailInput()">
+                    <em class="bi bi-trash-fill" ></em>
                   </button>
               </div>
+              <h5 class="inputH5">Password</h5>
               <div class="form-outline input-group form-white mb-4">
                 <span class="input-group-text" id="basic-addon1">
                   <em class="bi bi-key-fill"></em>
                 </span>
-                <input matInput type="password" [type]="hide ? 'password':'text'" placeholder="Password" class="form-control form-control-lg border-end-0" />
+                <input matInput type="password" [type]="hide ? 'password':'text'" placeholder="Password" class="form-control form-control-lg border-end-0" [(ngModel)]="passwordValue" />
                 <button class="bg-white border-0 d-block" >
                   <i class="material-icons" matSuffix (click)="hide = !hide">{{hide ? 'visibility':'visibility_off'}}</i>
                 </button>
-                <button class="input-group-text" id="basic-addon1">
-                  <em class="bi bi-trash-fill"></em>
+                <button class="input-group-text" id="basic-addon1" (click)="clearPasswordInput()">
+                  <em class="bi bi-trash-fill" ></em>
                 </button>
                   
                 
