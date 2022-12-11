@@ -10,8 +10,6 @@ import { User } from '../user';
 export class UserLoginComponent implements OnInit {
 
   user:User = new User();
-  visible:boolean = true;
-  changetype:boolean = true;
   constructor(private loginuserservice:LoginUserService) { }
 
   ngOnInit(): void {
@@ -24,10 +22,8 @@ export class UserLoginComponent implements OnInit {
     }
     );
   }
+ hide=true;
 
+  
 
-  viewPassword(){
-    this.visible = !this.visible;
-    this.changetype=!this.changetype;
-  }
 }

@@ -7,8 +7,8 @@
 
           <span class="title-login pb-3 pt-4 fw-bold" style="color: #fff;">
             <i class="material-icons" style="font-size:48px">school</i>
-            <h1>Welcome to
-              College</h1>
+          <h1>Welcome to
+            College</h1>
           </span>
           <div class="card bg-dark text-white" style="border-radius: 1rem;opacity: 0.8;">
 
@@ -25,30 +25,26 @@
                 </span>
                 <input type="email" id="typeEmail" class="form-control form-control-lg" placeholder="Email"
                   aria-label="Input group example" aria-describedby="basic-addon1">
-                <button class="input-group-text" id="basic-addon1">
-                  <em class="bi bi-trash-fill"></em>
-                </button>
+                  <button class="input-group-text" id="basic-addon1">
+                    <em class="bi bi-trash-fill"></em>
+                  </button>
               </div>
               <div class="form-outline input-group form-white mb-4">
                 <span class="input-group-text" id="basic-addon1">
                   <em class="bi bi-key-fill"></em>
                 </span>
-                <input [type]="changetype?'password':'text'" id="typePassword" placeholder="Password"
-                  class="form-control form-control-lg border-end-0" />
-                  
-                <button class="bg-white border-0 d-block">
-                  <span class="eyeicon" (click)="viewPassword()">
-                  <i [ngClass]="visible?'bi bi-eye-fill text-muted d-block':'fa fa-eye-slash'"></i>
-                </span>
+                <input matInput type="password" [type]="hide ? 'password':'text'" placeholder="Password" class="form-control form-control-lg border-end-0" />
+                <button class="bg-white border-0 d-block" >
+                  <i class="material-icons" matSuffix (click)="hide = !hide">{{hide ? 'visibility':'visibility_off'}}</i>
                 </button>
                 <button class="input-group-text" id="basic-addon1">
                   <em class="bi bi-trash-fill"></em>
                 </button>
-
-
-
+                  
+                
+    
               </div>
-
+              
               <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
               <p class="small mb-5 pt-lg-3"><a class="text-white-50" href="#!">Forgot password?</a></p>
 
