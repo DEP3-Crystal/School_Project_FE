@@ -1,0 +1,16 @@
+body
+{
+    background:url('src/images/school1.jpg');
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+}
+.title-login{
+    justify-content: center;
+    display: flex;
+    flex-direction: initial;
+}
+.bg-dark {
+    --bs-bg-opacity: 0.2;
+}
