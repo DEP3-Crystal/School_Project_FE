@@ -1,15 +1,15 @@
 <body>
   <section class="vh-100">
-    <div class="container py-5">
+    <div class="container py-5 pb-0">
 
       <div class="row d-flex justify-content-center align-items-center">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
 
-          <span class="title-login pb-3 pt-4 fw-bold" style="color: #fff;">
+          <div class="title-login pb-3 pt-3 fw-bold" style="color: #fff;">
             <i class="material-icons" style="font-size:48px">school</i>
-          <h1>Welcome to
-            College</h1>
-          </span>
+            <h1>Welcome to
+              College</h1>
+          </div>
           <div class="card bg-dark text-white" style="border-radius: 1rem;opacity: 0.8;">
 
 
@@ -20,33 +20,35 @@
               <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
               <p class="text-white-50 mb-5">Please enter your login credentials!</p>
               <h5 class="inputH5">Email</h5>
-              <div class="form-outline input-group form-white mb-4">
+              <div class="form-outline input-group form-white mb-3">
                 <span class="input-group-text" id="basic-addon1">
                   <em class="bi bi-person-fill"></em>
                 </span>
-                <input type="email" id="typeEmail" class="form-control form-control-lg" placeholder="Email" 
+                <input type="email" id="typeEmail" class="form-control form-control-lg" placeholder="Email"
                   aria-label="Input group example" aria-describedby="basic-addon1" [(ngModel)]="emailValue">
-                  <button class="input-group-text" id="basic-addon1" (click)="clearEmailInput()">
-                    <em class="bi bi-trash-fill" ></em>
-                  </button>
+                <button class="input-group-text" id="basic-addon1" (click)="clearEmailInput()">
+                  <em class="bi bi-trash-fill"></em>
+                </button>
               </div>
               <h5 class="inputH5">Password</h5>
-              <div class="form-outline input-group form-white mb-4">
+              <div class="form-outline input-group form-white mb-3">
                 <span class="input-group-text" id="basic-addon1">
                   <em class="bi bi-key-fill"></em>
                 </span>
-                <input matInput type="password" [type]="hide ? 'password':'text'" placeholder="Password" class="form-control form-control-lg border-end-0" [(ngModel)]="passwordValue" />
-                <button class="bg-white border-0 d-block" >
-                  <i class="material-icons" matSuffix (click)="hide = !hide">{{hide ? 'visibility':'visibility_off'}}</i>
+                <input matInput type="password" [type]="hide ? 'password':'text'" placeholder="Password"
+                  class="form-control form-control-lg border-end-0" [(ngModel)]="passwordValue" />
+                <button class="bg-white border-0 d-block">
+                  <i class="material-icons material-icons-eye" matSuffix (click)="hide = !hide">{{hide ?
+                    'visibility':'visibility_off'}}</i>
                 </button>
                 <button class="input-group-text" id="basic-addon1" (click)="clearPasswordInput()">
-                  <em class="bi bi-trash-fill" ></em>
+                  <em class="bi bi-trash-fill"></em>
                 </button>
-                  
-                
-    
+
+
+
               </div>
-              
+
               <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
               <p class="small mb-5 pt-lg-3"><a class="text-white-50" href="#!">Forgot password?</a></p>
 

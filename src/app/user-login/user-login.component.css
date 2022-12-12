@@ -1,25 +1,29 @@
-body
-{
-    background:url('src/images/school1.jpg');
+body {
+    background: url('src/images/school1.jpg');
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
     background-size: cover;
 }
-.title-login{
-    justify-content: center;
+
+.title-login {
+    justify-content: space-evenly;
     display: flex;
-    flex-direction: initial;
+
 }
+
 .bg-dark {
     --bs-bg-opacity: 0.2;
 }
-.inputH5{
+
+.inputH5 {
     text-align: start;
 }
-.bi:hover{
+
+.bi:hover {
     color: red;
 }
-.material-icons:hover{
-    color:rgb(100, 166, 189);
+
+.material-icons-eye:hover {
+    color: rgb(100, 166, 189);
 }
