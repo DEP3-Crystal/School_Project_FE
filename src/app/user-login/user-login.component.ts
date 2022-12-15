@@ -9,23 +9,22 @@ import { User } from '../user';
 })
 export class UserLoginComponent implements OnInit {
 
-  user: User = new User();
+  
   constructor(private loginuserservice: LoginUserService) { }
 
   ngOnInit(): void {
   }
 
   userLogin() {
-    console.log(this.user)
-    this.loginuserservice.loginUser(this.user).subscribe(data => {
+    this.loginuserservice.loginUser({email:this.emailValue,password:this.passwordValue}).subscribe(data => {
       alert("Login Successfully")
     }
     );
   }
   hide = true;
 
-  emailValue: string = ' ';
-  passwordValue: string = ' ';
+  emailValue: string = '';
+  passwordValue: string = '';
   clearEmailInput() {
     this.emailValue = '';
   }

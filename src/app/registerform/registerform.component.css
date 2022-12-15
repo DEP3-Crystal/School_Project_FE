@@ -1,0 +1,7 @@
+.bg-dark {
+    --bs-bg-opacity: 0.2;
+}
+body{
+    background-color: rgb(255, 243, 234);
+}
+
