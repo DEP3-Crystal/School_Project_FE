@@ -13,7 +13,7 @@ body {
 }
 
 .bg-dark {
-    --bs-bg-opacity: 0.2;
+    --bs-bg-opacity: 0.3;
 }
 
 .inputH5 {
@@ -26,4 +26,7 @@ body {
 
 .material-icons-eye:hover {
     color: rgb(100, 166, 189);
+}
+.xbutton:hover{
+   color: rgb(222, 70, 10);
 }
