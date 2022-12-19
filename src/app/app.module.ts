@@ -10,7 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterformComponent } from './registerform/registerform.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { DashboardComponent } from './dashboard/dashboard.component'
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'}
 ]
@@ -30,6 +31,7 @@ const routes: Routes = [
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

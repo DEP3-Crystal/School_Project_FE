@@ -1,72 +1,81 @@
 <body>
-<section class="h-100 h-custom">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-lg-5 col-xl-7">
-          <div class="bg-dark card rounded-4">
-            <div class="card-body p-4 p-md-5">
-              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 text-center">User Registration</h3>
-  
-              <form class="px-md-2">
-                  
-                <div class="form-outline mb-4 row d-flex justify-align-between">
-                    <div class="col-md-5">
-                        <input type="text" id="firstName" class="form-control" placeholder="First Name"/>
-                        <label class="form-label" >First Name</label>   
-                    </div>
-                    <div class="col-md-5">
-                        <input type="text" id="lastName" class="form-control" placeholder="Last Name"/>
-                  <label class="form-label" >Last Name</label>
-                </div> 
-                  
-                  
-                </div>
-                <div class="row pb">
-                    <div class="col-7">
-                        <input type="text" id="email" class="form-control" placeholder="Email"/>
-                        <label class="form-label">Email</label>                       
-                      </div>
-                      <div class=" col-5">
-                        <div class="input-group">
-                            <input type="password" [type]="hide ? 'password':'text'" placeholder="Password"
-                          class="form-control"/>
-        
-                          <button type="button" class="material-icons material-icons-eye border-0 rounded-right" (click)="hide = !hide">{{hide ?
-                            'visibility':'visibility_off'}}
-                        </button>
+    <section class="h-100 h-custom">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-5 col-xl-7">
+                    <div class="bg-dark card rounded-4">
+                        <div class="card-body p-4 p-md-5">
+                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 text-center">User Registration</h3>
+
+                            <form class="px-md-2">
+
+                                <div class="form-outline mb-4 row d-flex justify-align-between">
+                                    <div class="col-7">
+                                        <input type="text" id="firstName" class="form-control"
+                                            placeholder="First Name" />
+                                        <label class="form-label">First Name</label>
+
+
+                                        <input type="text" id="lastName" class="form-control" placeholder="Last Name" />
+                                        <label class="form-label">Last Name</label>
+                                        <input type="text" id="email" class="form-control" placeholder="Email" />
+                                        <label class="form-label">Email</label>
+                                        <div class="input-group">
+                                            <input type="password" [type]="hide ? 'password':'text'"
+                                                placeholder="Password" class="form-control" />
+
+
+                                            <button type="button"
+                                                class="material-icons material-icons-eye border-0 rounded-right"
+                                                (click)="hide = !hide">{{hide ?
+                                                'visibility':'visibility_off'}}
+                                            </button>
+                                        </div>
+                                        <label class="form-label">Password</label>
+                                        <div class="md-form md-outline input-with-post-icon datepicker" id="prefill">
+                                            <input placeholder="Select date" type="datetime" id="prefill-example"
+                                                class="form-control">
+                                            <label for="prefill-example">Birthdate</label>
+                                            <i class="fas fa-calendar input-prefix" tabindex=0></i>
+                                        </div>
+                                        <input type="text" id="department" class="form-control"
+                                            placeholder="Department" />
+                                        <label class="form-label">Department</label>
+                                        
+                                        <fieldset>
+                                            <label class="form-label">Gender: </label>
+                                            <input type="radio" name="sex" id="sex-m" value="m">
+                                            <label for="sex-m">Male</label>
+                                            <input type="radio" name="sex" id="sex-f" value="f">
+                                            <label for="sex-f">Female</label>
+                                        </fieldset>
+
+                                    </div>
+
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <button type="submit" class="btn btn-success btn-lg mb-1">Save</button>
+
+                            </form>
+
                         </div>
-                        
-                      </div>
-                      </div>
-
-                  <div class="row">
-                     
-                    </div>  
-                
-  
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-  
-                    <div class="md-form md-outline input-with-post-icon datepicker" id="prefill">
-                        <input placeholder="Select date" type="datetime" id="prefill-example" class="form-control">
-                        <label for="prefill-example">Birthdate</label>
-                        <i class="fas fa-calendar input-prefix" tabindex=0></i>
-                      </div>
-  
-                  </div>
-             
+                    </div>
                 </div>
-  
-
-  
-                <button type="submit" class="btn btn-success btn-lg mb-1">Save</button>
-  
-              </form>
-  
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 </body>
