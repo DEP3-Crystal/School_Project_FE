@@ -27,6 +27,7 @@ export class UserLoginComponent implements OnInit {
       .subscribe(data => {
         // alert("Login Successfully")
         this.router.navigate([this.returnUrl]);
+        localStorage.setItem('currentUser',this.emailValue);
       }
       );
   }

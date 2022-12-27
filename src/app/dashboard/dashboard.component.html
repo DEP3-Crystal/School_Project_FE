@@ -1,1 +1,37 @@
-<p>dashboard works!</p>
+<app-navigationbar></app-navigationbar>
+<div class="row vh-100" id="wrapper">
+    <div class="col-2 list-group pr-0 pt-xl-4 text-lg shadow p-3 mb-5 bg-body  border-end border-success" id="sidebar-wrapper">
+        <div class="col-12 text-center">
+        <a href="http://localhost:4200/session"
+            class="list-group-item border-0">
+            Sessions
+        </a>
+        <a href="http://localhost:4200/subject"
+            class="list-group-item border-0">
+            School Subjects
+        </a>
+        <a href="http://localhost:4200/schedule"
+            class="list-group-item border-0">
+            Class Schedule
+        </a>
+        <a href="http://localhost:4200/classroom"
+            class="list-group-item border-0">
+            Classrooms
+        </a>
+
+        <a href="http://localhost:4200/grades"
+            class="list-group-item border-0">
+            Grades
+        </a></div>
+        <div class="col-12 p-5 py-5">
+        <a href="http://localhost:4200/login"
+        class="list-group-item list-group-item-action bg-transparent text-center text-danger active border  border-danger"
+        (click)="logoutFunction()">
+        Logout
+    </a></div>
+    </div>
+    <div class="col-10  fw-bold text-center">
+            <h1 class="pt-4">Welcome <span class="user"> {{getEmail()}}</span></h1>
+        </div>
+
+</div>

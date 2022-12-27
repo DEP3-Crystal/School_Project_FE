@@ -9,9 +9,16 @@ import { LogoutComponent } from './logout/logout.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterformComponent } from './registerform/registerform.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavigationbarComponent } from './navigationbar/navigationbar.component';
+import { GradesPageComponent } from './grades-page/grades-page.component';
+import { SessionsPageComponent } from './sessions-page/sessions-page.component';
+import { ClassroomComponent } from './classroom/classroom.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SubjectComponent } from './subject/subject.component';
+import { ProfileComponent } from './profile/profile.component'
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'}
 ]
@@ -20,9 +27,14 @@ const routes: Routes = [
     AppComponent,
     UserLoginComponent,
     LogoutComponent,
-    RegisterformComponent,
-    SidebarComponent,
-    DashboardComponent
+    DashboardComponent,
+    NavigationbarComponent,
+    GradesPageComponent,
+    SessionsPageComponent,
+    ClassroomComponent,
+    ScheduleComponent,
+    SubjectComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +44,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
+    NgbModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
