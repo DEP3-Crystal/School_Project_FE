@@ -12,6 +12,7 @@ import { ClassroomComponent } from './classroom/classroom.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { SubjectComponent } from './subject/subject.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SettingsComponent } from './settings/settings.component';
 const routes: Routes = [
   {path: '' , redirectTo: 'login' , pathMatch:'full'},
   { path: 'login', component: UserLoginComponent },
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:'classroom', component:ClassroomComponent},
   {path:'schedule', component:ScheduleComponent},
   {path:'subject', component:SubjectComponent},
-  {path:'profile', component:ProfileComponent}
+  {path:'profile', component:ProfileComponent},
+  {path:'settings', component:SettingsComponent}
 
 
 ];

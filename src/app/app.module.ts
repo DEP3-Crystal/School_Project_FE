@@ -18,7 +18,8 @@ import { ClassroomComponent } from './classroom/classroom.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SubjectComponent } from './subject/subject.component';
-import { ProfileComponent } from './profile/profile.component'
+import { ProfileComponent } from './profile/profile.component';
+import { SettingsComponent } from './settings/settings.component'
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'}
 ]
@@ -35,6 +36,7 @@ const routes: Routes = [
     ScheduleComponent,
     SubjectComponent,
     ProfileComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

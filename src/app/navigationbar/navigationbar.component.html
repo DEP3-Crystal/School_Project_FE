@@ -1,29 +1,98 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light border border-success">
-    <a class="navbar-brand">Dashboard</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<!-- <nav class="navbar navbar-expand-sm border border-success">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img
+            src="https://cdn-icons-png.flaticon.com/512/211/211952.png"
+            class="rounded-circle"
+            height="35"
+            width="35"
+            />
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" >College <span class="sr-only"></span></a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)">Link</a>
+        </li> 
+        
+      </ul>
+      <div class="d-flex">
+        <div>
+      <form class="d-flex">
+        <input class="form-control" type="text" placeholder="Search">
+        <button class="btn btn-success" type="button">Search</button>
+      </form>
+    </div>
+      <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             User
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="http://localhost:4200/profile">Profile</a>
             <a class="dropdown-item" >Settings</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="" >Logout</a>
-          </div>
-        </li>
-      </ul>
+            <a class="dropdown-item text-danger" href="" >Logout</a>
+          </div> 
+        </div>
+      </div>
     </div>
-    <form class="d-flex">
-        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-  </nav>
+  </div>
+</nav>
+
+
+
+ -->
+ <body>
+  <nav class="navbar navbar-expand-lg border border-success">
+      <div class="container">
+        <a class="navbar-brand" href="http://localhost:4200/dashboard">
+          <img
+                src="https://cdn-icons-png.flaticon.com/512/211/211952.png"
+                class="rounded-circle"
+                height="35"
+                width="35"
+                />
+        </a>
+      
+          <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navmenu"
+              >
+              <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navmenu">
+              <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                    <form class="d-flex">
+                      <input class="form-control" type="text" placeholder="Search">
+                      <button class="btn btn-success" type="button">Search</button>
+                    </form>
+                  </li>
+                  <li class="nav-item">
+                    <div class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        User
+                      </a>
+                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="http://localhost:4200/profile">Profile</a>
+                        <a class="dropdown-item" href="http://localhost:4200/settings">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-danger" href="http://localhost:4200/login" >Logout</a>
+                      </div> 
+                    </div>
+                  </li>
+                  <!-- <li class="nav-item">
+                      <a href="#contact" class="nav-link">Contact IT</a>
+                  </li> -->
+              </ul>
+          </div>
+      </div>
+  </nav>    
+
+</body>
