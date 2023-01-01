@@ -10,10 +10,11 @@ export class DashboardComponent implements OnInit {
 
   constructor(private router: Router,private route: ActivatedRoute) { }
   returnUrl!: string;
+  show=false;
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/login';
   }
-
+ 
    logoutFunction(){
     this.router.navigate([this.returnUrl]);
     localStorage.removeItem('currentUser');
@@ -21,6 +22,16 @@ export class DashboardComponent implements OnInit {
 
   getEmail(){
     return localStorage.getItem('currentUser');
+  }
+  showSubjects():boolean{
+   if(this.show===false){
+    this.show=true;
+   }else{
+    this.show=false;
+   }
+   return this.show;
+   
+   
   }
 
 

@@ -1,84 +1,18 @@
-<!-- <body>
-    <section class="h-100 h-custom">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-lg-5 col-xl-7">
-                    <div class="bg-dark card rounded-4">
-                        <div class="card-body p-4 p-md-5">
-                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 text-center">User Registration</h3>
-
-                            <form class="px-md-2">
-
-                                <div class="form-outline mb-4 row d-flex justify-align-between">
-                                    <div class="col-7">
-                                        <input type="text" id="firstName" class="form-control"
-                                            placeholder="First Name" />
-                                        <label class="form-label">First Name</label>
-
-
-                                        <input type="text" id="lastName" class="form-control" placeholder="Last Name" />
-                                        <label class="form-label">Last Name</label>
-                                        <input type="text" id="email" class="form-control" placeholder="Email" />
-                                        <label class="form-label">Email</label>
-                                        <div class="input-group">
-                                            <input type="password" [type]="hide ? 'password':'text'"
-                                                placeholder="Password" class="form-control" />
-
-
-                                            <button type="button"
-                                                class="material-icons material-icons-eye border-0 rounded-right"
-                                                (click)="hide = !hide">{{hide ?
-                                                'visibility':'visibility_off'}}
-                                            </button>
-                                        </div>
-                                        <label class="form-label">Password</label>
-                                        <div class="md-form md-outline input-with-post-icon datepicker" id="prefill">
-                                            <input placeholder="Select date" type="datetime" id="prefill-example"
-                                                class="form-control">
-                                            <label for="prefill-example">Birthdate</label>
-                                            <i class="fas fa-calendar input-prefix" tabindex=0></i>
-                                        </div>
-                                        <input type="text" id="department" class="form-control"
-                                            placeholder="Department" />
-                                        <label class="form-label">Department</label>
-
-                                        <fieldset>
-                                            <label class="form-label">Gender: </label>
-                                            <input type="radio" name="sex" id="sex-m" value="m">
-                                            <label for="sex-m">Male</label>
-                                            <input type="radio" name="sex" id="sex-f" value="f">
-                                            <label for="sex-f">Female</label>
-                                        </fieldset>
-
-                                    </div>
-
-
-                                </div>
-                               <button type="submit" class="btn btn-success btn-lg mb-1">Save</button>
-
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</body> -->
-<section class="vh-100 gradient-custom">
-    <div class="container py-5 h-100">
-        <div class="row justify-content-center align-items-center h-100">
-            <div class="col-12 col-lg-9 col-xl-7">
-                <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+<section class="vh-100 gradient-custom" style="background-color: #c9fbc9;">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-xl-7 row-10">
+                <div class="card  card-registration border border-success border-shadow-pop" style="border-radius: 15px;">
                     <div class="card-body p-4 p-md-5">
                         <h2 class="text-center">Add user</h2>
                         <form>
-
-                            <div class="row">
+                            <div class="row-10">
+                                <div class="row">
                                 <div class="col-md-6 mb-4">
 
                                     <div class="form-outline">
-                                        <input type="text" id="firstName" class="form-control form-control-lg" />
+                                        <input type="text" id="firstName" class="form-control form-control-lg"
+                                            required />
                                         <label class="form-label" for="firstName">First Name</label>
                                     </div>
 
@@ -86,26 +20,48 @@
                                 <div class="col-md-6 mb-4">
 
                                     <div class="form-outline">
-                                        <input type="text" id="lastName" class="form-control form-control-lg" />
+                                        <input type="text" id="lastName" class="form-control form-control-lg"
+                                            required />
                                         <label class="form-label" for="lastName">Last Name</label>
                                     </div>
 
                                 </div>
                             </div>
-
                             <div class="row">
-                                <div class="col-md-6 mb-4 d-flex align-items-center md-form md-outline input-with-post-icon datepicker">
-                                    <div class="md-form md-outline input-with-post-icon datepicker" id="prefill">
-                                        <input placeholder="Select date" type="datetime" id="prefill-example"
-                                            class="form-control">
-                                        <label for="prefill-example">Birthdate</label>
-                                        <i class="fas fa-calendar input-prefix" tabindex=0></i>
+                                <div class="col-md-6 mb-4 pb-2">
+
+                                    <div class="form-outline">
+                                        <input type="email" id="emailAddress" class="form-control form-control-lg"
+                                            required />
+                                        <label class="form-label" for="emailAddress">Email</label>
                                     </div>
-                            
-                                    
 
                                 </div>
-                               
+                                <div class="col-md-6 mb-4 pb-2">
+
+
+                                    <div class="form-outline">
+                                        <input type="password" id="password" class="form-control form-control-lg"
+                                            required />
+                                        <label class="form-label" for="password">Password</label>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+
+
+                                    <div class="form-outline">
+                                        <input type="text" class="form-control form-control-lg" bsDatepicker>
+                                        <label class="form-label" for="birthdate">Birthdate</label>
+                                    </div>
+                                </div>
+                                <!-- [bsConfig]="{ isAnimated: true, dateInputFormat: 'YYYY-MM-DD' }"> -->
+                                <!-- <c-date-picker [date]="date"></c-date-picker> -->
+
                                 <div class="col-md-6 mb-4">
 
                                     <h6 class="mb-2 pb-1">Gender: </h6>
@@ -130,53 +86,49 @@
 
                                 </div>
                             </div>
+                            <div class="row d-flex">
+                                <div class="col-12 pb-5">
 
-                            <div class="row">
-                                <div class="col-md-6 mb-4 pb-2">
-
-                                    <div class="form-outline">
-                                        <input type="email" id="emailAddress" class="form-control form-control-lg" />
-                                        <label class="form-label" for="emailAddress">Email</label>
-                                    </div>
-
-                                </div>
-                                <div class="col-md-6 mb-4 pb-2">
-
-                                    <!-- <div class="form-outline">
-                                        <input type="tel" id="phoneNumber" class="form-control form-control-lg" />
-                                        <label class="form-label" for="phoneNumber">Phone Number</label>
-                                    </div> -->
-
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-12">
-
-                                    <select class="select form-control-lg pr-2">
-                                        <option value="1" disabled>Choose option</option>
-                                        <option value="2">Student</option>
-                                        <option value="3">Teacher</option>
-                                        <option value="4">Organiser</option>
+                                    <select class="select form-control-lg pr-2" id="select" name="select" required>
+                                        <option  value="default" disabled>Choose option</option>
+                                        <option  value="student" >Student</option>
+                                        <option  value="employee">Teacher</option>
+                                        <option  value="employee">Organiser</option>
                                     </select>
                                     <label class="form-label select-label"> Select role</label>
 
                                 </div>
                             </div>
 
-                            <div class="text-center pt-5">
-                                <button type="submit" class="btn btn-success btn-lg mb-1">Save</button>
+                            <!-- If employee -->
+                            <div *ngIf="show" class="row">
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <input type="text" id="phone" class="form-control form-control-lg" required />
+                                        <label class="form-label" for="phone">Phone Number</label>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mb-3">
+
+                                    <div class="form-outline">
+                                        <input type="text" id="title" class="form-control form-control-lg" />
+                                        <label class="form-label" for="title">Title</label>
+                                    </div>
+
+                                </div>
                             </div>
 
+                            <div class="text-center pt-3">
+                                <button type="submit" class="btn btn-success btn-lg mb-1">Save</button>
+                            </div>
+                        
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-<script>
-    $(function(){
-  $('#datepicker').datepicker();
-});
-</script>
+<!-- </section> -->

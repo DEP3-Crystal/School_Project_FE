@@ -10,9 +10,10 @@ import { GradesPageComponent } from './grades-page/grades-page.component';
 import { SessionsPageComponent } from './sessions-page/sessions-page.component';
 import { ClassroomComponent } from './classroom/classroom.component';
 import { ScheduleComponent } from './schedule/schedule.component';
-import { SubjectComponent } from './subject/subject.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
+import { MandatorysubjectsComponent } from './mandatorysubjects/mandatorysubjects.component';
+import { OptionalsubjectsComponent } from './optionalsubjects/optionalsubjects.component';
 const routes: Routes = [
   {path: '' , redirectTo: 'login' , pathMatch:'full'},
   { path: 'login', component: UserLoginComponent },
@@ -23,9 +24,10 @@ const routes: Routes = [
   {path:'session', component:SessionsPageComponent},
   {path:'classroom', component:ClassroomComponent},
   {path:'schedule', component:ScheduleComponent},
-  {path:'subject', component:SubjectComponent},
   {path:'profile', component:ProfileComponent},
-  {path:'settings', component:SettingsComponent}
+  {path:'settings', component:SettingsComponent},
+  {path:'mandatory', component:MandatorysubjectsComponent},
+  {path:'optional',component:OptionalsubjectsComponent}
 
 
 ];

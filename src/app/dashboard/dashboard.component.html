@@ -1,15 +1,19 @@
 <app-navigationbar></app-navigationbar>
 <div class="row vh-100" id="wrapper">
-    <div class="col-2 list-group pr-0 pt-xl-4 text-lg shadow p-3 mb-5 bg-body  border-end border-success" id="sidebar-wrapper">
+    <div class="col-2 list-group pr-0 pt-xl-4 text-lg shadow p-3 mb-5 bg-body  border-end border-success " id="sidebar-wrapper">
         <div class="col-12 text-center">
         <a href="http://localhost:4200/session"
             class="list-group-item border-0">
             Sessions
         </a>
-        <a href="http://localhost:4200/subject"
-            class="list-group-item border-0">
+        <button (click)="showSubjects()"
+            class="border-0 bg-transparent ">
             School Subjects
-        </a>
+    </button>
+        <nav *ngIf="show" class="nav nav-pills flex-column">
+            <a class="nav-link ms-4" href="http://localhost:4200/mandatory">Mandatory</a>
+            <a class="nav-link ms-4" href="http://localhost:4200/optional">Optional</a>
+          </nav>
         <a href="http://localhost:4200/schedule"
             class="list-group-item border-0">
             Class Schedule

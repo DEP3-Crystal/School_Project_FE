@@ -17,9 +17,11 @@ import { SessionsPageComponent } from './sessions-page/sessions-page.component';
 import { ClassroomComponent } from './classroom/classroom.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SubjectComponent } from './subject/subject.component';
 import { ProfileComponent } from './profile/profile.component';
-import { SettingsComponent } from './settings/settings.component'
+import { SettingsComponent } from './settings/settings.component';
+import { BsDatepickerModule, BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { OptionalsubjectsComponent } from './optionalsubjects/optionalsubjects.component';
+import { MandatorysubjectsComponent } from './mandatorysubjects/mandatorysubjects.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'}
 ]
@@ -34,20 +36,22 @@ const routes: Routes = [
     SessionsPageComponent,
     ClassroomComponent,
     ScheduleComponent,
-    SubjectComponent,
     ProfileComponent,
     SettingsComponent,
+    RegisterformComponent,
+    OptionalsubjectsComponent,
+    MandatorysubjectsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    BsDatepickerModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
-    NgbModule,
-
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

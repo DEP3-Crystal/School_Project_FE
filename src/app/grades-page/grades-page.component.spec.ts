@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GradesPageComponent } from './grades-page.component';
-
 describe('GradesPageComponent', () => {
   let component: GradesPageComponent;
   let fixture: ComponentFixture<GradesPageComponent>;
