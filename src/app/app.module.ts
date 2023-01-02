@@ -22,6 +22,10 @@ import { SettingsComponent } from './settings/settings.component';
 import { BsDatepickerModule, BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { OptionalsubjectsComponent } from './optionalsubjects/optionalsubjects.component';
 import { MandatorysubjectsComponent } from './mandatorysubjects/mandatorysubjects.component';
+import {Ng2SearchPipeModule} from 'ng2-search-filter'
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'}
 ]
@@ -40,7 +44,7 @@ const routes: Routes = [
     SettingsComponent,
     RegisterformComponent,
     OptionalsubjectsComponent,
-    MandatorysubjectsComponent
+    MandatorysubjectsComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,10 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+    Ng2OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
