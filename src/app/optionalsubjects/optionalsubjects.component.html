@@ -1,1 +1,28 @@
 <app-navigationbar></app-navigationbar>
+<div class="row d-flex justify-content-around">
+<div class="col-10 pt-3">
+    <div class="col-3 navbar p-3">
+    <input class="form-control" type="text" name="name" [(ngModel)]="name" 
+    (ngModelChange)="Search()" placeholder="Enter subject name">
+</div>
+<table class="table table-bordered border-top-success">
+    <thead>
+        <tr>
+            <th scope="col">Subject id</th>
+            <th scope="col" >Name</th>
+            <th scope="col">Subject Duration</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let subject of subjects | paginate: {itemsPerPage:5,currentPage:page};">
+            <th scope="row" >{{subject.id}}</th>
+            <td >{{subject.name}}</td>
+            <td >{{subject.duration}}</td>
+        </tr>
+    </tbody>
+    
+</table>
+<pagination-controls (pageChange)="page = $event" class="text-center"></pagination-controls>
+
+</div>
+</div>

@@ -1,2 +1,9 @@
-<app-navigationbar></app-navigationbar>
-<p>schedule works!</p>
+<kendo-scheduler
+  [kendoSchedulerBinding]="sessions"
+  [kendoSchedulerResources]="resources"
+  [kendoSchedulerView]="view"
+  (add)="addSession($event)"
+  (remove)="removeSession($event)"
+  (edit)="editSession($event)">
+  <kendo-scheduler-current-time-marker [show]="true"></kendo-scheduler-current-time-marker>
+</kendo-scheduler>
