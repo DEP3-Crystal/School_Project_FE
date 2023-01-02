@@ -1,41 +1,44 @@
 <app-navigationbar></app-navigationbar>
 <div class="row vh-100" id="wrapper">
-    <div class="col-2 list-group pr-0 pt-xl-4 text-lg shadow p-3 mb-5 bg-body  border-end border-success " id="sidebar-wrapper">
-        <div class="col-12 text-center">
-        <a href="http://localhost:4200/session"
-            class="list-group-item border-0">
-            Sessions
-        </a>
-        <button (click)="showSubjects()"
-            class="border-0 bg-transparent ">
-            School Subjects
-    </button>
-        <nav *ngIf="show" class="nav nav-pills flex-column">
-            <a class="nav-link ms-4" href="http://localhost:4200/mandatory">Mandatory</a>
-            <a class="nav-link ms-4" href="http://localhost:4200/optional">Optional</a>
-          </nav>
-        <a href="http://localhost:4200/schedule"
-            class="list-group-item border-0">
-            Class Schedule
-        </a>
-        <a href="http://localhost:4200/classroom"
-            class="list-group-item border-0">
-            Classrooms
-        </a>
+  <div class="col-2 list-group pr-0 pt-xl-4 text-lg shadow p-3 mb-5 bg-body  border-end border-success "
+       id="sidebar-wrapper">
+    <div class="col-12 text-center">
+      <a href="/session"
+         class="list-group-item border-0">
+        Sessions
+      </a>
+      <button (click)="showSubjects()"
+              class="border-0 bg-transparent bd-links">
+        School Subjects
+      </button>
 
-        <a href="http://localhost:4200/grades"
-            class="list-group-item border-0">
-            Grades
-        </a></div>
-        <div class="col-12 p-5 py-5">
-        <a href="http://localhost:4200/login"
-        class="list-group-item list-group-item-action bg-transparent text-center text-danger active border  border-danger"
-        (click)="logoutFunction()">
+      <nav *ngIf="show" class="nav nav-pills flex-column">
+        <a class="nav-link ms-4" href="/mandatory">Mandatory</a>
+        <a class="nav-link ms-4" href="/optional">Optional</a>
+      </nav>
+
+      <a href="/schedule"
+         class="list-group-item border-0">
+        Class Schedule
+      </a>
+      <a href="/classroom"
+         class="list-group-item border-0">
+        Classrooms
+      </a>
+
+      <a href="/grades"
+         class="list-group-item border-0">
+        Grades
+      </a></div>
+    <div class="col-12 p-5 py-5">
+      <a href="/login"
+         class="list-group-item list-group-item-action bg-transparent text-center text-danger active border  border-danger"
+         (click)="logoutFunction()">
         Logout
-    </a></div>
-    </div>
-    <div class="col-10  fw-bold text-center">
-            <h1 class="pt-4">Welcome <span class="user"> {{getEmail()}}</span></h1>
-        </div>
+      </a></div>
+  </div>
+  <div class="col-10  fw-bold text-center">
+    <h1 class="pt-4">Welcome <span class="user"> {{getEmail()}}</span></h1>
+  </div>
 
 </div>

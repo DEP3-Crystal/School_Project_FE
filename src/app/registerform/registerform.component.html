@@ -1,134 +1,134 @@
 <section class="vh-100 gradient-custom" style="background-color: #c9fbc9;">
-    <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-xl-7 row-10">
-                <div class="card  card-registration border border-success border-shadow-pop" style="border-radius: 15px;">
-                    <div class="card-body p-4 p-md-5">
-                        <h2 class="text-center">Add user</h2>
-                        <form>
-                            <div class="row-10">
-                                <div class="row">
-                                <div class="col-md-6 mb-4">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-xl-7 row-10">
+        <div class="card  card-registration border border-success border-shadow-pop" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <h2 class="text-center">Add user</h2>
+            <form>
+              <div class="row-10">
+                <div class="row">
+                  <div class="col-md-6 mb-4">
 
-                                    <div class="form-outline">
-                                        <input type="text" id="firstName" class="form-control form-control-lg"
-                                            required />
-                                        <label class="form-label" for="firstName">First Name</label>
-                                    </div>
-
-                                </div>
-                                <div class="col-md-6 mb-4">
-
-                                    <div class="form-outline">
-                                        <input type="text" id="lastName" class="form-control form-control-lg"
-                                            required />
-                                        <label class="form-label" for="lastName">Last Name</label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-4 pb-2">
-
-                                    <div class="form-outline">
-                                        <input type="email" id="emailAddress" class="form-control form-control-lg"
-                                            required />
-                                        <label class="form-label" for="emailAddress">Email</label>
-                                    </div>
-
-                                </div>
-                                <div class="col-md-6 mb-4 pb-2">
-
-
-                                    <div class="form-outline">
-                                        <input type="password" id="password" class="form-control form-control-lg"
-                                            required />
-                                        <label class="form-label" for="password">Password</label>
-
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-
-
-                                    <div class="form-outline">
-                                        <input type="text" class="form-control form-control-lg" bsDatepicker>
-                                        <label class="form-label" for="birthdate">Birthdate</label>
-                                    </div>
-                                </div>
-                                <!-- [bsConfig]="{ isAnimated: true, dateInputFormat: 'YYYY-MM-DD' }"> -->
-                                <!-- <c-date-picker [date]="date"></c-date-picker> -->
-
-                                <div class="col-md-6 mb-4">
-
-                                    <h6 class="mb-2 pb-1">Gender: </h6>
-
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="femaleGender" value="option1" checked />
-                                        <label class="form-check-label" for="femaleGender">Female</label>
-                                    </div>
-
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="maleGender" value="option2" />
-                                        <label class="form-check-label" for="maleGender">Male</label>
-                                    </div>
-
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="otherGender" value="option3" />
-                                        <label class="form-check-label" for="otherGender">Other</label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="row d-flex">
-                                <div class="col-12 pb-5">
-
-                                    <select class="select form-control-lg pr-2" id="select" name="select" required>
-                                        <option  value="default" disabled>Choose option</option>
-                                        <option  value="student" >Student</option>
-                                        <option  value="employee">Teacher</option>
-                                        <option  value="employee">Organiser</option>
-                                    </select>
-                                    <label class="form-label select-label"> Select role</label>
-
-                                </div>
-                            </div>
-
-                            <!-- If employee -->
-                            <div *ngIf="show" class="row">
-                                <div class="col-md-6 mb-4">
-
-                                    <div class="form-outline">
-                                        <input type="text" id="phone" class="form-control form-control-lg" required />
-                                        <label class="form-label" for="phone">Phone Number</label>
-                                    </div>
-
-                                </div>
-                                <div class="col-md-6 mb-3">
-
-                                    <div class="form-outline">
-                                        <input type="text" id="title" class="form-control form-control-lg" />
-                                        <label class="form-label" for="title">Title</label>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="text-center pt-3">
-                                <button type="submit" class="btn btn-success btn-lg mb-1">Save</button>
-                            </div>
-                        
-                            </div>
-                        </form>
+                    <div class="form-outline">
+                      <input type="text" id="firstName" class="form-control form-control-lg"
+                             required/>
+                      <label class="form-label" for="firstName">First Name</label>
                     </div>
+
+                  </div>
+                  <div class="col-md-6 mb-4">
+
+                    <div class="form-outline">
+                      <input type="text" id="lastName" class="form-control form-control-lg"
+                             required/>
+                      <label class="form-label" for="lastName">Last Name</label>
+                    </div>
+
+                  </div>
                 </div>
-            </div>
+                <div class="row">
+                  <div class="col-md-6 mb-4 pb-2">
+
+                    <div class="form-outline">
+                      <input type="email" id="emailAddress" class="form-control form-control-lg"
+                             required/>
+                      <label class="form-label" for="emailAddress">Email</label>
+                    </div>
+
+                  </div>
+                  <div class="col-md-6 mb-4 pb-2">
+
+
+                    <div class="form-outline">
+                      <input type="password" id="password" class="form-control form-control-lg"
+                             required/>
+                      <label class="form-label" for="password">Password</label>
+
+
+                    </div>
+
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+
+
+                    <div class="form-outline">
+                      <input type="text" class="form-control form-control-lg" bsDatepicker>
+                      <label class="form-label" for="birthdate">Birthdate</label>
+                    </div>
+                  </div>
+                  <!-- [bsConfig]="{ isAnimated: true, dateInputFormat: 'YYYY-MM-DD' }"> -->
+                  <!-- <c-date-picker [date]="date"></c-date-picker> -->
+
+                  <div class="col-md-6 mb-4">
+
+                    <h6 class="mb-2 pb-1">Gender: </h6>
+
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                             id="femaleGender" value="option1" checked/>
+                      <label class="form-check-label" for="femaleGender">Female</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                             id="maleGender" value="option2"/>
+                      <label class="form-check-label" for="maleGender">Male</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                             id="otherGender" value="option3"/>
+                      <label class="form-check-label" for="otherGender">Other</label>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="row d-flex">
+                  <div class="col-12 pb-5">
+
+                    <select class="select form-control-lg pr-2" id="select" name="select" required>
+                      <option value="default" disabled>Choose option</option>
+                      <option value="student">Student</option>
+                      <option value="employee">Teacher</option>
+                      <option value="employee">Organiser</option>
+                    </select>
+                    <label class="form-label select-label"> Select role</label>
+
+                  </div>
+                </div>
+
+                <!-- If employee -->
+                <div *ngIf="show" class="row">
+                  <div class="col-md-6 mb-4">
+
+                    <div class="form-outline">
+                      <input type="text" id="phone" class="form-control form-control-lg" required/>
+                      <label class="form-label" for="phone">Phone Number</label>
+                    </div>
+
+                  </div>
+                  <div class="col-md-6 mb-3">
+
+                    <div class="form-outline">
+                      <input type="text" id="title" class="form-control form-control-lg"/>
+                      <label class="form-label" for="title">Title</label>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="text-center pt-3">
+                  <button type="submit" class="btn btn-success btn-lg mb-1">Save</button>
+                </div>
+
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
-<!-- </section> -->
+  </div>
+  <!-- </section> -->
