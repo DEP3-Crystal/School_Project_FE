@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { OptionalsubjectsComponent } from './optionalsubjects.component';
+import {OptionalsubjectsComponent} from './optionalsubjects.component';
 
 describe('OptionalsubjectsComponent', () => {
   let component: OptionalsubjectsComponent;
@@ -8,9 +8,9 @@ describe('OptionalsubjectsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OptionalsubjectsComponent ]
+      declarations: [OptionalsubjectsComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(OptionalsubjectsComponent);
     component = fixture.componentInstance;

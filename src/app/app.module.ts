@@ -28,7 +28,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {AuthGuard} from "./auth.guard";
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full', canActivate: [AuthGuard]}
+  {path: '', redirectTo: '/home', pathMatch: 'full'}
+  // ,{path: '/dashboard', redirectTo: '/login', pathMatch: 'full', canActivate: [AuthGuard]}
 ]
 
 @NgModule({
