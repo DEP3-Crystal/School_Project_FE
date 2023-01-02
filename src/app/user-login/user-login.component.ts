@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { LoginUserService } from '../login-user.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {LoginUserService} from '../login-user.service';
 
 @Component({
   selector: 'app-user-login',
@@ -10,7 +10,8 @@ import { LoginUserService } from '../login-user.service';
 export class UserLoginComponent implements OnInit {
 
 
-  constructor(private loginuserservice: LoginUserService,private route: ActivatedRoute,private router: Router) { }
+  constructor(private loginuserservice: LoginUserService, private route: ActivatedRoute, private router: Router) {
+  }
 
 
   model: any = {};
@@ -23,18 +24,19 @@ export class UserLoginComponent implements OnInit {
   }
 
   userLogin() {
-    this.loginuserservice.loginUser({ email: this.emailValue, password: this.passwordValue })
+    this.loginuserservice.loginUser({email: this.emailValue, password: this.passwordValue})
       .subscribe(data => {
         // alert("Login Successfully")
         this.router.navigate([this.returnUrl]);
-        localStorage.setItem('currentUser',this.emailValue);
-      }
-      );
+        localStorage.setItem('currentUser', this.emailValue);
+      });
   }
+
   hide = true;
 
   emailValue: string = '';
   passwordValue: string = '';
+
   clearEmailInput() {
     this.emailValue = '';
   }
@@ -42,7 +44,6 @@ export class UserLoginComponent implements OnInit {
   clearPasswordInput() {
     this.passwordValue = '';
   }
-
 
 
 }
