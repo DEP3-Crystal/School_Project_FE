@@ -10,7 +10,8 @@ import { LoginUserService } from '../login-user.service';
 export class UserLoginComponent implements OnInit {
 
 
-  constructor(private loginuserservice: LoginUserService,private route: ActivatedRoute,private router: Router) { }
+  constructor(private loginuserservice: LoginUserService, private route: ActivatedRoute, private router: Router) {
+  }
 
 
   model: any = {};

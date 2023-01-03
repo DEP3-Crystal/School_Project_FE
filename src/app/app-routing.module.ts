@@ -15,22 +15,23 @@ import { SettingsComponent } from './settings/settings.component';
 import { MandatorysubjectsComponent } from './mandatorysubjects/mandatorysubjects.component';
 import { OptionalsubjectsComponent } from './optionalsubjects/optionalsubjects.component';
 const routes: Routes = [
-  {path: '' , redirectTo: 'login' , pathMatch:'full'},
-  { path: 'login', component: UserLoginComponent },
-  { path: 'logout', component: LogoutComponent,canActivate:[AuthGaurdService] },
-  {path: 'dashboard' , component: DashboardComponent},
-  {path:'register', component:RegisterformComponent},
-  {path:'grades', component:GradesPageComponent},
-  {path:'session', component:SessionsPageComponent},
-  {path:'classroom', component:ClassroomComponent},
-  {path:'schedule', component:ScheduleComponent},
-  {path:'profile', component:ProfileComponent},
-  {path:'settings', component:SettingsComponent},
-  {path:'mandatory', component:MandatorysubjectsComponent},
-  {path:'optional',component:OptionalsubjectsComponent}
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'login', component: UserLoginComponent},
+  {path: 'logout', component: LogoutComponent, canActivate: [AuthGaurdService]},
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'register', component: RegisterformComponent},
+  {path: 'grades', component: GradesPageComponent},
+  {path: 'session', component: SessionsPageComponent},
+  {path: 'classroom', component: ClassroomComponent},
+  {path: 'schedule', component: ScheduleComponent},
+  {path: 'profile', component: ProfileComponent},
+  {path: 'settings', component: SettingsComponent},
+  {path: 'mandatory', component: MandatorysubjectsComponent},
+  {path: 'optional', component: OptionalsubjectsComponent}
 
 
 ];
+
 @NgModule({
   declarations: [],
   imports: [
