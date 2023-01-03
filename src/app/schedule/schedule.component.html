@@ -1,9 +1,17 @@
+
 <kendo-scheduler
-  [kendoSchedulerBinding]="sessions"
-  [kendoSchedulerResources]="resources"
-  [kendoSchedulerView]="view"
-  (add)="addSession($event)"
-  (remove)="removeSession($event)"
-  (edit)="editSession($event)">
-  <kendo-scheduler-current-time-marker [show]="true"></kendo-scheduler-current-time-marker>
+  [kendoSchedulerBinding]="events"
+  [selectedDate]="selectedDate"
+  scrollTime="08:00"
+  style="height: 100%;"
+>
+  <kendo-scheduler-day-view> </kendo-scheduler-day-view>
+
+  <kendo-scheduler-week-view> </kendo-scheduler-week-view>
+
+  <kendo-scheduler-month-view> </kendo-scheduler-month-view>
+
+  <kendo-scheduler-timeline-view> </kendo-scheduler-timeline-view>
+
+  <kendo-scheduler-agenda-view> </kendo-scheduler-agenda-view>
 </kendo-scheduler>

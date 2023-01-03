@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {displayDate, sampleData} from "./events-utc";
+import {SchedulerEvent} from "@progress/kendo-angular-scheduler";
 
 @Component({
   selector: 'app-schedule',
@@ -6,11 +8,9 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./schedule.component.css']
 })
 export class ScheduleComponent implements OnInit {
-
-  constructor() {
-  }
+  public selectedDate: Date = displayDate;
+  public events: SchedulerEvent[] = sampleData;
 
   ngOnInit(): void {
   }
-
 }

@@ -25,13 +25,13 @@
                 </span>
               <input type="email" id="typeEmail" class="form-control form-control-lg" placeholder="Email"
                      aria-label="Input group example" aria-describedby="basic-addon1" [(ngModel)]="emailValue">
-              <button class="input-group-text" id="basic-addon1" (click)="clearEmailInput()">
+              <button class="input-group-text" id="basic-addon2" (click)="clearEmailInput()">
                 <i class="material-icons xbutton" style="font-size:20px;font-weight: bold;">clear</i>
               </button>
             </div>
             <h5 class="inputH5">Password</h5>
             <div class="form-outline input-group form-white mb-3">
-                <span class="input-group-text" id="basic-addon1">
+                <span class="input-group-text" id="basic-addon3">
                   <em class="bi bi-key-fill"></em>
                 </span>
               <input matInput type="password" [type]="hide ? 'password':'text'" placeholder="Password"
@@ -41,7 +41,7 @@
                    (click)="hide = !hide">{{hide ?
                   'visibility':'visibility_off'}}</i>
               </button>
-              <button class="input-group-text" id="basic-addon1" (click)="clearPasswordInput()">
+              <button class="input-group-text" id="basic-addon4" (click)="clearPasswordInput()">
                 <i class="material-icons xbutton" style="font-size:20px;font-weight: bold;">clear</i>
               </button>
 

@@ -19,13 +19,14 @@ import {ScheduleComponent} from './schedule/schedule.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ProfileComponent} from './profile/profile.component';
 import {SettingsComponent} from './settings/settings.component';
-import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+// import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import {OptionalsubjectsComponent} from './optionalsubjects/optionalsubjects.component';
 import {MandatorysubjectsComponent} from './mandatorysubjects/mandatorysubjects.component';
 import {Ng2SearchPipeModule} from 'ng2-search-filter'
 import {Ng2OrderModule} from 'ng2-order-pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {AuthGuard} from "./auth.guard";
+import {SchedulerModule} from "@progress/kendo-angular-scheduler";
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'}
@@ -52,7 +53,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    BsDatepickerModule.forRoot(),
+    // BsDatepickerModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
@@ -61,7 +62,8 @@ const routes: Routes = [
     NgbModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
-    Ng2OrderModule
+    Ng2OrderModule,
+    SchedulerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
