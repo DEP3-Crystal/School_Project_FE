@@ -1,5 +1,6 @@
 <app-navigationbar></app-navigationbar>
-<div class="col-xl-9 d-flex justify-content-center">
+<div class="row d-flex justify-content-center">
+<div class="col-xl-9 ">
     <div class="col-3 navbar p-3">
     <input class="form-control" type="text" name="title" [(ngModel)]="title" 
     (ngModelChange)="Search()" placeholder="Enter subject title">
@@ -34,4 +35,5 @@
     <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </table>
 
+</div>
 </div>
