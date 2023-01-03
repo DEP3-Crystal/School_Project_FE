@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { RestService } from 'src/rest.service';
-import { Subjects } from 'src/subjects';
+import { RestService } from 'src/app/services/rest.service';
+import { Session } from '../model/session.model';
+
 
 @Component({
   selector: 'app-mandatorysubjects',
@@ -8,30 +10,34 @@ import { Subjects } from 'src/subjects';
   styleUrls: ['./mandatorysubjects.component.css']
 })
 export class MandatorysubjectsComponent {
-subjects:Subjects[]=[];
-name:any;
-page:number = 1;
-constructor(public service :RestService){
 
-}
-ngOnInit():void{
-  this.service.getSubjects().subscribe((response)=>{
-    this.subjects=response;
-  })
-}
-Search(){
-  if(this.name == ''){
-    this.ngOnInit();
-  }else{
-    this.subjects = this.subjects.filter(res=>{
-      return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
-    });
+  // sessions:Session[]=[];
+  sessionList:Session[]=[];
+  title:any;
+  page:number = 1;
+  constructor(private http:HttpClient){
   }
-}
-key:string ='id';
-reverse:boolean = false;
-sort(key:string){
-this.key =key;
-this.reverse=!this.reverse;
-}
-}
+  ngOnInit():void{
+    this.getSessionList();
+  }
+  getSessionList(){
+    this.http.get('http://localhost:8080/sessions').subscribe((result:any)=>{
+      this.sessionList=result;
+    })
+  }
+  Search(){
+    if(this.title == ''){
+      this.ngOnInit();
+    }else{
+      this.sessionList = this.sessionList.filter((res: { title: string; })=>{
+        return res.title.toLocaleLowerCase().match(this.title.toLocaleLowerCase());
+      });
+    }
+  }
+  key:string ='id';
+  reverse:boolean = false;
+  sort(key:string){
+  this.key =key;
+  this.reverse=!this.reverse;
+  }
+  }

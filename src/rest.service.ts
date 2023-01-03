@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subjects } from './subjects';
+import { Session } from './app/model/session.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class RestService {
 
   constructor(private http:HttpClient) { }
   url:string = "http://localhost:3000/Subjects";
-  getSubjects(){
-    return this.http.get<Subjects[]>(this.url);
+  getSessions(){
+    return this.http.get<Session[]>(this.url);
   }
 }

@@ -1,23 +1,35 @@
 <app-navigationbar></app-navigationbar>
 
-<div class="col-xl-7 d-flex justify-content-center">
+<div class="col-xl-9">
     <div class="col-3 navbar p-3">
-    <input class="form-control" type="text" name="name" [(ngModel)]="name" 
-    (ngModelChange)="Search()" placeholder="Enter subject name">
+    <input class="form-control" type="text" name="title" [(ngModel)]="title" 
+    (ngModelChange)="Search()" placeholder="Enter subject title">
 </div>
 <table class="table table-bordered" >
     <thead>
         <tr>
-            <th scope="col" (click)="sort('id')">Subject id&nbsp;<i class="fa fa-sort"></i></th>
-            <th scope="col" (click)="sort('name')">Name&nbsp;<i class="fa fa-sort"></i></th>
-            <th scope="col">Subject Duration</th>
+            <th scope="col" (click)="sort('sessionId')">Subject id&nbsp;<i class="fa fa-sort"></i></th>
+            <th scope="col" (click)="sort('title')">Name&nbsp;<i class="fa fa-sort"></i></th>
+            <th scope="col" (click)="sort('description')">Description&nbsp;<i class="fa fa-sort"></i></th>
+            <th scope="col" (click)="sort('startTime')">Start Time&nbsp;<i class="fa fa-sort"></i></th>
+            <th scope="col" (click)="sort('endTime')">End Time&nbsp;<i class="fa fa-sort"></i></th>
+            <th scope="col" (click)="sort('isOptional')">Is Optional:&nbsp;<i class="fa fa-sort"></i></th>
+            <th scope="col" (click)="sort('difficultyLevel')">Difficulty Level&nbsp;<i class="fa fa-sort"></i></th>
+            <!-- <th scope="col" (click)="sort('keywords')">Name&nbsp;<i class="fa fa-sort"></i></th>
+            <th scope="col" (click)="sort('ratingSum')">Name&nbsp;<i class="fa fa-sort"></i></th>
+            <th scope="col" (click)="sort('ratingCount')">Name&nbsp;<i class="fa fa-sort"></i></th>
+            <th scope="col" (click)="sort('sessionRatings')">Name&nbsp;<i class="fa fa-sort"></i></th> -->
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let subject of subjects | paginate: {itemsPerPage:5,currentPage:page};">
-            <td scope="row">{{subject.id}}</td>
-            <td scope="row">{{subject.name}}</td>
-            <td scope="row">{{subject.duration}}</td>
+        <tr *ngFor="let session of sessionList | paginate: {itemsPerPage:5,currentPage:page};">
+            <td scope="row">{{session.sessionId}}</td>
+            <td scope="row">{{session.title}}</td>
+            <td scope="row">{{session.description}}</td>
+            <td scope="row">{{session.startTime}}</td>
+            <td scope="row">{{session.endTime}}</td>
+            <td scope="row">{{session.isOptional}}</td>
+            <td scope="row">{{session.difficultyLevel}}</td>
         </tr>
     </tbody>
     <pagination-controls (pageChange)="page = $event"></pagination-controls>

@@ -4,13 +4,14 @@ import { LoginUserService } from '../login-user.service';
 
 @Component({
   selector: 'app-user-login',
-  templateUrl: './user-login.component.html',
+  templateUrl:'./user-login.component.html',
   styleUrls: ['./user-login.component.css']
 })
+
 export class UserLoginComponent implements OnInit {
 
-
-  constructor(private loginuserservice: LoginUserService, private route: ActivatedRoute, private router: Router) {
+  
+  constructor(private loginuserservice: LoginUserService,private route: ActivatedRoute, private router: Router) {
   }
 
 
