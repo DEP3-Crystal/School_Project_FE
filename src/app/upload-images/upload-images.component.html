@@ -1,0 +1,18 @@
+<app-navigationbar></app-navigationbar>
+<form class="container pt-5">
+  <div class="form-group">
+    <label for="name">Image Name</label>
+    <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name">
+  </div>
+  <div class="form-group">
+    <label for="file">File</label>
+    <input type="file" class="form-control-file" id="file" (change)="onFileChange($event)" accept="image/*">
+  </div>
+  <button type="button" class="btn btn-primary form-control" (click)="uploadImage()">Upload</button>
+  <div class="form-group">
+    <label for="imageId"  >Id of image</label>
+    <input type="number"  [(ngModel)]="id" name="imageId" class="form-control" id="imageId">
+  </div>
+  <button type="button" class="btn btn-success form-control" (click)="showImage()"> show upload image</button>
+  <img *ngIf="this.imageUrl != undefined" src="{{imageUrl}}">
+</form>
