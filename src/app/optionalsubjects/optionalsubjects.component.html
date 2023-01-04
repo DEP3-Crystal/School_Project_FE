@@ -2,7 +2,7 @@
 <div class="row d-flex justify-content-center">
 <div class="col-xl-9">
     <div class="col-4 navbar p-3 ps-0">
-    <input class="form-control" type="text" name="title" [(ngModel)]="title" 
+    <input class="form-control" type="text" name="title" [(ngModel)]="title"
     (ngModelChange)="Search()" placeholder="Enter subject title">
 </div>
 <table class="table table-bordered  text-start" >
@@ -33,7 +33,7 @@
         </tr>
     </tbody>
 </table>
- 
+
 
 <pagination-controls  (pageChange)="page = $event" class="text-center"></pagination-controls>
 

@@ -1,6 +1,7 @@
 import {Gender} from "./enum/gender";
-import {StudentRegistration} from "./student-registration.model";
+import {StudentRegistration} from "./pivote/student-registration.model";
 import {Role} from "./enum/role";
+import {Image} from "./image.model";
 
 export class UserInfo {
   id!: number;
@@ -10,7 +11,7 @@ export class UserInfo {
   gender!: Gender;
   biography!: string;
   role!: Role;
-  profilePicture!: string;
+  profilePicture!: Image;
   studentRegistrations!: StudentRegistration[];
 
 }
