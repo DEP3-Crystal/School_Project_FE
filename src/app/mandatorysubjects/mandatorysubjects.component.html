@@ -5,8 +5,8 @@
     <input class="form-control" type="text" name="title" [(ngModel)]="title" 
     (ngModelChange)="Search()" placeholder="Enter subject title">
 </div>
-<table class="table table-bordered text-start" >
-    <thead>
+<table class="table table-bordered  text-start" >
+    <thead class="bg-success text-white" >
         <tr>
             <th class="col-1" (click)="sort('sessionId')">Id&nbsp;<i class="fa fa-sort"></i></th>
             <th class="col-2" (click)="sort('title')">Name&nbsp;<i class="fa fa-sort"></i></th>
@@ -22,7 +22,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let session of sessionList | paginate: {itemsPerPage:5,currentPage:page};">
+        <tr  *ngFor="let session of sessionList | paginate: {itemsPerPage:5,currentPage:page};">
             <td >{{session.sessionId}}</td>
             <td >{{session.title}}</td>
             <td >{{session.description}}</td>
