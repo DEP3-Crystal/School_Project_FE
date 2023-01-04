@@ -11,7 +11,6 @@ import { Session } from '../model/session.model';
 })
 export class MandatorysubjectsComponent {
 
-  // sessions:Session[]=[];
   sessionList:Session[]=[];
   title:any;
   page:number = 1;
@@ -23,8 +22,8 @@ export class MandatorysubjectsComponent {
   }
 
   getSessionList(){
-    this.http.get('http://localhost:8080/sessions').subscribe((result:any)=>{
-      this.sessionList=result;
+    this.http.get<Session[]>('http://localhost:8080/sessions').subscribe((result)=>{
+      this.sessionList=result.filter((session)=>session.isOptional === false);
     })
   }
   Search(){

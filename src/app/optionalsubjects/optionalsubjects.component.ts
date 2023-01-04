@@ -25,15 +25,10 @@ export class OptionalsubjectsComponent {
     this.getSessionList();
   }
  
-  //  getSessionsIfOptional(isOptional:boolean){
-  //   return this.http.get('http://localhost:8080/sessions/optional/'+ isOptional).subscribe((res:any)=>
-  //   this.sessionIfOptional = res)
-  //  } 
     
   getSessionList(){
-    this.http.get('http://localhost:8080/sessions').subscribe((result:any)=>{
-      this.sessionList=result;
-         
+    this.http.get<Session[]>('http://localhost:8080/sessions').subscribe((result)=>{
+      this.sessionList=result.filter((session)=>session.isOptional === true);
     })
   }
   Search(){

@@ -1,2 +1,39 @@
 <app-navigationbar></app-navigationbar>
-<p>sessions-page works!</p>
+<div class="container pr-0 mr-0 ">
+    <div class="pr-0 mr-0">
+        <div class="text-end">
+            <span class="material-icons two-tone" style="color:#198754;font-size: 40px;">
+                add_box
+                </span>
+        </div>
+        <div class="">
+            <div class="col-xl-7 pt-3">
+                <div class="card card-margin border border-success" *ngFor="let session of sessionList | paginate: {itemsPerPage:5,currentPage:page};">
+                    <div class="card-header no-border">
+                        <h5 class="card-title">{{session.title}}</h5>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="widget-49">
+                            <div class="widget-49-title-wrapper">
+                                <div class="">
+                                    
+                                </div>
+                            </div>
+                            <p>{{session.description}}</p>
+                            <div class="widget-49-meeting-action">
+                                <a href="#" class="text-decoration-none" style="color: #198754;">Edit Session <i class="bi bi-pen" style="font-size: 20px;"></i></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                        
+                    
+                
+            </div>
+        </div>
+    </div>
+ 
+    <pagination-controls  (pageChange)="page = $event" class="text-center"></pagination-controls>
+    </div>

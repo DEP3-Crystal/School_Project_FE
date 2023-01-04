@@ -8,11 +8,11 @@
 <table class="table table-bordered  text-start" >
     <thead class="bg-success text-white" >
         <tr>
-            <th class="col-1" (click)="sort('sessionId')">Id&nbsp;<i class="fa fa-sort"></i></th>
+            <th class="col-1" (click)="sort('id')">Id&nbsp;<i class="fa fa-sort"></i></th>
             <th class="col-2" (click)="sort('title')">Name&nbsp;<i class="fa fa-sort"></i></th>
             <th class="col-3" (click)="sort('description')">Description&nbsp;<i class="fa fa-sort"></i></th>
-            <th class="col-2" (click)="sort('startTime')">Start Time&nbsp;<i class="fa fa-sort"></i></th>
-            <th class="col-2" (click)="sort('endTime')">End Time&nbsp;<i class="fa fa-sort"></i></th>
+            <th class="col-2" (click)="sort('start')">Start Time&nbsp;<i class="fa fa-sort"></i></th>
+            <th class="col-2" (click)="sort('end')">End Time&nbsp;<i class="fa fa-sort"></i></th>
             <!-- <th class="col-3" (click)="sort('isOptional')">Is Optional:&nbsp;<i class="fa fa-sort"></i></th> -->
             <th class="col-6" (click)="sort('difficultyLevel')">Difficulty Level&nbsp;<i class="fa fa-sort"></i></th>
             <!-- <th scope="col" (click)="sort('keywords')">Name&nbsp;<i class="fa fa-sort"></i></th>
@@ -23,11 +23,11 @@
     </thead>
     <tbody>
         <tr  *ngFor="let session of sessionList | paginate: {itemsPerPage:5,currentPage:page};">
-            <td >{{session.sessionId}}</td>
+            <td >{{session.id}}</td>
             <td >{{session.title}}</td>
             <td >{{session.description}}</td>
-            <td >{{session.startTime | date : 'short'}}</td>
-            <td >{{session.endTime | date : 'short'}}</td>
+            <td >{{session.start | date : 'short'}}</td>
+            <td >{{session.end | date : 'short'}}</td>
             <!-- <td >{{session.isOptional}}</td> -->
             <td >{{session.difficultyLevel}}</td>
         </tr>

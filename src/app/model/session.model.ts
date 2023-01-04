@@ -13,7 +13,7 @@ export class Session implements SchedulerEvent {
   ratingSum?: number;
   ratingCount?: number;
   sessionRatings?: SessionRating[];
-
+   
   constructor(id: number, title: string, start: Date, end: Date) {
     this.id = id;
     this.title = title;
