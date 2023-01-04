@@ -26,8 +26,9 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter'
 import {Ng2OrderModule} from 'ng2-order-pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {AuthGuard} from "./auth.guard";
-import { SchedulerModule } from '@progress/kendo-angular-scheduler';
 // import {SchedulerModule} from "@progress/kendo-angular-scheduler";
+import {SchedulerModule} from "@progress/kendo-angular-scheduler";
+import { UploadImagesComponent } from './upload-images/upload-images.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'}
@@ -50,11 +51,12 @@ const routes: Routes = [
     RegisterformComponent,
     OptionalsubjectsComponent,
     MandatorysubjectsComponent,
+    UploadImagesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    //  BsDatepickerModule.forRoot(),
+    // BsDatepickerModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,

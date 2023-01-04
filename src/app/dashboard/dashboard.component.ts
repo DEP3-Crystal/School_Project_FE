@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserInfo} from "../model/user-info.model";
 
 @Component({
   selector: 'app-dashboard',
@@ -8,32 +9,32 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private router: Router,private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute) {
+  }
+
   returnUrl!: string;
-  show=false;
+  show = false;
+
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/login';
   }
- 
-   logoutFunction(){
+
+  logoutFunction() {
     this.router.navigate([this.returnUrl]);
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentUserEmail');
   }
 
-  getEmail(){
-    return localStorage.getItem('currentUser');
+  getEmail() {
+    return localStorage.getItem('currentUserEmail');
   }
-  showSubjects():boolean{
-   if(this.show===false){
-    this.show=true;
-   }else{
-    this.show=false;
-   }
-   return this.show;
-   
-   
+  getUserName(){
+    return localStorage.getItem('currentUserName');
+  }
+
+  showSubjects(): boolean {
+    this.show = !this.show;
+    return this.show;
   }
 
 
- 
 }

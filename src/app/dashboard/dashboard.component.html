@@ -1,41 +1,100 @@
-<app-navigationbar></app-navigationbar>
-<div class="row vh-100" id="wrapper">
-    <div class="col-2 list-group pr-0 pt-xl-4 text-lg shadow p-3 mb-5 bg-body  border-end border-success " id="sidebar-wrapper">
-        <div class="col-12 text-center">
-        <a href="http://localhost:4200/session"
-            class="list-group-item border-0">
-            Sessions
+<main id="wrapper ">
+  <!--  <div class="col-2 vh-100 list-group pr-0 pt-xl-4 text-lg shadow bg-body  border-end border-success "-->
+  <!--       id="sidebar-wrapper">-->
+  <!--    <div class="col-12 text-center">-->
+  <!--      <a href="http://localhost:4200/session"-->
+  <!--         class="list-group-item border-0">-->
+  <!--        Sessions-->
+  <!--      </a>-->
+
+  <!--      <a href="http://localhost:4200/schedule"-->
+  <!--         class="list-group-item border-0">-->
+  <!--        Schedule-->
+  <!--      </a>-->
+  <!--      <a href="http://localhost:4200/classroom"-->
+  <!--         class="list-group-item border-0">-->
+  <!--        Classrooms-->
+  <!--      </a>-->
+
+  <!--      <a href="http://localhost:4200/grades"-->
+  <!--         class="list-group-item border-0">-->
+  <!--        Grades-->
+  <!--      </a></div>-->
+  <!--    <div class="col-12 p-5 py-5">-->
+  <!--      <a href="http://localhost:4200/login"-->
+  <!--         class="list-group-item list-group-item-action bg-transparent text-center text-danger active border  border-danger"-->
+  <!--         (click)="logoutFunction()">-->
+  <!--        Logout-->
+  <!--      </a></div>-->
+  <!--  </div>-->
+  <div class="d-flex vh-100 flex-column flex-shrink-0 p-3 bg-light shadow" style="width: 280px;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+      <svg class="bi me-2" width="40" height="32">
+        <use xlink:href="#bootstrap"></use>
+      </svg>
+      <span class="fs-4">School App</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link active" aria-current="page">
+          <i class="bi bi-speedometer" width="16" height="16"></i>
+          Dashboard
         </a>
-        <button (click)="showSubjects()"
-            class="border-0 bg-transparent ">
-            School Subjects
-    </button>
+      </li>
+      <li>
+        <a href="/session" class="nav-link link-dark">
+          <i class="bi bi-clock" width="16" height="16"></i>
+          Sessions
+        </a>
+      </li>
+      <li>
+        <a href="/schedule" class="nav-link link-dark">
+          <i class="bi bi-calendar3" width="16" height="16"></i>
+          Schedule
+        </a>
+      </li>
+      <div>
+        <a (click)="showSubjects()" class="nav-link link-dark ">
+          <i class="bi bi-book-half" width="16" height="16"></i>
+          School Subjects
+        </a>
         <nav *ngIf="show" class="nav nav-pills flex-column">
-            <a class="nav-link ms-4" href="http://localhost:4200/mandatory">Mandatory</a>
-            <a class="nav-link ms-4" href="http://localhost:4200/optional">Optional</a>
-          </nav>
-        <a href="http://localhost:4200/schedule"
-            class="list-group-item border-0">
-            Class Schedule
-        </a>
-        <a href="http://localhost:4200/classroom"
-            class="list-group-item border-0">
-            Classrooms
-        </a>
+          <a class="nav-link ms-4" href="http://localhost:4200/mandatory">Mandatory</a>
+          <a class="nav-link ms-4" href="http://localhost:4200/optional">Optional</a>
+        </nav>
 
-        <a href="http://localhost:4200/grades"
-            class="list-group-item border-0">
-            Grades
-        </a></div>
-        <div class="col-12 p-5 py-5">
-        <a href="http://localhost:4200/login"
-        class="list-group-item list-group-item-action bg-transparent text-center text-danger active border  border-danger"
-        (click)="logoutFunction()">
-        Logout
-    </a></div>
+      </div>
+      <li>
+        <a href="/grades" class="nav-link link-dark">
+          <i class="bi bi-journal-text" width="16" height="16"></i>
+          Grades
+        </a>
+      </li>
+      <li>
+        <a href="/classroom" class="nav-link link-dark">
+          <i class="bi bi-people"></i>
+          classrooms
+        </a>
+      </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"
+         data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong>mdo</strong>
+      </a>
+      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
     </div>
-    <div class="col-10  fw-bold text-center">
-            <h1 class="pt-4">Welcome <span class="user"> {{getEmail()}}</span></h1>
-        </div>
-
-</div>
+  </div>
+  <app-navigationbar style="width: 100%" class=" p-0"></app-navigationbar>
+</main>

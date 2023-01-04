@@ -1,4 +1,4 @@
-import {TeacherRating} from "./teacher-rating.model";
+import {TeacherRating} from "./pivote/teacher-rating.model";
 import {EmployeeInfo} from "./employee-info.model";
 
 export class TeacherInfo extends EmployeeInfo {

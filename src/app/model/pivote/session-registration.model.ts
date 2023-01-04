@@ -1,5 +1,5 @@
-import {Session} from "./session.model";
-import {SessionRegistrationId} from "./id/session-registration.id";
+import {Session} from "../session.model";
+import {SessionRegistrationId} from "../id/session-registration.id";
 
 export class SessionRegistration {
   sessionRegistrationId!: SessionRegistrationId;

@@ -1,5 +1,5 @@
-import {UserInfo} from "./user-info.model";
-import {SessionRatingId} from "./id/session-ratingId";
+import {UserInfo} from "../user-info.model";
+import {SessionRatingId} from "../id/session-ratingId";
 
 export class SessionRating {
   sessionRatingId!: SessionRatingId;

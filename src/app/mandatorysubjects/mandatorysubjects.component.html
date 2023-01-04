@@ -2,7 +2,7 @@
 <div class="row d-flex justify-content-center">
 <div class="col-xl-9">
     <div class="col-4 navbar p-3 ps-0">
-    <input class="form-control" type="text" name="title" [(ngModel)]="title" 
+    <input class="form-control" type="text" name="title" [(ngModel)]="title"
     (ngModelChange)="Search()" placeholder="Enter subject title">
 </div>
 <table class="table table-bordered text-start" >
@@ -23,17 +23,17 @@
     </thead>
     <tbody>
         <tr *ngFor="let session of sessionList | paginate: {itemsPerPage:5,currentPage:page};">
-            <td >{{session.sessionId}}</td>
+            <td >{{session.id}}</td>
             <td >{{session.title}}</td>
             <td >{{session.description}}</td>
-            <td >{{session.startTime | date : 'short'}}</td>
-            <td >{{session.endTime | date : 'short'}}</td>
+            <td >{{session.start | date : 'short'}}</td>
+            <td >{{session.end | date : 'short'}}</td>
             <!-- <td >{{session.isOptional}}</td> -->
             <td >{{session.difficultyLevel}}</td>
         </tr>
     </tbody>
 </table>
- 
+
 
 <pagination-controls  (pageChange)="page = $event" class="text-center"></pagination-controls>
 

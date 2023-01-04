@@ -1,4 +1,4 @@
 export class StudentRegistrationId {
   studentId!: number;
-  roomId!: number;
+  sessionId!: number;
 }

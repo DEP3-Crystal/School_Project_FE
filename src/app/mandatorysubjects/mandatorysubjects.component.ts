@@ -15,7 +15,7 @@ export class MandatorysubjectsComponent {
   sessionList:Session[]=[];
   title:any;
   page:number = 1;
-  
+
   constructor(private http:HttpClient){
   }
   ngOnInit():void{
