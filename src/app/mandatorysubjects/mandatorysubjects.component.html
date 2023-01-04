@@ -26,8 +26,8 @@
             <td >{{session.sessionId}}</td>
             <td >{{session.title}}</td>
             <td >{{session.description}}</td>
-            <td >{{session.startTime}}</td>
-            <td >{{session.endTime}}</td>
+            <td >{{session.startTime | date : 'short'}}</td>
+            <td >{{session.endTime | date : 'short'}}</td>
             <!-- <td >{{session.isOptional}}</td> -->
             <td >{{session.difficultyLevel}}</td>
         </tr>
