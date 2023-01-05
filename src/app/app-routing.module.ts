@@ -15,6 +15,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { MandatorysubjectsComponent } from './mandatorysubjects/mandatorysubjects.component';
 import { OptionalsubjectsComponent } from './optionalsubjects/optionalsubjects.component';
 import {UploadImagesComponent} from "./upload-images/upload-images.component";
+import { SessionmodalComponent } from './sessionmodal/sessionmodal.component';
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: UserLoginComponent},
@@ -30,7 +31,7 @@ const routes: Routes = [
   {path: 'mandatory', component: MandatorysubjectsComponent},
   {path: 'optional', component: OptionalsubjectsComponent},
   {path: 'upload-image', component: UploadImagesComponent},
-
+  {path: 'session/modal', component: SessionmodalComponent}
 
 ];
 

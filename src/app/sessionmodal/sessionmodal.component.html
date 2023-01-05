@@ -1,0 +1,215 @@
+<div class="" tabindex="" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+
+                    <div class="row ">
+                        <div class="col-lg-7 mx-auto">
+                            <div class="card mt-2 mx-auto p-4 bg-light">
+                                <div class="card-body bg-light">
+
+                                    <div class="container">
+                                        <form [formGroup]="sessionForm"
+                                            (ngSubmit)="selectedSession.id ? addSession() : updateSession()"
+                                            class="needs-validation">
+
+
+
+
+                                            <div class="controls">
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <div class="form-group">
+                                                            <label for="sessionTitle">Title *</label>
+                                                            <input id="sessionTitle" type="text" name="title"
+                                                                class="form-control" placeholder="Enter session title *"
+                                                                required="required" data-error="Title is required.">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="formSessionType">Type *</label>
+                                                            <select id="formSessionType" name="sessionType"
+                                                                class="form-control" required="required"
+                                                                data-error="Please specify session type.">
+                                                                <option value="" selected disabled>--Choose session
+                                                                    type--</option>
+                                                                <option>Mandatory</option>
+                                                                <option>Optional</option>
+                                                            </select>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="formSessionRoom">Room *</label>
+                                                            <select id="formSessionRoom" name="sessionRoom"
+                                                                class="form-control" required="required"
+                                                                data-error="Please choose a room.">
+                                                                <option value="" selected disabled>--Select room --
+                                                                </option>
+                                                                <!-- <option *ngFor="let room of roomList">{{room.roomId}} -->
+                                                                <option value="test">Test
+                                                                </option>
+
+                                                            </select>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="formDepartment">Please select department
+                                                                *</label>
+                                                            <select id="formDepartment" name="department"
+                                                                class="form-control" required="required"
+                                                                data-error="Please specify department.">
+                                                                <option value="" selected disabled>--Select Department--
+                                                                </option>
+                                                                <!-- <option *ngFor="let department of departmentList">
+                                                                    {{department.name}}</option> -->
+                                                                <option value="test1">Test</option>
+                                                            </select>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="formSessionTeacher">Teacher *</label>
+                                                            <!-- <input class="form-control" type="text" name="credentials"
+                                                                    [(ngModel)]="credentials" (ngModelChange)="Search()"
+                                                                    placeholder="Enter teacher credentials"> -->
+                                                            <select type="text" id="formSessionTeacher"
+                                                                name="sessionTeacher" class="form-control"
+                                                                required="required"
+                                                                data-error="Please choose a teacher.">
+
+                                                                <option value="" selected disabled>--Select teacher --
+                                                                </option>
+                                                                <!-- <option *ngFor="let teacher of teacherList">
+                                                                    {{teacher.credentials}}</option> -->
+                                                                <option value="test2">Test</option>
+                                                            </select>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="formDifficulty">Difficulty level *</label>
+                                                            <select id="formDifficulty" name="difficulty"
+                                                                class="form-control" required="required"
+                                                                data-error="Please specify session's difficulty level.">
+                                                                <option value="" selected disabled>--Difficulty level--
+                                                                </option>
+                                                                <option value="beginner">Beginner</option>
+                                                                <option value="intermediate">Intermediate</option>
+                                                                <option value="advanced">Advanced</option>
+                                                            </select>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="formDescription">Description </label>
+                                                            <textarea id="formDescription" name="description"
+                                                                class="form-control"
+                                                                placeholder="Write session description here."
+                                                                rows="4"></textarea>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="formKeywords">Keywords </label>
+                                                            <textarea id="formKeywords" name="keywords"
+                                                                class="form-control"
+                                                                placeholder="Write session keywords here."
+                                                                rows="1"></textarea>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-md-12">
+
+
+
+                                                    </div>
+
+                                                </div>
+                                                <!-- <div class="row">
+
+                                                    <div class="col-md-6">
+                                                        <label for="formStart">Start Time</label>
+                                                        <div class="input-group timepicker">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="la la-exclamation-circle"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input class="form-control" id="kt_timepicker_4" readonly
+                                                                value="hh:mm:ss AM/PM" type="text" />
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="formEnd">End Time</label>
+                                                        <div class="input-group timepicker">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="la la-exclamation-circle"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input class="form-control" id="kt_timepicker_4" readonly
+                                                                value="hh:mm:ss AM/PM" type="text" />
+
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+
+
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" (click)="addSession()">Save
+                                        changes</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                        (click)="bsModalRef.hide()">Close</button>
+                                </div>
+
+                            </div>
+                            <!-- /.8 -->
+
+                        </div>
+                        <!-- /.row-->
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

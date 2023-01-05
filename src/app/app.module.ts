@@ -29,6 +29,9 @@ import {AuthGuard} from "./auth.guard";
 // import {SchedulerModule} from "@progress/kendo-angular-scheduler";
 import {SchedulerModule} from "@progress/kendo-angular-scheduler";
 import { UploadImagesComponent } from './upload-images/upload-images.component';
+import { SessionmodalComponent } from './sessionmodal/sessionmodal.component';
+import { DatePipe } from '@progress/kendo-angular-intl';
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'}
@@ -51,7 +54,9 @@ const routes: Routes = [
     RegisterformComponent,
     OptionalsubjectsComponent,
     MandatorysubjectsComponent,
-    UploadImagesComponent
+    UploadImagesComponent,
+    SessionmodalComponent,
+    DatePipe
   ],
   imports: [
     BrowserModule,
@@ -67,6 +72,7 @@ const routes: Routes = [
     NgxPaginationModule,
     Ng2OrderModule,
     SchedulerModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

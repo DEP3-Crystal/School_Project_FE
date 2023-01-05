@@ -18,20 +18,20 @@ export class ScheduleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // let user = this.userService.getCurrentUser();
-    let id: number = +(localStorage.getItem('currentUserId') || "-1")
-    if(id=== -1) {alert("user is not logged in"); return}
-    this.sessionService.getSessions(id)
-      .pipe(catchError(err => {
-          alert(err.message)
-          throw throwError(err.message)
-        }
-      ))
-      .subscribe(data => {
-        // alert("sessions loaded")
-        //TODO: fix the implementation of scheduleEvent
-        // this.events = data
-      })
+    // // let user = this.userService.getCurrentUser();
+    // let id: number = +(localStorage.getItem('currentUserId') || "-1")
+    // if(id=== -1) {alert("user is not logged in"); return}
+    // this.sessionService.getSessions(id)
+    //   .pipe(catchError(err => {
+    //       alert(err.message)
+    //       throw throwError(err.message)
+    //     }
+    //   ))
+    //   .subscribe(data => {
+    //     // alert("sessions loaded")
+    //     //TODO: fix the implementation of scheduleEvent
+    //     // this.events = data
+    //   })
 
 
   }

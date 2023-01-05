@@ -45,7 +45,8 @@
     "@syncfusion/ej2-angular-schedule": "^20.4.38-ngcc",
     "@syncfusion/ej2-grids": "^20.4.38",
     "@syncfusion/ej2-material-theme": "~20.4.38",
-    "bootstrap": "^5.2.0",
+    "bootstrap": "^5.2.3",
+    "bootstrap-vue": "^2.23.1",
     "json-server": "^0.17.1",
     "ng2-order-pipe": "^0.1.5",
     "ng2-search-filter": "^0.5.1",
@@ -54,6 +55,7 @@
     "ngx-pagination": "^6.0.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "vue": "^3.2.45",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
