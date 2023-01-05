@@ -8,15 +8,13 @@ import { TeacherInfo } from '../model/teacher-info.model';
 import { SessionService } from '../services/session-service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DatePipe } from '@progress/kendo-angular-intl';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-sessionmodal',
   templateUrl: './sessionmodal.component.html',
   styleUrls: ['./sessionmodal.component.css'],
-  providers:[
-    DatePipe
-  ]
+  providers:[DatePipe]
 })
 export class SessionmodalComponent implements OnInit, OnDestroy {
   title?: string;
@@ -70,8 +68,8 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
         id: this.selectedSession.id,
         title: this.sessionForm.controls.title.value ? this.sessionForm.controls.title.value : '',
         description: this.sessionForm.controls.description.value ? this.sessionForm.controls.description.value : '',
-        start: this.datePipe.transform(this.sessionForm.controls.start.value),
-        end: this.datePipe.transform(this.sessionForm.controls.end.value),
+        start: new Date(this.sessionForm.controls.start.value?this.sessionForm.controls.start.value:''),
+        end: new Date(this.sessionForm.controls.end.value?this.sessionForm.controls.end.value:''),
         isOptional:Boolean(this.sessionForm.controls.isOptional.value) ,
         difficultyLevel: this.sessionForm.controls.difficultyLevel.value ? this.sessionForm.controls.difficultyLevel.value : '',
         keywords: this.sessionForm.controls.keywords.value ? this.sessionForm.controls.keywords.value : ''
@@ -89,8 +87,8 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
         id: this.selectedSession.id,
         title: this.sessionForm.controls.title.value ? this.sessionForm.controls.title.value : '',
         description: this.sessionForm.controls.description.value ? this.sessionForm.controls.description.value : '',
-        start: this.datePipe.transform(this.sessionForm.controls.start.value),
-        end: this.datePipe.transform(this.sessionForm.controls.end.value),
+        start: new Date(this.sessionForm.controls.start.value?this.sessionForm.controls.start.value:''),
+        end: new Date(this.sessionForm.controls.end.value?this.sessionForm.controls.end.value:''),
         isOptional:Boolean(this.sessionForm.controls.isOptional.value),
         difficultyLevel: this.sessionForm.controls.difficultyLevel.value ? this.sessionForm.controls.difficultyLevel.value : '',
         keywords: this.sessionForm.controls.keywords.value ? this.sessionForm.controls.keywords.value : '',
