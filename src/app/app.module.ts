@@ -52,7 +52,8 @@ const routes: Routes = [
     RegisterformComponent,
     OptionalsubjectsComponent,
     MandatorysubjectsComponent,
-    UploadImagesComponent
+    UploadImagesComponent,
+    SessionmodalComponent,
   ],
   imports: [
     BrowserModule,
