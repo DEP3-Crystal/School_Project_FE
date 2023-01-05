@@ -84,16 +84,17 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
 
     addSession() {
       const session: Session = {
-        id: this.selectedSession.id,
+        // id: this.selectedSession.id,
         title: this.sessionForm.controls.title.value ? this.sessionForm.controls.title.value : '',
         description: this.sessionForm.controls.description.value ? this.sessionForm.controls.description.value : '',
-        start: new Date(this.sessionForm.controls.start.value?this.sessionForm.controls.start.value:''),
-        end: new Date(this.sessionForm.controls.end.value?this.sessionForm.controls.end.value:''),
+        start: new Date(this.sessionForm.controls.start.value? new Date().toDateString() + ' ' + this.sessionForm.controls.start.value:''),
+        end: new Date(this.sessionForm.controls.end.value? new Date().toDateString() + ' ' + this.sessionForm.controls.end.value:''),
         isOptional:Boolean(this.sessionForm.controls.isOptional.value),
         difficultyLevel: this.sessionForm.controls.difficultyLevel.value ? this.sessionForm.controls.difficultyLevel.value : '',
         keywords: this.sessionForm.controls.keywords.value ? this.sessionForm.controls.keywords.value : '',
         
       }
+      console.log(session);
   
       console.log(this.sessionForm)
   
