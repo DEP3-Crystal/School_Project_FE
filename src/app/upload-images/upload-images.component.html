@@ -15,4 +15,11 @@
   </div>
   <button type="button" class="btn btn-success form-control" (click)="showImage()"> show upload image</button>
   <img *ngIf="this.imageUrl != undefined" src="{{imageUrl}}">
+  <label for="start-date">Start Date:</label>
+  <input type="date" id="start-date" (change)="onDateChanged($event)" name="start-date">
+
+  <label for="start-time">Start Time:</label>
+  <input type="time" id="start-time" (change)="onDateChanged($event)" name="start-time">
+  <h4 name="date">{{date}}</h4>
+  <h4>Formatted date {{dataPipe.transform(date,'HH:mm')}}</h4>
 </form>

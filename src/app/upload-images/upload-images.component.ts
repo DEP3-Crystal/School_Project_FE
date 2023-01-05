@@ -3,19 +3,23 @@ import {HttpClient} from "@angular/common/http";
 import {ImageService} from "../services/image-service";
 import {catchError, throwError} from "rxjs";
 import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
-
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-upload-images',
   templateUrl: './upload-images.component.html',
-  styleUrls: ['./upload-images.component.css']
+  styleUrls: ['./upload-images.component.css'],
+  providers: [
+    DatePipe
+  ]
 })
 export class UploadImagesComponent {
   name: string = "";
   file!: File;
   imageUrl: string | undefined;
   id!: number;
+  date?: Date;
 
-  constructor(private imageService: ImageService, private http: HttpClient) {
+  constructor(private imageService: ImageService, private http: HttpClient, public dataPipe: DatePipe) {
   }
 
   ngOnInit() {
@@ -65,5 +69,10 @@ export class UploadImagesComponent {
   setId({$event}: { $event: any }) {
     console.log($event)
     this.id = $event;
+  }
+
+  onDateChanged($event: Event) {
+    const fileInput = $event.target as HTMLInputElement;
+    this.date = new Date(fileInput.value)
   }
 }
