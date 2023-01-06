@@ -30,7 +30,7 @@ import {AuthGuard} from "./auth.guard";
 import {SchedulerModule} from "@progress/kendo-angular-scheduler";
 import { UploadImagesComponent } from './upload-images/upload-images.component';
 import { SessionmodalComponent } from './sessionmodal/sessionmodal.component';
-
+import { BsModalService } from 'ngx-bootstrap/modal';
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'}
   // ,{path: '/dashboard', redirectTo: '/login', pathMatch: 'full', canActivate: [AuthGuard]}
@@ -53,7 +53,7 @@ const routes: Routes = [
     OptionalsubjectsComponent,
     MandatorysubjectsComponent,
     UploadImagesComponent,
-    SessionmodalComponent,
+    SessionmodalComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +68,7 @@ const routes: Routes = [
     Ng2SearchPipeModule,
     NgxPaginationModule,
     Ng2OrderModule,
-    SchedulerModule
+    SchedulerModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

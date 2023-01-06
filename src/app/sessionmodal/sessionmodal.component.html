@@ -29,7 +29,7 @@
 
                                                         <div class="form-group">
                                                             <label for="sessionTitle">Title *</label>
-                                                            <input id="sessionTitle" type="text" name="title"
+                                                            <input id="sessionTitle" type="text" formControlName="title"
                                                                 class="form-control" placeholder="Enter session title *"
                                                                 required="required" data-error="Title is required.">
 
@@ -38,7 +38,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="formSessionType">Type *</label>
-                                                            <select id="formSessionType" name="sessionType"
+                                                            <select id="formSessionType" formControlName="isOptional"
                                                                 class="form-control" required="required"
                                                                 data-error="Please specify session type.">
                                                                 <option value="" selected disabled>--Choose session
@@ -54,7 +54,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="formSessionRoom">Room *</label>
-                                                            <select id="formSessionRoom" name="sessionRoom"
+                                                            <select id="formSessionRoom" formControlName="sessionRoom"
                                                                 class="form-control" required="required"
                                                                 data-error="Please choose a room.">
                                                                 <option value="" selected disabled>--Select room --
@@ -71,7 +71,7 @@
                                                         <div class="form-group">
                                                             <label for="formDepartment">Please select department
                                                                 *</label>
-                                                            <select id="formDepartment" name="department"
+                                                            <select id="formDepartment" formControlName="department"
                                                                 class="form-control" required="required"
                                                                 data-error="Please specify department.">
                                                                 <option value="" selected disabled>--Select Department--
@@ -92,7 +92,7 @@
                                                                     [(ngModel)]="credentials" (ngModelChange)="Search()"
                                                                     placeholder="Enter teacher credentials"> -->
                                                             <select type="text" id="formSessionTeacher"
-                                                                name="sessionTeacher" class="form-control"
+                                                                formControlName="sessionTeacher" class="form-control"
                                                                 required="required"
                                                                 data-error="Please choose a teacher.">
 
@@ -108,7 +108,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="formDifficulty">Difficulty level *</label>
-                                                            <select id="formDifficulty" name="difficulty"
+                                                            <select id="formDifficulty" formControlName="difficultyLevel"
                                                                 class="form-control" required="required"
                                                                 data-error="Please specify session's difficulty level.">
                                                                 <option value="" selected disabled>--Difficulty level--
@@ -125,7 +125,7 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="formDescription">Description </label>
-                                                            <textarea id="formDescription" name="description"
+                                                            <textarea id="formDescription" formControlName="description"
                                                                 class="form-control"
                                                                 placeholder="Write session description here."
                                                                 rows="4"></textarea>
@@ -135,7 +135,7 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="formKeywords">Keywords </label>
-                                                            <textarea id="formKeywords" name="keywords"
+                                                            <textarea id="formKeywords" formControlName="keywords"
                                                                 class="form-control"
                                                                 placeholder="Write session keywords here."
                                                                 rows="1"></textarea>
@@ -153,27 +153,27 @@
                                                 <div class="row">
 
                                                     <div class="col-md-6">
-                                                        <label for="formStart">Start Time</label>
+                                                        <label for="start">Start Time</label>
                                                         <div class="input-group timepicker">
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">
                                                                     <i class="la la-exclamation-circle"></i>
                                                                 </span>
                                                             </div>
-                                                            <input type="time" class="form-control" id="kt_timepicker_4" 
+                                                            <input type="time" class="form-control" id="kt_timepicker_4" formControlName="start"
                                                              />
 
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label for="formEnd">End Time</label>
+                                                        <label for="end">End Time</label>
                                                         <div class="input-group timepicker">
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">
                                                                     <i class="la la-exclamation-circle"></i>
                                                                 </span>
                                                             </div>
-                                                            <input type="time" class="form-control" id="kt_timepicker_4" 
+                                                            <input type="time" class="form-control" id="kt_timepicker_4" formControlName="end"
                                                                   />
 
                                                         </div>

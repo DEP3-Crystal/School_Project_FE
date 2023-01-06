@@ -19,6 +19,26 @@ export class SessionService {
   }
 
 
+  getSessions() {
+    return this.http.get('http://localhost:8080/sessions') as Observable<Session[]>
+  }
+
+  getSession(id: number) {
+    return this.http.get('http://localhost:8080/sessions/' + id) as Observable<Session>
+  }
+
+  deleteSession(id: number) {
+    return this.http.delete('http://localhost:8080/sessions/'+ id) as Observable<Session>
+  }
+
+  updateSession(session: Session) {
+    return this.http.put('http://localhost:8080/session'+ session.id, session) as Observable<Session>
+  }
+
+  addSession(session: Session) {
+    return this.http.post('http://localhost:8080/session/add', session) as Observable<Session>
+  }
+
 // teacherList:TeacherInfo[]=[];
 // credentials:any;
 // roomId:any;
@@ -27,12 +47,12 @@ export class SessionService {
 // sessionList:Session[]=[];
 // roomList:Room[]=[];
 // departmentList:Department[]=[];
-ngOnInit():void{
+//ngOnInit():void{
   // this.getTeacherList();
   // this.getRoomList();
   // this.getDepartmentList();
   // this.getSessionList();
-}
+//}
 
 // getTeacherList(){
 //   this.http.get<TeacherInfo[]>('http://localhost:8080/teachers').subscribe((result:any)=>{
@@ -70,23 +90,5 @@ ngOnInit():void{
     
   // }
 
-  getSessions() {
-    return this.http.get('http://localhost:8080/sessions') as Observable<Session[]>
-  }
-
-  getSession(id: number) {
-    return this.http.get('http://localhost:8080/sessions/' + id) as Observable<Session>
-  }
-
-  deleteSession(id: number) {
-    return this.http.delete('http://localhost:8080/sessions/'+ id) as Observable<Session>
-  }
-
-  updateSession(session: Session) {
-    return this.http.put('http://localhost:8080/session'+ session.id, session) as Observable<Session>
-  }
-
-  addSession(session: Session) {
-    return this.http.post('http://localhost:8080/session/add', session) as Observable<Session>
-  }
+ 
 }
