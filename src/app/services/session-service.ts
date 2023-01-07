@@ -28,7 +28,7 @@ export class SessionService {
   }
 
   deleteSession(id: number) {
-    return this.http.delete('http://localhost:8080/sessions/'+ id) as Observable<Session>
+    return this.http.delete('http://localhost:8080/session/'+ id) as Observable<Session>
   }
 
   updateSession(session: Session) {
@@ -89,6 +89,6 @@ export class SessionService {
   //     return this.http.post('http://localhost:8080/sessions', session) as Observable<Session>;
     
   // }
-
+  
  
 }

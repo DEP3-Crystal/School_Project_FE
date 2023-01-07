@@ -20,6 +20,19 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
   title?: string;
   closeBtnName?: string;
   list: any[] = [];
+  
+
+  teacherList:TeacherInfo[]=[];
+// credentials:any;
+ roomId!:number;
+ departmentId!:number;
+ teacherId!:number;
+ difficultyLevel:any;
+ sessionList:Session[]=[];
+ roomList:Room[]=[];
+ departmentList:Department[]=[];
+
+
   @Input()
   selectedSession: Session = new Session();
 
@@ -49,38 +62,67 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
       isOptional: new FormControl('', [Validators.required]),
       difficultyLevel: new FormControl('', [Validators.required]),
       keywords: new FormControl('', [Validators.required]),
-      room: new FormControl('', [Validators.required])
+      roomId: new FormControl('', [Validators.required]),
+      departmentId: new FormControl('', [Validators.required]),
+      teacherId: new FormControl('', [Validators.required])
     })
 
     ngOnInit(): void {
-    
+      this.getTeacherList();
+      this.getRoomList();
+      this.getDepartmentList();
+      this.getSessionList();
+      this.fillSessionModal();
+
+    }
+      
+
+  private fillSessionModal() {
+    this.selectedSession = this.list[0].value;
+    if(this.selectedSession.id){
+
       this.sessionForm.controls.title.setValue(this.selectedSession.title);
+      this.sessionForm.controls.keywords.setValue(this.selectedSession.keywords!);
       this.sessionForm.controls.description.setValue(this.selectedSession.description!);
-      this.sessionForm.controls.start.setValue(this.datePipe.transform(this.selectedSession.start));
-      this.sessionForm.controls.end.setValue(this.datePipe.transform(this.selectedSession.end));
+      this.sessionForm.controls.start.setValue(this.datePipe.transform(this.selectedSession.start,'HH:mm'));
+      this.sessionForm.controls.end.setValue(this.datePipe.transform(this.selectedSession.end,'HH:mm'));
       this.sessionForm.controls.regDate.setValue(this.datePipe.transform(this.selectedSession.regDate));
       this.sessionForm.controls.isOptional.setValue(this.selectedSession.isOptional + '');
       this.sessionForm.controls.difficultyLevel.setValue(this.selectedSession.difficultyLevel!);
-      this.sessionForm.controls.keywords.setValue(this.selectedSession.keywords!);
-      this.sessionForm.controls.room.setValue(this.selectedSession.room!);
+      this.sessionForm.controls.roomId.setValue(this.selectedSession.room.roomId + '');
+      this.sessionForm.controls.teacherId.setValue(this.selectedSession.teacher.id+'');
+      this.sessionForm.controls.departmentId.setValue(this.selectedSession.department.departmentId + '');
+   }
 
-    }
+  }
 
-
-    updateSession() {
-      const session: Session = {
+    getSessionData():Session{
+      let room_Id=Number(this.sessionForm.controls.roomId.value ? this.sessionForm.controls.roomId.value : '');
+      let room = this.roomList.find((room)=>room.roomId===room_Id) || new Room();
+      let teacher_Id = Number(this.sessionForm.controls.teacherId.value ? this.sessionForm.controls.teacherId.value : '');
+      let teacher = this.teacherList.find((teacher) => teacher.id === teacher_Id)|| new TeacherInfo();
+      let department_Id=Number(this.sessionForm.controls.departmentId.value ? this.sessionForm.controls.departmentId.value : '') ;     
+      let department = this.departmentList.find((department)=>department.departmentId===department_Id) || new Department();
+    
+     return   {
         id: this.selectedSession.id,
         title: this.sessionForm.controls.title.value ? this.sessionForm.controls.title.value : '',
         description: this.sessionForm.controls.description.value ? this.sessionForm.controls.description.value : '',
-        start: new Date(this.sessionForm.controls.start.value?this.sessionForm.controls.start.value:''),
-        end: new Date(this.sessionForm.controls.end.value?this.sessionForm.controls.end.value:''),
+        start: new Date(this.sessionForm.controls.start.value ? new Date().toDateString() + ' ' + this.sessionForm.controls.start.value:''),
+        end: new Date(this.sessionForm.controls.end.value? new Date().toDateString() + ' ' + this.sessionForm.controls.end.value:''),
         regDate: new Date(this.sessionForm.controls.regDate.value?this.sessionForm.controls.regDate.value:''),
         isOptional:Boolean(this.sessionForm.controls.isOptional.value) ,
         difficultyLevel: this.sessionForm.controls.difficultyLevel.value ? this.sessionForm.controls.difficultyLevel.value : '',
         keywords: this.sessionForm.controls.keywords.value ? this.sessionForm.controls.keywords.value : '',
-        room: this.sessionForm.controls.room.value ? this.sessionForm.controls.room.value : ''
-
+        room: room,
+        department: department,
+        teacher:teacher
       }
+    }
+
+    updateSession() {
+
+      let session =  this.getSessionData();
   
       this.sessionUpdateSubscription = this.sessionService.updateSession(session).subscribe(() => {
         this.afterServerSaveEvent.emit(true);
@@ -89,20 +131,7 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
     }
 
     addSession() {
-      const session: Session = {
-        id: undefined,
-        title: this.sessionForm.controls.title.value ? this.sessionForm.controls.title.value : '',
-        description: this.sessionForm.controls.description.value ? this.sessionForm.controls.description.value : '',
-        start: new Date(this.sessionForm.controls.start.value? new Date().toDateString() + ' ' + this.sessionForm.controls.start.value:''),
-        end: new Date(this.sessionForm.controls.end.value? new Date().toDateString() + ' ' + this.sessionForm.controls.end.value:''),
-        regDate: new Date(this.sessionForm.controls.regDate.value? new Date().toDateString() + ' ' + this.sessionForm.controls.regDate.value:''),
-
-        isOptional:Boolean(this.sessionForm.controls.isOptional.value),
-        difficultyLevel: this.sessionForm.controls.difficultyLevel.value ? this.sessionForm.controls.difficultyLevel.value : '',
-        keywords: this.sessionForm.controls.keywords.value ? this.sessionForm.controls.keywords.value : '',
-        room: this.sessionForm.controls.room.value ? this.sessionForm.controls.room.value : '',
-
-      }
+      const session: Session = this.getSessionData();
       console.log(this.sessionForm);
       console.log(session);
   
@@ -113,26 +142,37 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
       })
   
     }
+
     ngOnDestroy(): void {
       this.sessionUpdateSubscription.unsubscribe();
       this.sessionAddSubscription.unsubscribe();
       this.formNameSubscription.unsubscribe();
     }
   
+    getTeacherList(){
+  this.http.get<TeacherInfo[]>('http://localhost:8080/teachers').subscribe((result:any)=>{
+    this.teacherList=result;
+  })
+}
+getRoomList(){
+  this.http.get<Room[]>('http://localhost:8080/rooms').subscribe((result:any)=>{
+    this.roomList=result;
+  })
+}
+getDepartmentList(){
+  this.http.get<Department[]>('http://localhost:8080/departments').subscribe((result:any)=>{
+    this.departmentList=result;
+  })
+}
+getSessionList(){
+  this.http.get<Session[]>('http://localhost:8080/sessions').subscribe((result:any)=>{
+    this.sessionList=result;
+  })
+}
   }
-// teacherList:TeacherInfo[]=[];
-// credentials:any;
-// roomId:any;
-// departmentName:any;
-// difficultyLevel:any;
-// sessionList:Session[]=[];
-// roomList:Room[]=[];
-// departmentList:Department[]=[];
+
 // ngOnInit():void{
-//   this.getTeacherList();
-//   this.getRoomList();
-//   this.getDepartmentList();
-  // this.getSessionList();
+ 
 // }
 
 //   ngOnDestroy(): void {
@@ -140,7 +180,11 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
 //   }
   
 // getTeacherList(){
-//   this.http.get<TeacherInfo[]>('http://localhost:8080/teachers').subscribe((result:any)=>{
+//   this.http.g// getDepartmentList(){
+//   this.http.get<Department[]>('http://localhost:8080/departments').subscribe((result:any)=>{
+//     this.departmentList=result;
+//   })
+// }et<TeacherInfo[]>('http://localhost:8080/teachers').subscribe((result:any)=>{
 //     this.teacherList=result;
 //   })
 // }
@@ -149,16 +193,8 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
 //     this.roomList=result;
 //   })
 // }
-// getDepartmentList(){
-//   this.http.get<Department[]>('http://localhost:8080/departments').subscribe((result:any)=>{
-//     this.departmentList=result;
-//   })
-// }
-// getSessionList(){
-//   this.http.get<Session[]>('http://localhost:8080/sessions').subscribe((result:any)=>{
-//     this.sessionList=result;
-//   })
-// }
+
+
   // Search(){
   //   if(this.credentials == ''){
   //     this.ngOnInit();

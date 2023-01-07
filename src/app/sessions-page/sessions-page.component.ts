@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { Observable, of, Subscription, tap } from 'rxjs';
+import { ModalStatus } from '../model/enum/modal-status';
 import { Session } from '../model/session.model';
 import { SessionService } from '../services/session-service';
 import { SessionmodalComponent } from '../sessionmodal/sessionmodal.component';
@@ -14,6 +15,19 @@ import { SessionmodalComponent } from '../sessionmodal/sessionmodal.component';
   providers:[BsModalService]
 })
 export class SessionsPageComponent implements OnInit {
+
+  @Input()
+  session: Session = new Session();
+
+  @Output()
+  getSessionsEvent = new EventEmitter<string>();
+  
+  @Output()
+  editSessionsEvent = new EventEmitter<Session>();
+
+  sessionDeleteSubscription = new Subscription();
+  
+
   sessionSubscription = new Subscription();
   selectedSessionId:string='';
   selectedSession:Session = new Session();
@@ -48,14 +62,19 @@ export class SessionsPageComponent implements OnInit {
       console.log(params);
     }
   );
-  }  openModalWithComponent() {
-    const initialState: ModalOptions = {
-      initialState: {
-        list: [this.selectedSession],
-        title: 'Add/Edit Session'
-      }
+  }  openModalWithComponent(session: Session) {
+    console.log(session)
+
+    this.selectedSession = session;
+    // const initialState: ModalOptions = {
+    //   initialState: {
+    //     list: [this.selectedSession],
+    //     title: 'Add/Edit Session'
+    //   }
+    const initialState ={
+      list:[{"value":this.selectedSession}]
     };
-    this.bsModalRef = this.modalService.show(SessionmodalComponent, initialState);
+    this.bsModalRef = this.modalService.show(SessionmodalComponent, {initialState});
     this.bsModalRef.content.closeBtnName = 'Close';
   }
   getSessions() {
@@ -65,9 +84,10 @@ export class SessionsPageComponent implements OnInit {
     })
   }
 
-  editSession(session: Session) {
-    this.selectedSession = session;
-  }
+  // editSession(session: Session) {
+  //   console.log(session)
+  //   this.selectedSession = session;
+  // }
 
   afterDone() {
     this.getSessions();
@@ -84,5 +104,25 @@ export class SessionsPageComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.sessionSubscription.unsubscribe();
+  }
+
+  deleteSession(id: any) {
+    this.sessionDeleteSubscription = this.sessionService.deleteSession(id).subscribe(() => {
+      this.triggerGetSessions();
+    })
+  }
+
+
+  triggerEditSession() {
+    this.editSessionsEvent.emit(this.session);
+    this.sessionService.setModalOpen(true);
+  }
+  
+  triggerGetSessions() {
+    this.getSessionsEvent.emit('');
+  }
+
+  onAdd(){
+    this.openModalWithComponent(new Session());
   }
 }

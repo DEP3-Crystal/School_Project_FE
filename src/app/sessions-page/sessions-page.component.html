@@ -2,7 +2,7 @@
 <div class="container pr-0 mr-0 ">
     <div class="pr-0 mr-0">
         <div class="text-end">
-            <button type="button" class="btn btn-success" (click)="openModalWithComponent()"><i class="fa fa-plus"></i></button>
+            <button type="button" class="btn btn-success" (click)="onAdd()"><i class="fa fa-plus"></i></button>
             
         </div>
         <div class="">
@@ -20,8 +20,10 @@
                             </div>
                             <p>{{session.description}}</p>
                             <div class="widget-49-meeting-action">
-                                <a href="#" class="text-decoration-none" style="color: #198754;">Edit Session <i class="bi bi-pen" style="font-size: 20px;"></i></a>
-                                
+                                <!-- <button class="btn btn-primary" (click)="editSession(session)" *ngIf="selectedSession.id" type="submit">Update</button> -->
+                                <button type="button" class="btn btn-success" (click)="openModalWithComponent(session)"><i class="fa fa-pen"></i></button>
+                                <button type="button" class="btn btn-danger" (click)="deleteSession(session.id)"><i class="bi bi-trash"></i></button>
+                                <!-- <button (click)="deleteSession(session.id)">Delete</button> -->
                             </div>
                         </div>
                     </div>
