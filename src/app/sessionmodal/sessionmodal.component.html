@@ -41,8 +41,8 @@
                               <option value="" selected disabled>--Choose session
                                 type--
                               </option>
-                              <option>Mandatory</option>
-                              <option>Optional</option>
+                              <option value="false">Mandatory</option>
+                              <option value="true">Optional</option>
                             </select>
 
                           </div>
@@ -57,7 +57,7 @@
                                     data-error="Please choose a room.">
                               <option value="" selected disabled>--Select room --
                               </option>
-                              <option *ngFor="let room of roomList">{{ room.roomId }}
+                              <option *ngFor="let room of roomList">{{ room.doorNumber+' ('+room.type+')' }}
 
 
                             </select>
@@ -74,7 +74,7 @@
                               <option value="" selected disabled>--Select Department--
                               </option>
                               <option *ngFor="let department of departmentList">
-                                {{ department.departmentId }}
+                                {{ department.name}}
                               </option>
 
                             </select>
@@ -96,7 +96,7 @@
                               <option value="" selected disabled>--Select teacher --
                               </option>
                               <option *ngFor="let teacher of teacherList">
-                                {{ teacher.id }}
+                                {{ teacher.fullName}}
                               </option>
                             </select>
 

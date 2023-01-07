@@ -11,6 +11,7 @@ export class UserInfo {
   id!: number;
   firstName!: string;
   lastName!: string;
+  fullName= this.firstName+' '+this.lastName;
   email!: string;
   gender!: Gender;
   biography!: string;
