@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { FormBuilder, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
 import {UserLoginComponent} from './user-login/user-login.component';
@@ -25,12 +25,11 @@ import {MandatorysubjectsComponent} from './mandatorysubjects/mandatorysubjects.
 import {Ng2SearchPipeModule} from 'ng2-search-filter'
 import {Ng2OrderModule} from 'ng2-order-pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {AuthGuard} from "./auth.guard";
 // import {SchedulerModule} from "@progress/kendo-angular-scheduler";
 import {SchedulerModule} from "@progress/kendo-angular-scheduler";
-import { UploadImagesComponent } from './upload-images/upload-images.component';
-import { SessionmodalComponent } from './sessionmodal/sessionmodal.component';
-import { BsModalService } from 'ngx-bootstrap/modal';
+import {UploadImagesComponent} from './upload-images/upload-images.component';
+import {SessionmodalComponent} from './sessionmodal/sessionmodal.component';
+
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'}
   // ,{path: '/dashboard', redirectTo: '/login', pathMatch: 'full', canActivate: [AuthGuard]}
@@ -68,9 +67,10 @@ const routes: Routes = [
     Ng2SearchPipeModule,
     NgxPaginationModule,
     Ng2OrderModule,
-    SchedulerModule 
+    SchedulerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

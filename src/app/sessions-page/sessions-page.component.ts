@@ -1,18 +1,17 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
-import { Observable, of, Subscription, tap } from 'rxjs';
-import { ModalStatus } from '../model/enum/modal-status';
-import { Session } from '../model/session.model';
-import { SessionService } from '../services/session-service';
-import { SessionmodalComponent } from '../sessionmodal/sessionmodal.component';
+import {HttpClient} from '@angular/common/http';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import {Observable, of, Subscription, tap} from 'rxjs';
+import {Session} from '../model/session.model';
+import {SessionService} from '../services/session-service';
+import {SessionmodalComponent} from '../sessionmodal/sessionmodal.component';
 
 @Component({
   selector: 'app-sessions-page',
   templateUrl: './sessions-page.component.html',
   styleUrls: ['./sessions-page.component.css'],
-  providers:[BsModalService]
+  providers: [BsModalService]
 })
 export class SessionsPageComponent implements OnInit {
 
@@ -21,48 +20,50 @@ export class SessionsPageComponent implements OnInit {
 
   @Output()
   getSessionsEvent = new EventEmitter<string>();
-  
+
   @Output()
   editSessionsEvent = new EventEmitter<Session>();
 
   sessionDeleteSubscription = new Subscription();
-  
+
 
   sessionSubscription = new Subscription();
-  selectedSessionId:string='';
-  selectedSession:Session = new Session();
-  sessionList:Session[]=[];
-  page:number = 1;
+  selectedSessionId: string = '';
+  selectedSession: Session = new Session();
+  sessionList: Session[] = [];
+  page: number = 1;
   isModalOpen$: Observable<boolean> = of(false);
   bsModalRef?: BsModalRef;
 
 
-
   constructor(private http: HttpClient,
-    private route:ActivatedRoute,
-    public sessionService: SessionService,
-    private modalService: BsModalService
-    ) { }
+              private route: ActivatedRoute,
+              public sessionService: SessionService,
+              private modalService: BsModalService
+  ) {
+  }
 
-  ngOnInit():void{
-   // this.getSessionList();
-    
-   this.isModalOpen$ = this.sessionService.getModalOpen().pipe(
-    tap((value) => {
-      if (!value) {
-        this.selectedSession = new Session();
-      }
-    })
-  )
+  ngOnInit(): void {
+    // this.getSessionList();
 
-  this.getSessions();
+    this.isModalOpen$ = this.sessionService.getModalOpen().pipe(
+      tap((value) => {
+        if (!value) {
+          this.selectedSession = new Session();
+        }
+      })
+    )
 
-  this.route.queryParams
-    .subscribe(params => {
-      console.log(params);
-    }
-  );
-  }  openModalWithComponent(session: Session) {
+    this.getSessions();
+
+    this.route.queryParams
+      .subscribe(params => {
+          console.log(params);
+        }
+      );
+  }
+
+  openModalWithComponent(session: Session) {
     console.log(session)
 
     this.selectedSession = session;
@@ -71,16 +72,17 @@ export class SessionsPageComponent implements OnInit {
     //     list: [this.selectedSession],
     //     title: 'Add/Edit Session'
     //   }
-    const initialState ={
-      list:[{"value":this.selectedSession}]
+    const initialState = {
+      list: [{"value": this.selectedSession}]
     };
     this.bsModalRef = this.modalService.show(SessionmodalComponent, {initialState});
     this.bsModalRef.content.closeBtnName = 'Close';
   }
+
   getSessions() {
 
     this.sessionSubscription = this.sessionService.getSessions().subscribe((response) => {
-      this.sessionList =  response;
+      this.sessionList = response;
     })
   }
 
@@ -117,12 +119,12 @@ export class SessionsPageComponent implements OnInit {
     this.editSessionsEvent.emit(this.session);
     this.sessionService.setModalOpen(true);
   }
-  
+
   triggerGetSessions() {
     this.getSessionsEvent.emit('');
   }
 
-  onAdd(){
+  onAdd() {
     this.openModalWithComponent(new Session());
   }
 }

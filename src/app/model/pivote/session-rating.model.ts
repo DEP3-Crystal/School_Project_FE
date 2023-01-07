@@ -6,6 +6,6 @@ export class SessionRating {
   sessionRatingId!: SessionRatingId;
   rating!: number;
   student!: UserInfo;
-  session!:SessionWithoutRef
+  session!: SessionWithoutRef
 
 }

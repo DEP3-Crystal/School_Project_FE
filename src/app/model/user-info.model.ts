@@ -1,9 +1,7 @@
 import {Gender} from "./enum/gender";
 import {Role} from "./enum/role";
 import {Image} from "./image.model";
-import {
-  StudentGradeWithoutRef
-} from "./without_ref/student-grade-without-ref.model";
+import {StudentGradeWithoutRef} from "./without_ref/student-grade-without-ref.model";
 import {DepartmentWithoutRef} from "./without_ref/department-without-ref.model";
 import {StudentRegistrationWithoutRef} from "./without_ref/student-registration-without.ref";
 import {SessionRatingWithoutRef} from "./without_ref/session-rating-without.ref";

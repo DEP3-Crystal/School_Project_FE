@@ -38,8 +38,10 @@
                      class="form-control form-control-lg border-end-0" [(ngModel)]="passwordValue"/>
               <button class="bg-white border-0">
                 <i class="material-icons material-icons-eye pt-1 " style="font-size:20px;" matSuffix
-                   (click)="hide = !hide">{{hide ?
-                  'visibility':'visibility_off'}}</i>
+                   (click)="hide = !hide">{{
+                    hide ?
+                      'visibility' : 'visibility_off'
+                  }}</i>
               </button>
               <button class="input-group-text" id="basic-addon4" (click)="clearPasswordInput()">
                 <i class="material-icons xbutton" style="font-size:20px;font-weight: bold;">clear</i>

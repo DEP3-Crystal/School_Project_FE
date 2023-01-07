@@ -1,15 +1,18 @@
 import {HttpClient} from "@angular/common/http";
 import {Session} from "../model/session.model";
 import {Injectable} from "@angular/core";
-import { BehaviorSubject, Observable } from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
+
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
 
   private _isModalOpen$ = new BehaviorSubject<boolean>(false);
+
   constructor(private http: HttpClient) {
   }
+
   getModalOpen() {
     return this._isModalOpen$.asObservable();
   }
@@ -28,11 +31,11 @@ export class SessionService {
   }
 
   deleteSession(id: number) {
-    return this.http.delete('http://localhost:8080/session/'+ id) as Observable<Session>
+    return this.http.delete('http://localhost:8080/session/' + id) as Observable<Session>
   }
 
   updateSession(session: Session) {
-    return this.http.put('http://localhost:8080/session'+ session.id, session) as Observable<Session>
+    return this.http.put('http://localhost:8080/session' + session.id, session) as Observable<Session>
   }
 
   addSession(session: Session) {
@@ -85,10 +88,10 @@ export class SessionService {
   // }
 
   // saveSession(session:Session){
-   
+
   //     return this.http.post('http://localhost:8080/sessions', session) as Observable<Session>;
-    
+
   // }
-  
- 
+
+
 }

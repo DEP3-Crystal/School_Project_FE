@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ImageService} from "../services/image-service";
 import {catchError, throwError} from "rxjs";
-import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
-import { DatePipe } from '@angular/common';
+import {DatePipe} from '@angular/common';
+
 @Component({
   selector: 'app-upload-images',
   templateUrl: './upload-images.component.html',
@@ -50,7 +50,7 @@ export class UploadImagesComponent {
 
   showImage() {
     console.log("id is " + this.id);
-    if(this.id === undefined){
+    if (this.id === undefined) {
       alert("please set image id");
       return;
     }

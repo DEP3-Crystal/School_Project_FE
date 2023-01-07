@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UserInfo} from "../model/user-info.model";
 
 @Component({
   selector: 'app-dashboard',
@@ -27,7 +26,8 @@ export class DashboardComponent implements OnInit {
   getEmail() {
     return localStorage.getItem('currentUserEmail');
   }
-  getUserName(){
+
+  getUserName() {
     return localStorage.getItem('currentUserName');
   }
 

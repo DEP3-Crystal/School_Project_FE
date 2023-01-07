@@ -10,8 +10,8 @@
   </div>
   <button type="button" class="btn btn-primary form-control" (click)="uploadImage()">Upload</button>
   <div class="form-group">
-    <label for="imageId"  >Id of image</label>
-    <input type="number"  [(ngModel)]="id" name="imageId" class="form-control" id="imageId">
+    <label for="imageId">Id of image</label>
+    <input type="number" [(ngModel)]="id" name="imageId" class="form-control" id="imageId">
   </div>
   <button type="button" class="btn btn-success form-control" (click)="showImage()"> show upload image</button>
   <img *ngIf="this.imageUrl != undefined" src="{{imageUrl}}">
@@ -20,6 +20,6 @@
 
   <label for="start-time">Start Time:</label>
   <input type="time" id="start-time" (change)="onDateChanged($event)" name="start-time">
-  <h4 name="date">{{date}}</h4>
-  <h4>Formatted date {{dataPipe.transform(date,'HH:mm')}}</h4>
+  <h4 name="date">{{ date }}</h4>
+  <h4>Formatted date {{ dataPipe.transform(date, 'HH:mm') }}</h4>
 </form>

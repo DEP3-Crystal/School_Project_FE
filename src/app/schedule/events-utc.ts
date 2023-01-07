@@ -1,4 +1,4 @@
-import { SchedulerEvent } from '@progress/kendo-angular-scheduler';
+import {SchedulerEvent} from '@progress/kendo-angular-scheduler';
 
 /* eslint-disable */
 
@@ -791,7 +791,7 @@ const randomInt = (min: number, max: number): number => {
 export const displayDate = new Date(currentYear, 5, 24);
 
 export const sampleData = baseData.map(dataItem => (
-  <SchedulerEvent> {
+  <SchedulerEvent>{
     id: dataItem.TaskID,
     start: parseAdjust(dataItem.Start),
     startTimezone: dataItem.startTimezone,
@@ -810,7 +810,7 @@ export const sampleData = baseData.map(dataItem => (
 ));
 
 export const sampleDataWithResources = baseData.map(dataItem => (
-  <SchedulerEvent> {
+  <SchedulerEvent>{
     id: dataItem.TaskID,
     start: parseAdjust(dataItem.Start),
     startTimezone: dataItem.startTimezone,

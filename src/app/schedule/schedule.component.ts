@@ -3,7 +3,6 @@ import {displayDate, sampleData} from "./events-utc";
 import {SchedulerEvent} from "@progress/kendo-angular-scheduler";
 import {SessionService} from "../services/session-service";
 import {UserService} from "../services/user-service";
-import {catchError, throwError} from "rxjs";
 
 @Component({
   selector: 'app-schedule',
