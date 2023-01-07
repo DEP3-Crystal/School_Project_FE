@@ -1,4 +1,4 @@
-export class StudentGradeWithoutRef {
+export class StudentGradeRegistration {
   sessionName!: string;
   sessionDescription!: string;
   studentFirstName!: string;

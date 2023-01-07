@@ -1,7 +1,13 @@
 import {Gender} from "./enum/gender";
-import {StudentRegistration} from "./pivote/student-registration.model";
 import {Role} from "./enum/role";
 import {Image} from "./image.model";
+import {
+  StudentGradeWithoutRef
+} from "./without_ref/student-grade-without-ref.model";
+import {DepartmentWithoutRef} from "./without_ref/department-without-ref.model";
+import {StudentRegistrationWithoutRef} from "./without_ref/student-registration-without.ref";
+import {SessionRatingWithoutRef} from "./without_ref/session-rating-without.ref";
+import {TeacherRatingWithoutRef} from "./without_ref/teacher-rating-without.ref";
 
 export class UserInfo {
   id!: number;
@@ -12,6 +18,13 @@ export class UserInfo {
   biography!: string;
   role!: Role;
   profilePicture!: Image;
-  studentRegistrations!: StudentRegistration[];
+  department!: DepartmentWithoutRef;
 
+  studentRegistrations: StudentRegistrationWithoutRef[] = [];
+
+  studentGrades: StudentGradeWithoutRef[] = [];
+
+  sessionRatings: SessionRatingWithoutRef[] = [];
+
+  teacherRatings: TeacherRatingWithoutRef[] = [];
 }

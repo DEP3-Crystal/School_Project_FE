@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import * as http from "http";
-import {StudentGrade} from "../model/pivote/student-grade.model";
+import {StudentGrade} from "../model/pivote/student-grade-reg.model";
 
 @Component({
   selector: 'app-grades-page',

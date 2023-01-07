@@ -1,10 +1,10 @@
-import {TeacherRating} from "./pivote/teacher-rating.model";
 import {EmployeeInfo} from "./employee-info.model";
+import {TeacherRatingWithoutRef} from "./without_ref/teacher-rating-without.ref";
 
 export class TeacherInfo extends EmployeeInfo {
   credentials!: string;
   ratingSum!: number;
   ratingCount!: number;
-  teacherRatings!: TeacherRating[];
+  override teacherRatings!: TeacherRatingWithoutRef[];
 
 }
