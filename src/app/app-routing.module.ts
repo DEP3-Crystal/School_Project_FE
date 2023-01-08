@@ -17,24 +17,65 @@ import {UploadImagesComponent} from "./upload-images/upload-images.component";
 import {SessionmodalComponent} from './sessionmodal/sessionmodal.component';
 import {AuthGuard} from "./auth-gaurd";
 import {UnauthorizedComponent} from "./unauthorized/unauthorized.component";
+import {Role} from "./model/enum/role";
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
-  {path:'unauthorized', component: UnauthorizedComponent },
+  {path: 'unauthorized', component: UnauthorizedComponent},
   {path: 'login', component: UserLoginComponent},
-  {path: 'logout', component: LogoutComponent, canActivate: [AuthGuard]},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-  {path: 'register', component: RegisterformComponent, canActivate: [AuthGuard]},
-  {path: 'grades', component: GradesPageComponent},
-  {path: 'session', component: SessionsPageComponent},
+  {
+    path: 'logout', component:
+    LogoutComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'dashboard', component:
+    DashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'register', component:
+    RegisterformComponent,
+    canActivate: [AuthGuard],
+    data: {roles: [Role.ADMIN, Role.ORGANIZER]}
+  },
+  {
+    path: 'grades', component: GradesPageComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'session', component: SessionsPageComponent,
+    canActivate: [AuthGuard]
+  },
   {path: 'classroom', component: ClassroomComponent},
-  {path: 'schedule', component: ScheduleComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'settings', component: SettingsComponent},
-  {path: 'mandatory', component: MandatorysubjectsComponent},
-  {path: 'optional', component: OptionalsubjectsComponent},
-  {path: 'upload-image', component: UploadImagesComponent},
-  {path: 'session/modal', component: SessionmodalComponent}
+  {
+    path: 'schedule', component: ScheduleComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile', component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'settings', component: SettingsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'mandatory', component: MandatorysubjectsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'optional', component: OptionalsubjectsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'upload-image', component: UploadImagesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'session/modal', component: SessionmodalComponent,
+    canActivate: [AuthGuard]
+  }
 
 ];
 
