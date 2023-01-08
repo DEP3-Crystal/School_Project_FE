@@ -110,9 +110,13 @@ export class SessionsPageComponent implements OnInit {
   }
 
   deleteSession(id: any) {
+    if(this.selectedSession.sessionRatings && this.selectedSession.){
+      alert("You cannot delete this session since it has session ratings")
+    }else{
     this.sessionDeleteSubscription = this.sessionService.deleteSession(id).subscribe(() => {
       this.triggerGetSessions();
     })
+  }
   }
 
 

@@ -35,7 +35,7 @@ export class SessionService {
   }
 
   updateSession(session: Session) {
-    return this.http.put('http://localhost:8080/session' + session.id, session) as Observable<Session>
+    return this.http.put('http://localhost:8080/session' ,session) as Observable<Session>
   }
 
   addSession(session: Session) {

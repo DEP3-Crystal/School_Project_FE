@@ -55,7 +55,8 @@ const routes: Routes = [
     UploadImagesComponent,
     SessionmodalComponent,
     UnauthorizedComponent,
-    UsersComponent
+    UsersComponent,
+    SessionsPageComponent
   ],
   imports: [
     BrowserModule,
