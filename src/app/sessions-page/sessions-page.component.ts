@@ -29,7 +29,7 @@ export class SessionsPageComponent implements OnInit {
 
 
   sessionSubscription = new Subscription();
-  selectedSessionId: string = '';
+  //selectedSessionId: string = '';
   selectedSession: Session = new Session();
   sessionList: Session[] = [];
   page: number = 1;
@@ -110,8 +110,8 @@ export class SessionsPageComponent implements OnInit {
   }
 
   deleteSession(id: any) {
-    if(this.selectedSession.sessionRatings && this.selectedSession.){
-      alert("You cannot delete this session since it has session ratings")
+    if(this.selectedSession.sessionRatings && this.selectedSession.studentGrade){
+      alert("You cannot delete this session since it has session ratings and students.");
     }else{
     this.sessionDeleteSubscription = this.sessionService.deleteSession(id).subscribe(() => {
       this.triggerGetSessions();

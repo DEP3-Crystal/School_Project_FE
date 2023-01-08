@@ -3,6 +3,7 @@ import {RoomWithoutRef} from "./without_ref/room-without-ref.model";
 import {DepartmentWithoutRef} from "./without_ref/department-without-ref.model";
 import {TeacherInfoWithoutRef} from "./without_ref/teacher-info-without-ref.model";
 import {SessionRatingWithoutRef} from "./without_ref/session-rating-without.ref";
+import { StudentGradeWithoutRef } from "./without_ref/student-grade-without-ref.model";
 
 export class Session implements SchedulerEvent {
   id?: Number;
@@ -18,6 +19,7 @@ export class Session implements SchedulerEvent {
   room!: RoomWithoutRef;
   department!: DepartmentWithoutRef;
   teacher!: TeacherInfoWithoutRef;
+  studentGrade!:StudentGradeWithoutRef;
   // constructor(id: number, title: string, start: Date, end: Date) {
   //   this.id = id;
   //   this.title = title;
