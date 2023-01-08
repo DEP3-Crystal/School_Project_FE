@@ -19,8 +19,19 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
 }
-.card-item{
+
+.card-item {
   display: flex;
   flex-direction: column;
   /*width: 100%;*/
 }
+
+p {
+  padding: .5rem 0 0;
+}
+
+h1, h2, h3, img {
+
+  margin: 0 0 1rem;
+}
+

@@ -25,6 +25,8 @@ export class UserLoginComponent implements OnInit {
   ngOnInit(): void {
     // this.loginuserservice.logout();
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
+    if(this.userService.isLoggedIn())
+      this.router.navigate(['dashboard'])
   }
 
   userLogin() {

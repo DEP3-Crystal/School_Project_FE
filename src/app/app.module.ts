@@ -30,10 +30,10 @@ import {SchedulerModule} from "@progress/kendo-angular-scheduler";
 import {UploadImagesComponent} from './upload-images/upload-images.component';
 import {SessionmodalComponent} from './sessionmodal/sessionmodal.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import {UsersComponent} from "./users/users.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'}
-  // ,{path: '/dashboard', redirectTo: '/login', pathMatch: 'full', canActivate: [AuthGuard]}
 ]
 
 @NgModule({
@@ -55,6 +55,7 @@ const routes: Routes = [
     UploadImagesComponent,
     SessionmodalComponent,
     UnauthorizedComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
