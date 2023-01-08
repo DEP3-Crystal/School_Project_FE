@@ -12,6 +12,9 @@ import {DatePipe} from '@angular/common';
 import {TeacherInfoWithoutRef} from "../model/without_ref/teacher-info-without-ref.model";
 import {TeacherMapper} from "../mapper/teacher-mapper";
 import { StudentGrade } from '../model/pivote/studentGrade.model';
+import { StudentGradeId } from '../model/id/studentGradeId';
+import { StudentRegistration } from '../model/pivote/student-registration.model';
+import { StudentRegistrationId } from '../model/id/student-registration.id';
 
 @Component({
   selector: 'app-sessionmodal',
@@ -35,6 +38,7 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
   roomList: Room[] = [];
   departmentList: Department[] = [];
   studentGradesList:StudentGrade[]=[];
+  studentRegistrationList:StudentRegistration[]=[];
   private mapper = TeacherMapper.instance;
   
   @Input()
@@ -71,6 +75,7 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
     departmentId: new FormControl('', [Validators.required]),
     teacherId: new FormControl('', [Validators.required]),
     studentGradeId: new FormControl('', [Validators.required]),
+    StudentRegistrationid: new FormControl('',[Validators.required])
   })
 
   ngOnInit(): void {
@@ -98,7 +103,8 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
       this.sessionForm.controls.roomId.setValue(this.selectedSession.room.roomId + '');
       this.sessionForm.controls.teacherId.setValue(this.selectedSession.teacher.id + '');
       this.sessionForm.controls.departmentId.setValue(this.selectedSession.department.departmentId + '');
-      this.sessionForm.controls.studentGradeId.setValue(this.selectedSession.studentGrade.studentGradeId + '')
+      this.sessionForm.controls.studentGradeId.setValue(JSON.stringify(this.selectedSession.studentGrade.studentGradeId));
+      this.sessionForm.controls.StudentRegistrationid.setValue(JSON.stringify(this.selectedSession.studentRegistration.studentRegistrationId));
     }
 
   }
@@ -111,8 +117,10 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
     let teacher = this.mapper.toTeacherWithoutRef(this.teacherList.find((teacher) => teacher.id === teacher_Id) || new TeacherInfo());
     let department_Id = Number(this.sessionForm.controls.departmentId.value ? this.sessionForm.controls.departmentId.value : '');
     let department = this.departmentList.find((department) => department.departmentId === department_Id) || new Department();
-   let studentGrade_Id = (this.sessionForm.controls.studentGradeId.value ? this.sessionForm.controls.studentGradeId.value : '');
+    let studentGrade_Id = <StudentGradeId>JSON.parse(this.sessionForm.controls.studentGradeId.value ? this.sessionForm.controls.studentGradeId.value : '');
     let studentGrade = this.studentGradesList.find((studentGrade)=> studentGrade.studentGradeId === studentGrade_Id) || new StudentGrade();
+    let studentRegistration_Id = <StudentRegistrationId>JSON.parse(this.sessionForm.controls.StudentRegistrationid.value ? this.sessionForm.controls.StudentRegistrationid.value : '');
+    let studentRegistration = this.studentRegistrationList.find((studentRegistration)=> studentRegistration.studentRegistrationId === studentRegistration_Id) || new StudentRegistration();
     return {
       id: this.selectedSession.id,
       title: this.sessionForm.controls.title.value ? this.sessionForm.controls.title.value : '',
@@ -126,7 +134,8 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
       room: room,
       department: department,
       teacher: teacher,
-      studentGrade:studentGrade
+      studentGrade:studentGrade,
+      studentRegistration:studentRegistration
     }
   }
 

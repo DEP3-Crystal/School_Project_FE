@@ -4,6 +4,7 @@ import {DepartmentWithoutRef} from "./without_ref/department-without-ref.model";
 import {TeacherInfoWithoutRef} from "./without_ref/teacher-info-without-ref.model";
 import {SessionRatingWithoutRef} from "./without_ref/session-rating-without.ref";
 import { StudentGradeWithoutRef } from "./without_ref/student-grade-without-ref.model";
+import { StudentRegistrationWithoutRef } from "./without_ref/student-registration-without.ref";
 
 export class Session implements SchedulerEvent {
   id?: Number;
@@ -20,6 +21,7 @@ export class Session implements SchedulerEvent {
   department!: DepartmentWithoutRef;
   teacher!: TeacherInfoWithoutRef;
   studentGrade!:StudentGradeWithoutRef;
+  studentRegistration!:StudentRegistrationWithoutRef;
   // constructor(id: number, title: string, start: Date, end: Date) {
   //   this.id = id;
   //   this.title = title;
