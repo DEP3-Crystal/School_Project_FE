@@ -69,16 +69,9 @@ export class UsersComponent {
     const initialState = {
       list: [{"value": this.selectedUser}]
     };
-    // this.bsModalRef = this.modalService.show(RegisterformComponent,{initialState});
-    // this.bsModalRef.content.closeBtnName = 'Close';
+    
   }
 
-  
-
-  // editSession(session: Session) {
-  //   console.log(session)
-  //   this.selectedSession = session;
-  // }
 
   afterDone() {
     this.getUsers();
@@ -128,15 +121,5 @@ export class UsersComponent {
       };
     }
   
-    
-  // Search() {
-  //   if (this.title == '') {
-  //     this.ngOnInit();
-  //   } else {
-  //     this.sessionList = this.sessionList.filter((res: { title: string; }) => {
-  //       return res.title.toLocaleLowerCase().match(this.title.toLocaleLowerCase());
-  //     });
-  //   }
-  // }
   
 }

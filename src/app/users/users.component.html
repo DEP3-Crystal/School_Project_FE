@@ -1,4 +1,4 @@
-<app-navigationbar></app-navigationbar>
+<!-- <app-navigationbar></app-navigationbar>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
 <div class="row">
@@ -22,7 +22,7 @@
 					<tbody>
 						<tr *ngFor="let user of userList | paginate: {itemsPerPage:7,currentPage:page};">
 							<td>
-								<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+								<img src="{{user.image}}">
 								<a href="#" class="user-link">{{user.fullName}}</a>
 								<span class="user-subhead">{{user.role}}</span>
 							</td>
@@ -60,4 +60,4 @@
 		</div>
 	</div>
 </div>
-</div>
+</div> -->

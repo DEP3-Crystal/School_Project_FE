@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {BehaviorSubject, Subscription} from 'rxjs';
+import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 import {Department} from '../model/department.model';
 import {Room} from '../model/room.model';
 import {Session} from '../model/session.model';
@@ -56,7 +56,7 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
   sessionForm = new FormGroup({
     title: new FormControl('', [
       Validators.required,
-      Validators.minLength(2),
+      Validators.minLength(3),
     ]),
     description: new FormControl(''),
     start: new FormControl('', [Validators.required]),
@@ -64,7 +64,7 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
     regDate: new FormControl('', [Validators.required]),
     isOptional: new FormControl('', [Validators.required]),
     difficultyLevel: new FormControl('', [Validators.required]),
-    keywords: new FormControl('', [Validators.required]),
+    keywords: new FormControl(''),
     roomId: new FormControl('', [Validators.required]),
     departmentId: new FormControl('', [Validators.required]),
     teacherId: new FormControl('', [Validators.required])
@@ -176,6 +176,11 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
       this.sessionList = result;
     })
   }
+  saveSession(session:Session){
+
+    return this.http.post('http://localhost:8080/sessions', session) as Observable<Session>;
+
+}
 }
 
 // ngOnInit():void{

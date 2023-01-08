@@ -18,6 +18,7 @@ import {SessionmodalComponent} from './sessionmodal/sessionmodal.component';
 import {AuthGuard} from "./auth-gaurd";
 import {UnauthorizedComponent} from "./unauthorized/unauthorized.component";
 import {Role} from "./model/enum/role";
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -75,6 +76,12 @@ const routes: Routes = [
   {
     path: 'session/modal', component: SessionmodalComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'users', component:
+    UsersComponent,
+    canActivate: [AuthGuard],
+    data: {roles: [Role.ADMIN, Role.ORGANIZER,Role.TEACHER]}
   }
 
 ];
