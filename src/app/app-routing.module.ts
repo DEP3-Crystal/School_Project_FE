@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {UserLoginComponent} from './user-login/user-login.component';
 import {LogoutComponent} from './logout/logout.component';
-import {AuthGaurdService} from './services/auth-gaurd.service';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {RegisterformComponent} from './registerform/registerform.component';
 import {GradesPageComponent} from './grades-page/grades-page.component';
@@ -16,13 +15,16 @@ import {MandatorysubjectsComponent} from './mandatorysubjects/mandatorysubjects.
 import {OptionalsubjectsComponent} from './optionalsubjects/optionalsubjects.component';
 import {UploadImagesComponent} from "./upload-images/upload-images.component";
 import {SessionmodalComponent} from './sessionmodal/sessionmodal.component';
+import {AuthGuard} from "./auth-gaurd";
+import {UnauthorizedComponent} from "./unauthorized/unauthorized.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path:'unauthorized', component: UnauthorizedComponent },
   {path: 'login', component: UserLoginComponent},
-  {path: 'logout', component: LogoutComponent, canActivate: [AuthGaurdService]},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'register', component: RegisterformComponent},
+  {path: 'logout', component: LogoutComponent, canActivate: [AuthGuard]},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  {path: 'register', component: RegisterformComponent, canActivate: [AuthGuard]},
   {path: 'grades', component: GradesPageComponent},
   {path: 'session', component: SessionsPageComponent},
   {path: 'classroom', component: ClassroomComponent},

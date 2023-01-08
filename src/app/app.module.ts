@@ -11,7 +11,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {RegisterformComponent} from './registerform/registerform.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NavigationbarComponent} from './navigationbar/navigationbar.component';
+import {NavigationBarComponent} from './navigation-bar/navigation-bar.component';
 import {GradesPageComponent} from './grades-page/grades-page.component';
 import {SessionsPageComponent} from './sessions-page/sessions-page.component';
 import {ClassroomComponent} from './classroom/classroom.component';
@@ -29,6 +29,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {SchedulerModule} from "@progress/kendo-angular-scheduler";
 import {UploadImagesComponent} from './upload-images/upload-images.component';
 import {SessionmodalComponent} from './sessionmodal/sessionmodal.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'}
@@ -41,7 +42,7 @@ const routes: Routes = [
     UserLoginComponent,
     LogoutComponent,
     DashboardComponent,
-    NavigationbarComponent,
+    NavigationBarComponent,
     GradesPageComponent,
     SessionsPageComponent,
     ClassroomComponent,
@@ -52,7 +53,8 @@ const routes: Routes = [
     OptionalsubjectsComponent,
     MandatorysubjectsComponent,
     UploadImagesComponent,
-    SessionmodalComponent
+    SessionmodalComponent,
+    UnauthorizedComponent,
   ],
   imports: [
     BrowserModule,
