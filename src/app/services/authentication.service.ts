@@ -29,7 +29,7 @@ export class AuthenticationService {
     return !(user === null)
   }
 
-  logOut() {
+  singOut() {
     sessionStorage.removeItem('username')
   }
 }

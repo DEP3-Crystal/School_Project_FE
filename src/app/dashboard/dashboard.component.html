@@ -1,33 +1,8 @@
-<main id="wrapper ">
-  <!--  <div class="col-2 vh-100 list-group pr-0 pt-xl-4 text-lg shadow bg-body  border-end border-success "-->
-  <!--       id="sidebar-wrapper">-->
-  <!--    <div class="col-12 text-center">-->
-  <!--      <a href="http://localhost:4200/session"-->
-  <!--         class="list-group-item border-0">-->
-  <!--        Sessions-->
-  <!--      </a>-->
+<app-navigation-bar></app-navigation-bar>
 
-  <!--      <a href="http://localhost:4200/schedule"-->
-  <!--         class="list-group-item border-0">-->
-  <!--        Schedule-->
-  <!--      </a>-->
-  <!--      <a href="http://localhost:4200/classroom"-->
-  <!--         class="list-group-item border-0">-->
-  <!--        Classrooms-->
-  <!--      </a>-->
+<section id="wrapper" class="d-flex">
 
-  <!--      <a href="http://localhost:4200/grades"-->
-  <!--         class="list-group-item border-0">-->
-  <!--        Grades-->
-  <!--      </a></div>-->
-  <!--    <div class="col-12 p-5 py-5">-->
-  <!--      <a href="http://localhost:4200/login"-->
-  <!--         class="list-group-item list-group-item-action bg-transparent text-center text-danger active border  border-danger"-->
-  <!--         (click)="logoutFunction()">-->
-  <!--        Logout-->
-  <!--      </a></div>-->
-  <!--  </div>-->
-  <div class="d-flex vh-100 flex-column flex-shrink-0 p-3 bg-light shadow" style="width: 280px;">
+  <div class="col-2 d-flex col-2  flex-column  p-3 bg-light shadow">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
       <svg class="bi me-2" width="40" height="32">
         <use xlink:href="#bootstrap"></use>
@@ -55,10 +30,10 @@
         </a>
       </li>
       <div>
-        <a (click)="showSubjects()" class="nav-link link-dark ">
+        <button type="button" (click)="showSubjects()" class="nav-link link-dark ">
           <i class="bi bi-book-half" width="16" height="16"></i>
           School Subjects
-        </a>
+        </button>
         <nav *ngIf="show" class="nav nav-pills flex-column">
           <a class="nav-link ms-4" href="http://localhost:4200/mandatory">Mandatory</a>
           <a class="nav-link ms-4" href="http://localhost:4200/optional">Optional</a>
@@ -99,5 +74,101 @@
       <a class="text-danger p-auto" (click)="logoutFunction()">Logout</a>
     </div>
   </div>
-  <app-navigationbar style="width: 100%" class=" p-0"></app-navigationbar>
-</main>
+
+  <div class="col-10 text-center">
+
+    <div class=" container p-5">
+      <img [src]="imageUrl" width="100px" class="rounded-circle row-12">
+      <h1>Welcome, {{ userInfo.fullName }}</h1>
+      <!--      <div class="row my-5 text-left">-->
+      <!--        <div class="col-12 col-sm-6 card-item">-->
+      <!--          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">-->
+      <!--            <div class="col p-4 d-flex flex-column position-static">-->
+      <!--              <strong class="d-inline-block mb-2 text-success">Personalization</strong>-->
+
+      <!--              <h3 class="mb-0">Profile & personalisation</h3><br/>-->
+      <!--              <p class="card-text mb-auto">Personal info and options to manage it. You can make some of this info, like-->
+      <!--                your contact details, you can see a summary of your profiles.</p>-->
+      <!--              <hr>-->
+      <!--              <a class="mt-auto" href="/profile">Customize your profile</a>-->
+      <!--            </div>-->
+      <!--            <div class="col-auto d-none d-lg-block">-->
+      <!--              <img width="80%"-->
+      <!--                   src="https://www.shareicon.net/download/2015/05/15/38873_sign.ico">-->
+      <!--            </div>-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--        <div class="col-12 col-sm-6 card-item">-->
+      <!--          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">-->
+      <!--            <div class="col p-4 d-flex flex-column position-static">-->
+      <!--              <strong class="d-inline-block mb-2 text-warning">Security</strong>-->
+      <!--              <h2 class="mb-0">Manage security</h2> <br>-->
+      <!--              <p class="mb-auto"> Here you can change manage your account security like changing password, email-->
+      <!--                etc.</p>-->
+      <!--              <hr>-->
+      <!--              <a href="/profile">check your account security</a>-->
+      <!--            </div>-->
+      <!--            <div class="col-auto d-none d-lg-block">-->
+      <!--              <img width="80%"-->
+      <!--                   src="https://iconarchive.com/download/i98433/dakirby309/simply-styled/Security-Approved.ico">-->
+      <!--            </div>-->
+      <!--          </div>-->
+      <!--        </div>-->
+
+      <!--      </div>-->
+    </div>
+
+
+    <section class="mb-2 text-left">
+      <div class="row mb-2">
+        <div class=" card-item col-md-6">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-row align-items-center position-static">
+              <div class="col-7">
+                <strong class="d-inline-block mb-2 text-primary">Personalisation</strong>
+                <h3 class="mb-0">Profile & personalisation</h3>
+                <br>
+                <p class="card-text mb-auto">Personal info and options to manage it. You can make some of this info,
+                  like
+                  your contact details, you can see a summary of your profiles.</p>
+              </div>
+              <div class="col-5 d-none d-lg-block">
+                <img width="100%"
+                     src="https://www.shareicon.net/download/2015/05/15/38873_sign.ico">
+              </div>
+
+            </div>
+            <div class="text-center mt-auto pb-2">
+              <hr>
+              <a href="#" class="stretched-link">Continue reading</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-item col-md-6">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-row align-items-center position-static">
+              <div class="col-7">
+                <strong class="d-inline-block mb-2 text-green">Security</strong>
+                <h3 class="mb-0">Passwords & security</h3>
+                <br>
+                <p class="card-text mb-auto">Here you can change manage your account security like changing password,
+                  email
+                  etc.</p>
+              </div>
+              <div class="col-5 d-none d-lg-block">
+                <img width="80%"
+                     src="https://iconarchive.com/download/i98433/dakirby309/simply-styled/Security-Approved.ico">
+              </div>
+
+            </div>
+            <div class="text-center mt-auto pb-2">
+              <hr>
+              <a href="#" class="stretched-link">Continue reading</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</section>

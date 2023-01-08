@@ -1,51 +1,42 @@
 import {UserInfo} from "../model/user-info.model";
 import {Injectable} from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject, Observable } from "rxjs";
-import { User } from "../user";
+import {Router} from "@angular/router";
+import {Role} from "../model/enum/role";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  user!: UserInfo;
-  constructor(private http: HttpClient) {
+  private userInfo?: UserInfo;
+  redirectUrl!: string;
+
+  constructor(private router: Router) {
   }
 
-
-  private _isModalOpen$ = new BehaviorSubject<boolean>(false);
-
-  getCurrentUser(): UserInfo {
-    return this.user
+  setUserInfo(userInfo: UserInfo) {
+    if (this.redirectUrl) {
+      this.router.navigate([this.redirectUrl])
+    }
+    this.userInfo = userInfo;
   }
 
-  getModalOpen() {
-    return this._isModalOpen$.asObservable();
+  getUserInfo(): UserInfo | undefined {
+    let userInfoJson = localStorage.getItem('userInfo');
+    if (userInfoJson != null) {
+      return <UserInfo>JSON.parse(userInfoJson)
+    }
+    return undefined;
   }
 
-  setModalOpen(value: boolean) {
-    this._isModalOpen$.next(value);
+  isLoggedIn(): boolean {
+    return !!this.getUserInfo()
   }
 
-
-  getUsers() {
-    return this.http.get('http://localhost:8080/users') as Observable<UserInfo[]>
+  singOut() {
+    localStorage.removeItem('userInfo');
   }
 
-  getUser(id: number) {
-    return this.http.get('http://localhost:8080/users/' + id) as Observable<UserInfo>
+  getUserRole(): Role | undefined {
+    return this.getUserInfo()?.role
   }
-
-  deleteUser(id: number) {
-    return this.http.delete('http://localhost:8080/session/' + id) as Observable<UserInfo>
-  }
-
-  updateUser(user: UserInfo) {
-    return this.http.put('http://localhost:8080/session' + user.id, user) as Observable<UserInfo>
-  }
-
-  addUser(user: UserInfo) {
-    return this.http.post('http://localhost:8080/users/add', user) as Observable<UserInfo>
-  }
-  
 }

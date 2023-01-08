@@ -9,6 +9,8 @@ import {SessionService} from '../services/session-service';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DatePipe} from '@angular/common';
+import {TeacherInfoWithoutRef} from "../model/without_ref/teacher-info-without-ref.model";
+import {TeacherMapper} from "../mapper/teacher-mapper";
 
 @Component({
   selector: 'app-sessionmodal',
@@ -31,7 +33,7 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
   sessionList: Session[] = [];
   roomList: Room[] = [];
   departmentList: Department[] = [];
-
+  private mapper = TeacherMapper.instance;
 
   @Input()
   selectedSession: Session = new Session();
@@ -97,11 +99,12 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
 
   }
 
-  getSessionData(): Session {
+  getSessionData():
+    Session {
     let room_Id = Number(this.sessionForm.controls.roomId.value ? this.sessionForm.controls.roomId.value : '');
     let room = this.roomList.find((room) => room.roomId === room_Id) || new Room();
     let teacher_Id = Number(this.sessionForm.controls.teacherId.value ? this.sessionForm.controls.teacherId.value : '');
-    let teacher = this.teacherList.find((teacher) => teacher.id === teacher_Id) || new TeacherInfo();
+    let teacher = this.mapper.toTeacherWithoutRef(this.teacherList.find((teacher) => teacher.id === teacher_Id) || new TeacherInfo());
     let department_Id = Number(this.sessionForm.controls.departmentId.value ? this.sessionForm.controls.departmentId.value : '');
     let department = this.departmentList.find((department) => department.departmentId === department_Id) || new Department();
 
@@ -123,7 +126,7 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
 
   updateSession() {
 
-    let session = this.getSessionData();
+    let session: Session = this.getSessionData();
 
     this.sessionUpdateSubscription = this.sessionService.updateSession(session).subscribe(() => {
       this.afterServerSaveEvent.emit(true);

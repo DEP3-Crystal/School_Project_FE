@@ -14,7 +14,7 @@ import {UserService} from "../services/user-service";
 export class UserLoginComponent implements OnInit {
 
 
-  constructor(private authenticationService: AuthenticationService, private loginuserservice: LoginUserService, private userService: UserService, private route: ActivatedRoute, private router: Router) {
+  constructor(private authenticationService: AuthenticationService, private loginUserService: LoginUserService, private userService: UserService, private route: ActivatedRoute, private router: Router) {
   }
 
 
@@ -28,21 +28,19 @@ export class UserLoginComponent implements OnInit {
   }
 
   userLogin() {
-    this.loginuserservice.loginUser({email: this.emailValue, password: this.passwordValue})
+    this.loginUserService.loginUser({email: this.emailValue, password: this.passwordValue})
       .pipe(
         catchError((error) => {
           alert(error.message)
           return throwError(error);
         })
       )
-      .subscribe(data => {
+      .subscribe(userInfo => {
           // alert("Login Successfully")
           this.router.navigate([this.returnUrl]);
-          localStorage.setItem('currentUserEmail', this.emailValue);
-          localStorage.setItem('currentUserId', String(data.id));
-          localStorage.setItem('currentUserName', `${data.firstName} ${data.lastName}`);
+          localStorage.setItem('userInfo', JSON.stringify(userInfo))
           this.authenticationService.isUserLoggedIn()
-          this.userService.user = data;
+          this.userService.setUserInfo(userInfo);
         }
       );
 
