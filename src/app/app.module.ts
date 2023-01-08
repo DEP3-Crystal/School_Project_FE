@@ -29,6 +29,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {SchedulerModule} from "@progress/kendo-angular-scheduler";
 import {UploadImagesComponent} from './upload-images/upload-images.component';
 import {SessionmodalComponent} from './sessionmodal/sessionmodal.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'}
@@ -52,7 +53,8 @@ const routes: Routes = [
     OptionalsubjectsComponent,
     MandatorysubjectsComponent,
     UploadImagesComponent,
-    SessionmodalComponent
+    SessionmodalComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

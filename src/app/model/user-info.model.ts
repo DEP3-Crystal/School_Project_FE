@@ -10,8 +10,8 @@ import {TeacherRatingWithoutRef} from "./without_ref/teacher-rating-without.ref"
 export class UserInfo {
   id!: number;
   firstName!: string;
-  lastName!: string;
-  fullName= this.firstName+' '+this.lastName;
+  lastName!: string;  
+  fullName!:string;
   email!: string;
   gender!: Gender;
   biography!: string;
@@ -26,4 +26,5 @@ export class UserInfo {
   sessionRatings: SessionRatingWithoutRef[] = [];
 
   teacherRatings: TeacherRatingWithoutRef[] = [];
+
 }

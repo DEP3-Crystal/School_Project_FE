@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {Observable, of, Subscription, tap} from 'rxjs';
 import {Session} from '../model/session.model';
+import { UserInfo } from '../model/user-info.model';
 import {SessionService} from '../services/session-service';
 import {SessionmodalComponent} from '../sessionmodal/sessionmodal.component';
 
@@ -127,4 +128,6 @@ export class SessionsPageComponent implements OnInit {
   onAdd() {
     this.openModalWithComponent(new Session());
   }
+
+  
 }

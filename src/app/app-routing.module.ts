@@ -8,7 +8,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {RegisterformComponent} from './registerform/registerform.component';
 import {GradesPageComponent} from './grades-page/grades-page.component';
 import {SessionsPageComponent} from './sessions-page/sessions-page.component';
-import {ClassroomComponent} from './classroom/classroom.component';
+import {ClassroomComponent as RoomComponent} from './classroom/classroom.component';
 import {ScheduleComponent} from './schedule/schedule.component';
 import {ProfileComponent} from './profile/profile.component';
 import {SettingsComponent} from './settings/settings.component';
@@ -16,6 +16,7 @@ import {MandatorysubjectsComponent} from './mandatorysubjects/mandatorysubjects.
 import {OptionalsubjectsComponent} from './optionalsubjects/optionalsubjects.component';
 import {UploadImagesComponent} from "./upload-images/upload-images.component";
 import {SessionmodalComponent} from './sessionmodal/sessionmodal.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -25,14 +26,15 @@ const routes: Routes = [
   {path: 'register', component: RegisterformComponent},
   {path: 'grades', component: GradesPageComponent},
   {path: 'session', component: SessionsPageComponent},
-  {path: 'classroom', component: ClassroomComponent},
+  {path: 'room', component: RoomComponent},
   {path: 'schedule', component: ScheduleComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'settings', component: SettingsComponent},
   {path: 'mandatory', component: MandatorysubjectsComponent},
   {path: 'optional', component: OptionalsubjectsComponent},
   {path: 'upload-image', component: UploadImagesComponent},
-  {path: 'session/modal', component: SessionmodalComponent}
+  {path: 'session/modal', component: SessionmodalComponent},
+  {path: 'users', component:UsersComponent}
 
 ];
 
