@@ -79,55 +79,19 @@
 
     <div class=" container p-5">
       <img [src]="imageUrl" width="100px" class="rounded-circle row-12">
-      <h1>Welcome, {{ userInfo.fullName }}</h1>
-      <!--      <div class="row my-5 text-left">-->
-      <!--        <div class="col-12 col-sm-6 card-item">-->
-      <!--          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">-->
-      <!--            <div class="col p-4 d-flex flex-column position-static">-->
-      <!--              <strong class="d-inline-block mb-2 text-success">Personalization</strong>-->
-
-      <!--              <h3 class="mb-0">Profile & personalisation</h3><br/>-->
-      <!--              <p class="card-text mb-auto">Personal info and options to manage it. You can make some of this info, like-->
-      <!--                your contact details, you can see a summary of your profiles.</p>-->
-      <!--              <hr>-->
-      <!--              <a class="mt-auto" href="/profile">Customize your profile</a>-->
-      <!--            </div>-->
-      <!--            <div class="col-auto d-none d-lg-block">-->
-      <!--              <img width="80%"-->
-      <!--                   src="https://www.shareicon.net/download/2015/05/15/38873_sign.ico">-->
-      <!--            </div>-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--        <div class="col-12 col-sm-6 card-item">-->
-      <!--          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">-->
-      <!--            <div class="col p-4 d-flex flex-column position-static">-->
-      <!--              <strong class="d-inline-block mb-2 text-warning">Security</strong>-->
-      <!--              <h2 class="mb-0">Manage security</h2> <br>-->
-      <!--              <p class="mb-auto"> Here you can change manage your account security like changing password, email-->
-      <!--                etc.</p>-->
-      <!--              <hr>-->
-      <!--              <a href="/profile">check your account security</a>-->
-      <!--            </div>-->
-      <!--            <div class="col-auto d-none d-lg-block">-->
-      <!--              <img width="80%"-->
-      <!--                   src="https://iconarchive.com/download/i98433/dakirby309/simply-styled/Security-Approved.ico">-->
-      <!--            </div>-->
-      <!--          </div>-->
-      <!--        </div>-->
-
-      <!--      </div>-->
+      <h3>Welcome, {{ userInfo.fullName }}</h3>
+      <p>Manage your info, privacy and security to make Google work better for you.</p>
     </div>
 
 
     <section class="mb-2 text-left">
       <div class="row mb-2">
-        <div class=" card-item col-md-6">
+        <div class=" card-item flex-row col-md-6">
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-row align-items-center position-static">
               <div class="col-7">
                 <strong class="d-inline-block mb-2 text-primary">Personalisation</strong>
                 <h3 class="mb-0">Profile & personalisation</h3>
-                <br>
                 <p class="card-text mb-auto">Personal info and options to manage it. You can make some of this info,
                   like
                   your contact details, you can see a summary of your profiles.</p>
@@ -138,19 +102,18 @@
               </div>
 
             </div>
-            <div class="text-center mt-auto pb-2">
+            <div class="text-center mt-auto pb-3">
               <hr>
-              <a href="#" class="stretched-link">Continue reading</a>
+              <a href="#" class="stretched-link">Profile & personalisation</a>
             </div>
           </div>
         </div>
-        <div class="card-item col-md-6">
+        <div class="card-item flex-row col-md-6">
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-row align-items-center position-static">
               <div class="col-7">
-                <strong class="d-inline-block mb-2 text-green">Security</strong>
+                <strong class="d-inline-block mb-2 text-success">Security</strong>
                 <h3 class="mb-0">Passwords & security</h3>
-                <br>
                 <p class="card-text mb-auto">Here you can change manage your account security like changing password,
                   email
                   etc.</p>
@@ -161,12 +124,47 @@
               </div>
 
             </div>
-            <div class="text-center mt-auto pb-2">
+            <div class="text-center mt-auto pb-3">
               <hr>
-              <a href="#" class="stretched-link">Continue reading</a>
+              <a href="#" class="stretched-link">Passwords & security</a>
             </div>
           </div>
         </div>
+      </div>
+      <div class="row mb-2">
+        <div class="card-item col-md-12">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 pb-0 pe-0 d-flex flex-row align-items-center position-static">
+              <div class="col-12">
+                <strong class="d-inline-block mb-2 text-success">More</strong>
+                <h3 class="mb-0">Looking for something else?</h3>
+                <hr>
+                <div >
+                  <a href="" class="btn d-flex justify-content-between">
+                    <div>
+                      <i class="bi bi-search"></i>
+                      <span class=""> Search in account</span>
+                    </div>
+                    <i class="bi bi-chevron-right"></i>
+                  </a>
+                  <hr>
+                  <a href="" class="btn d-flex justify-content-between pb-3">
+                    <div>
+                      <i class="bi bi-chat-right-text"></i>
+                      <span class=""> Send feedback</span>
+                    </div>
+                    <i class="bi bi-chevron-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+<!--            <div class="text-center mt-auto pb-2">-->
+<!--              <hr>-->
+<!--              <a href="#" class="stretched-link">Continue reading</a>-->
+<!--            </div>-->
+          </div>
+        </div>
+
       </div>
     </section>
   </div>
