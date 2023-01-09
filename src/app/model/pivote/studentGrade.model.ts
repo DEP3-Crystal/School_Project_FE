@@ -1,5 +1,4 @@
 import {StudentGradeId} from "../id/studentGradeId";
-import {UserInfo} from "../user-info.model";
 import {SessionWithoutRef} from "../without_ref/session-without-ref.model";
 import {StudentInfoWithoutRef} from "../without_ref/student-info-without-ref.model";
 

@@ -66,7 +66,7 @@
                               [ngClass]="{ 'is-invalid': sessionForm.controls.roomId.touched && sessionForm.controls.roomId.errors, 'is-valid': sessionForm.controls.roomId.valid }">
                               <option value="" selected disabled>--Select room --
                               </option>
-                              <option *ngFor="let room of roomList">{{ room.doorNumber+' ('+room.type+')' }}>
+                              <option *ngFor="let room of roomList">{{ room.doorNumber+' ('+room.type+')' }}
 
                               </select>
                             <div *ngIf="sessionForm.controls.roomId.errors?.['required']">

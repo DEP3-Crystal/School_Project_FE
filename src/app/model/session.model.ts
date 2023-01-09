@@ -20,8 +20,8 @@ export class Session implements SchedulerEvent {
   room!: RoomWithoutRef;
   department!: DepartmentWithoutRef;
   teacher!: TeacherInfoWithoutRef;
-  studentGrade!:StudentGradeWithoutRef;
-  studentRegistration!:StudentRegistrationWithoutRef;
+  studentGrades!:StudentGradeWithoutRef[];
+  studentRegistrations!:StudentRegistrationWithoutRef[];
   // constructor(id: number, title: string, start: Date, end: Date) {
   //   this.id = id;
   //   this.title = title;

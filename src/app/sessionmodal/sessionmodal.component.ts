@@ -15,6 +15,8 @@ import { StudentGrade } from '../model/pivote/studentGrade.model';
 import { StudentGradeId } from '../model/id/studentGradeId';
 import { StudentRegistration } from '../model/pivote/student-registration.model';
 import { StudentRegistrationId } from '../model/id/student-registration.id';
+import { StudentGradeMapper } from '../mapper/StudentGradeMapper';
+import { StudentRegistrationMapper } from '../mapper/StudentRegistrationMapper';
 
 @Component({
   selector: 'app-sessionmodal',
@@ -40,7 +42,8 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
   studentGradesList:StudentGrade[]=[];
   studentRegistrationList:StudentRegistration[]=[];
   private mapper = TeacherMapper.instance;
-  
+  private gradeMapper = StudentGradeMapper.instance;
+  private studentRegistration =StudentRegistrationMapper.instance;
   @Input()
   selectedSession: Session = new Session();
 
@@ -58,6 +61,7 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
               private datePipe: DatePipe
   ) {
   }
+
 
   sessionForm = new FormGroup({
     title: new FormControl('', [
@@ -103,24 +107,25 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
       this.sessionForm.controls.roomId.setValue(this.selectedSession.room.roomId + '');
       this.sessionForm.controls.teacherId.setValue(this.selectedSession.teacher.id + '');
       this.sessionForm.controls.departmentId.setValue(this.selectedSession.department.departmentId + '');
-      this.sessionForm.controls.studentGradeId.setValue(JSON.stringify(this.selectedSession.studentGrade.studentGradeId));
-      this.sessionForm.controls.StudentRegistrationid.setValue(JSON.stringify(this.selectedSession.studentRegistration.studentRegistrationId));
+      // this.sessionForm.controls.studentGradeId.setValue(JSON.stringify(this.selectedSession.studentGrades.));
+      // this.sessionForm.controls.StudentRegistrationid.setValue(JSON.stringify(this.selectedSession.studentRegistrations.studentRegistrationId));
     }
 
   }
-
+   
   getSessionData():
     Session {
+     
     let room_Id = Number(this.sessionForm.controls.roomId.value ? this.sessionForm.controls.roomId.value : '');
     let room = this.roomList.find((room) => room.roomId === room_Id) || new Room();
     let teacher_Id = Number(this.sessionForm.controls.teacherId.value ? this.sessionForm.controls.teacherId.value : '');
     let teacher = this.mapper.toTeacherWithoutRef(this.teacherList.find((teacher) => teacher.id === teacher_Id) || new TeacherInfo());
     let department_Id = Number(this.sessionForm.controls.departmentId.value ? this.sessionForm.controls.departmentId.value : '');
     let department = this.departmentList.find((department) => department.departmentId === department_Id) || new Department();
-    let studentGrade_Id = <StudentGradeId>JSON.parse(this.sessionForm.controls.studentGradeId.value ? this.sessionForm.controls.studentGradeId.value : '');
-    let studentGrade = this.studentGradesList.find((studentGrade)=> studentGrade.studentGradeId === studentGrade_Id) || new StudentGrade();
-    let studentRegistration_Id = <StudentRegistrationId>JSON.parse(this.sessionForm.controls.StudentRegistrationid.value ? this.sessionForm.controls.StudentRegistrationid.value : '');
-    let studentRegistration = this.studentRegistrationList.find((studentRegistration)=> studentRegistration.studentRegistrationId === studentRegistration_Id) || new StudentRegistration();
+    // let studentGrade_Id = <StudentGradeId>JSON.parse(this.sessionForm.controls.studentGradeId.value ? this.sessionForm.controls.studentGradeId.value : '');
+    let studentGrades = this.gradeMapper.toStudentGradesWithoutRef(this.studentGradesList.filter((studentGrade)=> studentGrade.session.id === this.selectedSession.id) ||  []);
+    // let studentRegistration_Id = <StudentRegistrationId>JSON.parse(this.sessionForm.controls.StudentRegistrationid.value ? this.sessionForm.controls.StudentRegistrationid.value : '');
+    let studentRegistrations = this.studentRegistration.toStudentRegWithoutRefs(this.studentRegistrationList.filter((studentRegistration)=> studentRegistration.session.id === this.selectedSession.id) || []);
     return {
       id: this.selectedSession.id,
       title: this.sessionForm.controls.title.value ? this.sessionForm.controls.title.value : '',
@@ -134,8 +139,8 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
       room: room,
       department: department,
       teacher: teacher,
-      studentGrade:studentGrade,
-      studentRegistration:studentRegistration
+      studentGrades:studentGrades,
+      studentRegistrations:studentRegistrations
     }
   }
 
