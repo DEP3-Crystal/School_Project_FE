@@ -28,7 +28,7 @@
             <tbody>
             <tr *ngFor="let user of userList | paginate: {itemsPerPage:7,currentPage:page};">
               <td>
-                <img src="{{user.profilePicture}}">
+                <img src="data:image/jpeg;base64,{{user.profilePicture?.data}}">
                 <a href="#" class="user-link">{{ user.fullName }}</a>
                 <span class="user-subhead">{{ user.role }}</span>
               </td>
