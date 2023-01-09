@@ -77,9 +77,9 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
     keywords: new FormControl(''),
     roomId: new FormControl('', [Validators.required]),
     departmentId: new FormControl('', [Validators.required]),
-    teacherId: new FormControl('', [Validators.required]),
-    studentGradeId: new FormControl('', [Validators.required]),
-    StudentRegistrationid: new FormControl('',[Validators.required])
+    teacherId: new FormControl('', [Validators.required])
+    // studentGradeId: new FormControl('', [Validators.required]),
+    // StudentRegistrationid: new FormControl('',[Validators.required])
   })
 
   ngOnInit(): void {
@@ -122,7 +122,7 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
     let teacher = this.mapper.toTeacherWithoutRef(this.teacherList.find((teacher) => teacher.id === teacher_Id) || new TeacherInfo());
     let department_Id = Number(this.sessionForm.controls.departmentId.value ? this.sessionForm.controls.departmentId.value : '');
     let department = this.departmentList.find((department) => department.departmentId === department_Id) || new Department();
-    // let studentGrade_Id = <StudentGradeId>JSON.parse(this.sessionForm.controls.studentGradeId.value ? this.sessionForm.controls.studentGradeId.value : '');
+    //let studentGrade_Id = <StudentGradeId>JSON.parse(this.sessionForm.controls.studentGradeId.value ? this.sessionForm.controls.studentGradeId.value : '');
     let studentGrades = this.gradeMapper.toStudentGradesWithoutRef(this.studentGradesList.filter((studentGrade)=> studentGrade.session.id === this.selectedSession.id) ||  []);
     // let studentRegistration_Id = <StudentRegistrationId>JSON.parse(this.sessionForm.controls.StudentRegistrationid.value ? this.sessionForm.controls.StudentRegistrationid.value : '');
     let studentRegistrations = this.studentRegistration.toStudentRegWithoutRefs(this.studentRegistrationList.filter((studentRegistration)=> studentRegistration.session.id === this.selectedSession.id) || []);

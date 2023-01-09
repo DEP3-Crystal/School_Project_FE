@@ -1,19 +1,23 @@
-<app-navigation-bar></app-navigation-bar>
-<div class="" tabindex="" role="dialog">
-  <div class="modal-content" role="document">
-    <div class="row justify-content-center align-items-center">
-      <div class="col-xl-7 row-10">
-        <div class="card  card-registration border border-success border-shadow-pop" style="border-radius: 15px;">
+<div tabindex="" role="dialog">
+  <div class="modal-content col-md-6" role="document">
+    <div class="modal-content row justify-content-center align-items-center">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" (click)="bsModalRef.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container card  card-registration border border-success border-shadow-pop"
+          style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5">
-            <h2 class="text-center">Add user</h2>
-            <form>
-              <div class="row-10">
+            <h2 class="text-center">Add/Edit user</h2>
+            <form [formGroup]="userForm" (ngSubmit)="selectedUser.id ? addUser() : updateUser()">
+              <div class="controls">
                 <div class="row">
                   <div class="col-md-6 mb-4">
 
                     <div class="form-outline">
-                      <input type="text" id="firstName" class="form-control form-control-lg"
-                             required/>
+                      <input type="text" id="firstName" class="form-control form-control-lg" required />
                       <label class="form-label" for="firstName">First Name</label>
                     </div>
 
@@ -21,8 +25,7 @@
                   <div class="col-md-6 mb-4">
 
                     <div class="form-outline">
-                      <input type="text" id="lastName" class="form-control form-control-lg"
-                             required/>
+                      <input type="text" id="lastName" class="form-control form-control-lg" required />
                       <label class="form-label" for="lastName">Last Name</label>
                     </div>
 
@@ -32,8 +35,7 @@
                   <div class="col-md-6 mb-4 pb-2">
 
                     <div class="form-outline">
-                      <input type="email" id="emailAddress" class="form-control form-control-lg"
-                             required/>
+                      <input type="email" id="emailAddress" class="form-control form-control-lg" required />
                       <label class="form-label" for="emailAddress">Email</label>
                     </div>
 
@@ -42,8 +44,7 @@
 
 
                     <div class="form-outline">
-                      <input type="password" id="password" class="form-control form-control-lg"
-                             required/>
+                      <input type="password" id="password" class="form-control form-control-lg" required />
                       <label class="form-label" for="password">Password</label>
 
 
@@ -56,76 +57,101 @@
 
 
                     <div class="form-outline">
-                      <input type="text" class="form-control form-control-lg" bsDatepicker>
-                      <label class="form-label" for="birthdate">Birthdate</label>
+                      <input type="time" class="form-control" id="kt_timepicker_4" formControlName="birthDate"
+                        [ngClass]="{ 'is-invalid': userForm.controls.birthDate.touched && userForm.controls.birthDate.errors, 'is-valid': userForm.controls.birthDate.valid }" />
+                      <div *ngIf="userForm.controls.birthDate.errors?.['required']">
+
+                        <label class="form-label" for="birthdate">Birthdate</label>
+                      </div>
                     </div>
                   </div>
-                  <!-- [bsConfig]="{ isAnimated: true, dateInputFormat: 'YYYY-MM-DD' }"> -->
-                  <!-- <c-date-picker [date]="date"></c-date-picker> -->
-
                   <div class="col-md-6 mb-4">
-
-                    <h6 class="mb-2 pb-1">Gender: </h6>
-
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                             id="femaleGender" value="option1" checked/>
-                      <label class="form-check-label" for="femaleGender">Female</label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                             id="maleGender" value="option2"/>
-                      <label class="form-check-label" for="maleGender">Male</label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                             id="otherGender" value="option3"/>
-                      <label class="form-check-label" for="otherGender">Other</label>
-                    </div>
-
-                  </div>
-                </div>
-                <div class="row d-flex">
-                  <div class="col-12 pb-5">
-
-                    <select class="select form-control-lg pr-2" id="select" name="select" required>
-                      <option value="default" disabled>Choose option</option>
-                      <option value="student">Student</option>
-                      <option value="employee">Teacher</option>
-                      <option value="employee">Organiser</option>
-                    </select>
-                    <label class="form-label select-label"> Select role</label>
-
-                  </div>
-                </div>
-
-                <!-- If employee -->
-                <div *ngIf="show" class="row">
-                  <div class="col-md-6 mb-4">
-
                     <div class="form-outline">
-                      <input type="text" id="phone" class="form-control form-control-lg" required/>
-                      <label class="form-label" for="phone">Phone Number</label>
+
+                      <input type="file" class="form-control" formControlName="profileImage" id="profileImage" />
+                      <label class="form-label" for="customFile">Profile Image</label>
                     </div>
-
-                  </div>
-                  <div class="col-md-6 mb-3">
-
-                    <div class="form-outline">
-                      <input type="text" id="title" class="form-control form-control-lg"/>
-                      <label class="form-label" for="title">Title</label>
-                    </div>
-
                   </div>
                 </div>
-
-                <div class="text-center pt-3">
-                  <button type="submit" class="btn btn-success btn-lg mb-1">Save</button>
-                </div>
-
               </div>
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <h6 class="mb-2 pb-1">Gender: </h6>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
+                      value="option1" checked />
+                    <label class="form-check-label" for="femaleGender">Female</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
+                      value="option2" />
+                    <label class="form-check-label" for="maleGender">Male</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
+                      value="option3" />
+                    <label class="form-check-label" for="otherGender">Other</label>
+                  </div>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <textarea id="userBiography" formControlName="biography" class="form-control"
+                      placeholder="Write user biography here." rows="3"></textarea>
+                      <label for="formDescription">Biography </label>
+                  </div>
+                </div>
+                </div>
+
+              <div class="row">
+                <div class="col-12 pb-5">
+
+                  <select class="select form-control-lg pr-2" id="select" name="select" [(ngModel)]="selectedRole" required>
+                    <option value="default" disabled>Choose option</option>
+                    <option value="student">Student</option>
+                    <option value="employee">Teacher</option>
+                    <option value="employee">Organiser</option>
+                  </select>
+                  <label class="form-label select-label"> Select role</label>
+
+                </div>
+              </div>
+              <!-- If employee -->
+
+              <div *ngIf="selectedRole == 'employee'" class="row" id="employeeDiv" style="display:none;">
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <input type="text" id="phone" class="form-control form-control-lg" required />
+                    <label class="form-label" for="phone">Phone Number</label>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-3">
+
+                  <div class="form-outline">
+                    <input type="text" id="title" class="form-control form-control-lg" />
+                    <label class="form-label" for="title">Title</label>
+                  </div>
+
+                </div>
+              </div>
+            
+              <div class="modal-footer">
+                <button [disabled]="userForm.invalid" class="btn btn-primary" (click)="updateUser()"
+                  *ngIf="selectedUser.id" type="submit">Update</button>
+                <button [disabled]="userForm.invalid" class="btn btn-primary" (click)="addUser()"
+                  *ngIf="!selectedUser.id" type="submit">Add</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="bsModalRef.hide()">Close
+                </button>
+              </div>
+
             </form>
           </div>
         </div>
@@ -134,3 +160,229 @@
   </div>
 </div>
 
+
+
+<!-- <div class="" tabindex="" role="dialog">
+  <div class="modal-content" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" (click)="bsModalRef.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+
+          <div class="mx-auto">
+            <div class="card mt-2 mx-auto p-4 bg-light">
+              <div class="card-body bg-light">
+
+                <div class="container">
+                  <form [formGroup]="userForm" (ngSubmit)="selectedUser.id ? addUser() : updateUser()"
+                    class="needs-validation">
+
+
+                    <div class="controls">
+
+                      <div class="row">
+                        <div class="col-md-6">
+
+                          <div class="form-group">
+                            <label for="userFirstName">First Name *</label>
+                            <input id="userFirstName" type="text" formControlName="firstName" class="form-control"
+                              placeholder="First Name *" required="required"  
+                              [ngClass]="{ 'is-invalid': userForm.controls.title.touched && userForm.controls.title.errors, 'is-valid': sessionForm.controls.title.valid }">
+                            <div *ngIf="userForm.controls.firstName.touched && userForm.controls.firstName.errors"
+                              class="invalid-feedback">
+                              <div *ngIf="userForm.controls.title.errors?.['required']">
+                                Title is required.
+                              </div>
+                              <div *ngIf="userForm.controls.title.errors?.['minlength']">
+                                Title must be at least 3 characters long.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="formSessionType">Type *</label>
+                            <select id="formSessionType" formControlName="isOptional" class="form-control"
+                              required="required" 
+                               [ngClass]="{ 'is-invalid': userForm.controls.isOptional.touched && userForm.controls.isOptional.errors, 'is-valid': sessionForm.controls.isOptional.valid }">
+                              <option value="" selected disabled>--Choose session
+                                type--
+                              </option>
+                              <option value="false">Mandatory</option>
+                              <option value="true">Optional</option>
+                            </select>
+                            <div *ngIf="userForm.controls.isOptional.errors?.['required']">
+                              Type is required.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="formSessionRoom">Room *</label>
+                            <select id="formSessionRoom" formControlName="roomId" class="form-control"
+                              required="required" 
+                              [ngClass]="{ 'is-invalid': sessionForm.controls.roomId.touched && sessionForm.controls.roomId.errors, 'is-valid': sessionForm.controls.roomId.valid }">
+                              <option value="" selected disabled>--Select room --
+                              </option>
+                              <option *ngFor="let room of roomList">{{ room.doorNumber+' ('+room.type+')' }}
+
+                              </select>
+                            <div *ngIf="sessionForm.controls.roomId.errors?.['required']">
+                              Room is required.
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="formDepartment">Select department
+                              *</label>
+                            <select id="formDepartment" formControlName="departmentId" class="form-control"
+                              required="required" 
+                              [ngClass]="{ 'is-invalid': sessionForm.controls.departmentId.touched && sessionForm.controls.departmentId.errors, 'is-valid': sessionForm.controls.departmentId.valid }">
+                              <option value="" selected disabled>--Select Department--
+                              </option>
+                              <option *ngFor="let department of departmentList">
+                                {{ department.name}}
+                              </option>
+
+                            </select>
+                            <div *ngIf="sessionForm.controls.departmentId.errors?.['required']">
+                              Department is required.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="formSessionTeacher">Teacher *</label>
+                             <input class="form-control" type="text" name="credentials"
+                                        [(ngModel)]="credentials" (ngModelChange)="Search()"
+                                        placeholder="Enter teacher credentials">
+                            <select type="text" id="formSessionTeacher" formControlName="teacherId" class="form-control"
+                              required="required" 
+                              [ngClass]="{ 'is-invalid': sessionForm.controls.teacherId.touched && sessionForm.controls.teacherId.errors, 'is-valid': sessionForm.controls.teacherId.valid }">
+
+                              <option value="" selected disabled>--Select teacher --
+                              </option>
+                              <option *ngFor="let teacher of teacherList">
+                                {{ teacher.fullName}}
+                              </option>
+                            </select>
+                            <div *ngIf="sessionForm.controls.teacherId.errors?.['required']">
+                              Teacher is required.
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="formDifficulty">Difficulty level *</label>
+                            <select id="formDifficulty" formControlName="difficultyLevel" class="form-control"
+                              required="required" 
+                              [ngClass]="{ 'is-invalid': sessionForm.controls.difficultyLevel.touched && sessionForm.controls.difficultyLevel.errors, 'is-valid': sessionForm.controls.difficultyLevel.valid }">
+                              <option value="" selected disabled>--Difficulty level--
+                              </option>
+                              <option value="beginner">Beginner</option>
+                              <option value="intermediate">Intermediate</option>
+                              <option value="advanced">Advanced</option>
+                            </select>
+                            <div *ngIf="sessionForm.controls.difficultyLevel.errors?.['required']">
+                              Difficulty level is required.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="formDescription">Description </label>
+                            <textarea id="formDescription" formControlName="description" class="form-control"
+                              placeholder="Write session description here." rows="4"></textarea>
+                          </div>
+
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="formKeywords">Keywords </label>
+                            <textarea id="formKeywords" formControlName="keywords" class="form-control"
+                              placeholder="Write session keywords here." rows="1"></textarea>
+                          </div>
+
+                        </div>
+
+                        <div class="col-md-12">
+
+
+                        </div>
+
+                      </div>
+                      <div class="row">
+
+                        <div class="col-md-6">
+                          <label for="start">Start Time</label>
+                          <div class="input-group timepicker">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="la la-exclamation-circle"></i>
+                              </span>
+                            </div>
+                            <input type="time" class="form-control" id="kt_timepicker_4" formControlName="start" 
+                            [ngClass]="{ 'is-invalid': sessionForm.controls.start.touched && sessionForm.controls.start.errors, 'is-valid': sessionForm.controls.start.valid }"/>
+                            <div *ngIf="sessionForm.controls.start.errors?.['required']">
+                              Start time is required.
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="end">End Time</label>
+                          <div class="input-group timepicker">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="la la-exclamation-circle"></i>
+                              </span>
+                            </div>
+                            <input type="time" class="form-control" id="kt_timepicker_4" formControlName="end" t
+                            [ngClass]="{ 'is-invalid': sessionForm.controls.end.touched && sessionForm.controls.end.errors, 'is-valid': sessionForm.controls.end.valid }"/>
+                            <div *ngIf="sessionForm.controls.end.errors?.['required']">
+                              End time is required.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </div>
+
+                  </form>
+
+                </div>
+
+              </div>
+              <div class="modal-footer">
+                <button [disabled]="sessionForm.invalid" class="btn btn-primary" (click)="updateSession()"
+                  *ngIf="selectedSession.id" type="submit">Update</button>
+                <button [disabled]="sessionForm.invalid" class="btn btn-primary" (click)="addSession()"
+                  *ngIf="!selectedSession.id" type="submit">Add</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="bsModalRef.hide()">Close
+                </button>
+              </div>
+
+            </div>
+            
+
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+</div> -->

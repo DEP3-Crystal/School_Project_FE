@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/login';
     this.userInfo = this.userService.getUserInfo() || new UserInfo();
-    this.imageService.getImage(this.userInfo.profilePicture.id ||0)
+    this.imageService.getImage(this.userInfo.profilePicture?.id || 0 )
       .subscribe(data => {
         const reader = new FileReader();
         reader.addEventListener('load', () => {

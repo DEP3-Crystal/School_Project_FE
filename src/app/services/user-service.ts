@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {Role} from "../model/enum/role";
 import { BehaviorSubject, Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
+import { UserRegistration } from "../model/registrations/user-registration.model";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,6 @@ import { HttpClient } from "@angular/common/http";
 export class UserService {
   private userInfo?: UserInfo;
   redirectUrl!: string;
-
   constructor(private router: Router,private http: HttpClient) {
   }
 

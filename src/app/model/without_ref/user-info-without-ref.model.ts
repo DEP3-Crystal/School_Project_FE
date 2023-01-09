@@ -10,5 +10,5 @@ export class UserInfoWithoutRef {
   gender!: Gender;
   biography!: string;
   role!: Role;
-  profilePicture!: Image;
+  profilePicture?: Image;
 }

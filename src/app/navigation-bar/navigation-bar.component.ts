@@ -19,7 +19,7 @@ export class NavigationBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.userInfo = this.userService.getUserInfo() || new UserInfo();
-    this.imageService.getImage(this.userInfo?.profilePicture.id).subscribe(data => {
+    this.imageService.getImage(this.userInfo.profilePicture?.id || 0).subscribe(data => {
       const reader = new FileReader();
       reader.addEventListener('load', () => {
         this.imageUrl = reader.result as string;

@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable, of, Subscription, tap } from 'rxjs';
+import { UserRegistration } from '../model/registrations/user-registration.model';
 import { UserInfo } from '../model/user-info.model';
 import { RegisterformComponent } from '../registerform/registerform.component';
 import { UserService } from '../services/user-service';
@@ -17,16 +18,16 @@ export class UsersComponent {
   page: number = 1;
   fullName:any;
   @Input()
-  user: UserInfo = new UserInfo();
+  user: UserRegistration = new UserRegistration();
 
   @Output()
   getUsersEvent = new EventEmitter<string>();
 
   @Output()
-  editUsersEvent = new EventEmitter<UserInfo>();
+  editUsersEvent = new EventEmitter<UserRegistration>();
   userSubscription = new Subscription();
   selectedUserId: string = '';
-  selectedUser: UserInfo = new UserInfo();
+  selectedUser: UserRegistration = new UserRegistration();
   userList: UserInfo[] = [];
   
   isModalOpen$: Observable<boolean> = of(false);
@@ -48,7 +49,7 @@ export class UsersComponent {
     this.isModalOpen$ = this.usersService.getModalOpen().pipe(
       tap((value) => {
         if (!value) {
-          this.selectedUser = new UserInfo();
+          this.selectedUser = new UserRegistration();
         }
       })
     )
@@ -62,13 +63,15 @@ export class UsersComponent {
       );
   }
 
-  openModalWithComponent(user: UserInfo) {
+  openModalWithComponent(user: UserRegistration) {
     console.log(user)
 
     this.selectedUser = user;
     const initialState = {
       list: [{"value": this.selectedUser}]
     };
+    this.bsModalRef = this.modalService.show(RegisterformComponent, {initialState});
+    this.bsModalRef.content.closeBtnName = 'Close';
     
   }
 
@@ -79,7 +82,7 @@ export class UsersComponent {
   }
 
   closeModalAndClearSelectedUser() {
-    this.selectedUser = new UserInfo();
+    this.selectedUser = new UserRegistration();
   }
 
   addUser() {
@@ -107,7 +110,7 @@ export class UsersComponent {
   }
 
   onAdd() {
-    this.openModalWithComponent(new UserInfo());
+    this.openModalWithComponent(new UserRegistration());
   }
   Search(){
     this.getUsers();

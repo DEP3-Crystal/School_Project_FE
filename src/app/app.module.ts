@@ -31,6 +31,7 @@ import {UploadImagesComponent} from './upload-images/upload-images.component';
 import {SessionmodalComponent} from './sessionmodal/sessionmodal.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import {UsersComponent} from "./users/users.component";
+import { DatePipe } from '@angular/common';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'}
@@ -71,7 +72,8 @@ const routes: Routes = [
     Ng2SearchPipeModule,
     NgxPaginationModule,
     Ng2OrderModule,
-    SchedulerModule
+    SchedulerModule,
+    DatePipe
   ],
   providers: [],
   bootstrap: [AppComponent]
