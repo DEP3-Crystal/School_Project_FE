@@ -1,6 +1,7 @@
+
 import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { BehaviorSubject, Subscription } from 'rxjs';
@@ -9,14 +10,13 @@ import { EmployeeRegistration } from '../model/registrations/employee-registrati
 import { UserRegistration } from '../model/registrations/user-registration.model';
 import { UserInfo } from '../model/user-info.model';
 import { UserService } from '../services/user-service';
-
 @Component({
-  selector: 'app-registerform',
-  templateUrl: './registerform.component.html',
-  styleUrls: ['./registerform.component.css'],
-  providers:[DatePipe]
+  selector: 'app-student-modal',
+  templateUrl: './student-modal.component.html',
+  styleUrls: ['./student-modal.component.css'],
+  providers: [DatePipe]
 })
-export class RegisterformComponent implements OnInit {
+export class StudentModalComponent {
   private url = "http://localhost:8080/users/add";
 
   constructor(private httpClient: HttpClient,
@@ -27,7 +27,7 @@ export class RegisterformComponent implements OnInit {
   }
   @Input()
   selectedUser: UserRegistration = new UserRegistration();
-  selectedEmployee:EmployeeRegistration = new EmployeeRegistration();
+  selectedEmployee: EmployeeRegistration = new EmployeeRegistration();
   @Output()
   afterServerSaveEvent = new EventEmitter<boolean>();
 
@@ -40,6 +40,9 @@ export class RegisterformComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserList();
+    if (this.selectedUser) {
+      this.fillUserModal()
+    }
   }
 
   selectedRole!: string;
@@ -62,7 +65,7 @@ export class RegisterformComponent implements OnInit {
   })
 
 
-  employeeForm= new FormGroup({
+  employeeForm = new FormGroup({
     firstName: new FormControl('', [
       Validators.required,
       Validators.minLength(2),
@@ -82,43 +85,43 @@ export class RegisterformComponent implements OnInit {
     title: new FormControl('', [Validators.required, Validators.minLength(2)]),
     hireDate: new FormControl('', [Validators.required, Validators.minLength(2)]),
     salary: new FormControl(0, [Validators.required, Validators.minLength(2)])
-    
+
 
   })
 
-  private fillEmployeeFields(){
+  private fillEmployeeFields() {
     this.selectedEmployee = this.list[0].value;
     if (this.selectedEmployee.id) {
 
       this.employeeForm.controls.phoneNumber.setValue(this.selectedEmployee.phoneNumber);
       this.employeeForm.controls.title.setValue(this.selectedEmployee.lastName);
-      this.employeeForm.controls.hireDate.setValue(this.datePipe.transform(this.selectedEmployee.hireDate,'dd/MM/YYYY'));
+      this.employeeForm.controls.hireDate.setValue(this.datePipe.transform(this.selectedEmployee.hireDate, 'dd/MM/YYYY'));
       this.employeeForm.controls.salary.setValue(this.selectedEmployee.salary);
+    }
   }
-}
 
-getEmployeeData():
-EmployeeRegistration {
+  getEmployeeData():
+    EmployeeRegistration {
 
-return {
-  id: this.selectedUser.id,
-  firstName: this.userForm.controls.firstName.value ? this.userForm.controls.firstName.value : '',
-  lastName: this.userForm.controls.lastName.value || '',
-  fullName: this.userForm.controls.firstName.value+' '+this.userForm.controls.firstName.value || '',
-  email: this.userForm.controls.email.value || '',
-  gender: toGender(this.userForm.controls.gender.value || ''),
-  biography: this.userForm.controls.biography.value ||  '',
-  role: toRole(this.userForm.controls.role.value ||''),
-  profilePicture: JSON.parse(this.userForm.controls.profilePicture.value || '') ,
-  birthDate: new Date(this.userForm.controls.birthDate.value ? new Date().toDateString() + ' ' + this.userForm.controls.birthDate.value : ''),
-  password: this.userForm.controls.password.value||'',
-  phoneNumber: this.selectedEmployee.phoneNumber,
-  title: this.selectedEmployee.title,
-  salary: this.employeeForm.controls.salary.value ? this.employeeForm.controls.salary.value : 0,
-  hireDate: new Date(this.employeeForm.controls.hireDate.value ? new Date().toDateString() + ' ' + this.employeeForm.controls.hireDate.value : '')
-  
-}
-}
+    return {
+      id: this.selectedUser.id,
+      firstName: this.userForm.controls.firstName.value ? this.userForm.controls.firstName.value : '',
+      lastName: this.userForm.controls.lastName.value || '',
+      fullName: this.userForm.controls.firstName.value + ' ' + this.userForm.controls.firstName.value || '',
+      email: this.userForm.controls.email.value || '',
+      gender: toGender(this.userForm.controls.gender.value || ''),
+      biography: this.userForm.controls.biography.value || '',
+      role: toRole(this.userForm.controls.role.value || ''),
+      profilePicture: JSON.parse(this.userForm.controls.profilePicture.value || ''),
+      birthDate: new Date(this.userForm.controls.birthDate.value ? new Date().toDateString() + ' ' + this.userForm.controls.birthDate.value : ''),
+      password: this.userForm.controls.password.value || '',
+      phoneNumber: this.selectedEmployee.phoneNumber,
+      title: this.selectedEmployee.title,
+      salary: this.employeeForm.controls.salary.value ? this.employeeForm.controls.salary.value : 0,
+      hireDate: new Date(this.employeeForm.controls.hireDate.value ? new Date().toDateString() + ' ' + this.employeeForm.controls.hireDate.value : '')
+
+    }
+  }
 
 
   private fillUserModal() {
@@ -131,15 +134,15 @@ return {
       this.userForm.controls.email.setValue(this.selectedUser.email);
       this.userForm.controls.gender.setValue(this.selectedUser.gender);
       this.userForm.controls.biography.setValue(this.selectedUser.biography);
-      this.userForm.controls.role.setValue(this.selectedUser.role.toString());
-      this.userForm.controls.profilePicture.setValue(JSON.stringify(this.selectedUser.profilePicture));
-      this.userForm.controls.birthDate.setValue(this.datePipe.transform(this.selectedUser.birthDate, 'dd/MM/YYYY'));
+      this.userForm.controls.role.setValue(this.selectedUser.role);
+      // this.userForm.controls.profilePicture.setValue(JSON.stringify(this.selectedUser.profilePicture));
+      this.userForm.controls.birthDate.setValue(this.datePipe.transform(this.selectedUser.birthDate, 'mm/dd/yyyy'));
       this.userForm.controls.password.setValue(this.selectedUser.password);
 
     }
 
   }
-  gender?:string;
+  gender?: string;
 
   getUserData():
     UserRegistration {
@@ -148,14 +151,14 @@ return {
       id: this.selectedUser.id,
       firstName: this.userForm.controls.firstName.value ? this.userForm.controls.firstName.value : '',
       lastName: this.userForm.controls.lastName.value || '',
-      fullName: this.userForm.controls.firstName.value+' '+this.userForm.controls.firstName.value || '',
+      fullName: this.userForm.controls.firstName.value + ' ' + this.userForm.controls.firstName.value || '',
       email: this.userForm.controls.email.value || '',
       gender: toGender(this.userForm.controls.gender.value || ''),
-      biography: this.userForm.controls.biography.value ||  '',
-      role: toRole(this.userForm.controls.role.value ||''),
-      profilePicture: JSON.parse(this.userForm.controls.profilePicture.value || JSON.stringify(new Image())) ,
+      biography: this.userForm.controls.biography.value || '',
+      role: toRole(this.userForm.controls.role.value || ''),
+      // profilePicture: JSON.parse(this.userForm.controls.profilePicture.value || ''),
       birthDate: new Date(this.userForm.controls.birthDate.value ? new Date().toDateString() + ' ' + this.userForm.controls.birthDate.value : ''),
-      password: this.userForm.controls.password.value||''
+      password: this.userForm.controls.password.value || ''
     }
   }
 
@@ -172,7 +175,7 @@ return {
 
   }
 
- 
+
   updateUser() {
 
     let user: UserRegistration = this.getUserData();
@@ -195,5 +198,3 @@ return {
     this.formNameSubscription.unsubscribe();
   }
 }
-
-

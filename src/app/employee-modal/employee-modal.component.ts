@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { BehaviorSubject, Subscription } from 'rxjs';
@@ -11,12 +11,12 @@ import { UserInfo } from '../model/user-info.model';
 import { UserService } from '../services/user-service';
 
 @Component({
-  selector: 'app-registerform',
-  templateUrl: './registerform.component.html',
-  styleUrls: ['./registerform.component.css'],
+  selector: 'app-employee-modal',
+  templateUrl: './employee-modal.component.html',
+  styleUrls: ['./employee-modal.component.css'],
   providers:[DatePipe]
 })
-export class RegisterformComponent implements OnInit {
+export class EmployeeModalComponent {
   private url = "http://localhost:8080/users/add";
 
   constructor(private httpClient: HttpClient,
@@ -132,7 +132,7 @@ return {
       this.userForm.controls.gender.setValue(this.selectedUser.gender);
       this.userForm.controls.biography.setValue(this.selectedUser.biography);
       this.userForm.controls.role.setValue(this.selectedUser.role.toString());
-      this.userForm.controls.profilePicture.setValue(JSON.stringify(this.selectedUser.profilePicture));
+      this.userForm.controls.profilePicture.setValue(JSON.stringify(this.selectedUser.profilePicture ));
       this.userForm.controls.birthDate.setValue(this.datePipe.transform(this.selectedUser.birthDate, 'dd/MM/YYYY'));
       this.userForm.controls.password.setValue(this.selectedUser.password);
 
@@ -153,7 +153,7 @@ return {
       gender: toGender(this.userForm.controls.gender.value || ''),
       biography: this.userForm.controls.biography.value ||  '',
       role: toRole(this.userForm.controls.role.value ||''),
-      profilePicture: JSON.parse(this.userForm.controls.profilePicture.value || JSON.stringify(new Image())) ,
+      profilePicture: JSON.parse(this.userForm.controls.profilePicture.value || '') ,
       birthDate: new Date(this.userForm.controls.birthDate.value ? new Date().toDateString() + ' ' + this.userForm.controls.birthDate.value : ''),
       password: this.userForm.controls.password.value||''
     }
@@ -195,5 +195,3 @@ return {
     this.formNameSubscription.unsubscribe();
   }
 }
-
-

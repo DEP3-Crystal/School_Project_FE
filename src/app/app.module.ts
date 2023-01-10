@@ -32,6 +32,8 @@ import {SessionmodalComponent} from './sessionmodal/sessionmodal.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import {UsersComponent} from "./users/users.component";
 import { DatePipe } from '@angular/common';
+import { StudentModalComponent } from './student-modal/student-modal.component';
+import { EmployeeModalComponent } from './employee-modal/employee-modal.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'}
@@ -57,7 +59,9 @@ const routes: Routes = [
     SessionmodalComponent,
     UnauthorizedComponent,
     UsersComponent,
-    SessionsPageComponent
+    SessionsPageComponent,
+    StudentModalComponent,
+    EmployeeModalComponent
   ],
   imports: [
     BrowserModule,

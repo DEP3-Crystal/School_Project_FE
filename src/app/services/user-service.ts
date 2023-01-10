@@ -55,7 +55,7 @@ export class UserService {
 
 
   getUsers() {
-    return this.http.get('http://localhost:8080/users') as Observable<UserInfo[]>
+    return this.http.get('http://localhost:8080/users') as Observable<UserRegistration[]>
   }
 
   getUser(id: number) {
@@ -63,15 +63,15 @@ export class UserService {
   }
 
   deleteUser(id: number) {
-    return this.http.delete('http://localhost:8080/user/' + id) as Observable<UserInfo>
+    return this.http.delete('http://localhost:8080/users/' + id) as Observable<UserInfo>
   }
 
-  updateUser(user: UserInfo) {
-    return this.http.put('http://localhost:8080/user/updateInfo' + user.id, user) as Observable<UserInfo>
+  updateUser(user: UserRegistration) {
+    return this.http.put('http://localhost:8080/users/updateInfo' , user) as Observable<UserRegistration>
   }
 
-  addUser(user: UserInfo) {
-    return this.http.post('http://localhost:8080/users/add', user) as Observable<UserInfo>
+  addUser(user: UserRegistration) {
+    return this.http.post('http://localhost:8080/users/add', user) as Observable<UserRegistration>
   }
 
 

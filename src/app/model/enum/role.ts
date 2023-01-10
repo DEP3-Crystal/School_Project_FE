@@ -1,9 +1,9 @@
 export enum Role {
-  NONE = 'NONE',
   STUDENT = 'STUDENT',
   ADMIN = 'ADMIN',
   TEACHER = 'TEACHER',
-  ORGANIZER = 'ORGANIZER'
+  ORGANIZER = 'ORGANIZER',
+  EMPLOYEE = 'EMPLOYEE'
 }
 
 
@@ -18,6 +18,8 @@ export function getEnum(name: string): Role {
     case "t":
     case "teacher":
       return Role.TEACHER;
+    case 'employee':
+      return Role.EMPLOYEE;
     default:
       throw new Error(`couldn't find correct enum name: ${name}`);
   }

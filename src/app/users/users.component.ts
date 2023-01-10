@@ -3,10 +3,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable, of, Subscription, tap } from 'rxjs';
+import { EmployeeModalComponent } from '../employee-modal/employee-modal.component';
+import { Role } from '../model/enum/role';
 import { UserRegistration } from '../model/registrations/user-registration.model';
 import { UserInfo } from '../model/user-info.model';
 import { RegisterformComponent } from '../registerform/registerform.component';
 import { UserService } from '../services/user-service';
+import { StudentModalComponent } from '../student-modal/student-modal.component';
 
 @Component({
   selector: 'app-users',
@@ -28,7 +31,7 @@ export class UsersComponent {
   userSubscription = new Subscription();
   selectedUserId: string = '';
   selectedUser: UserRegistration = new UserRegistration();
-  userList: UserInfo[] = [];
+  userList: UserRegistration[] = [];
   
   isModalOpen$: Observable<boolean> = of(false);
   bsModalRef?: BsModalRef;
@@ -40,7 +43,7 @@ export class UsersComponent {
   getUsers() {
 
     this.userSubscription = this.usersService.getUsers().subscribe((response) => {
-      this.userList= response;
+      this.userList = response;
     })
   }
 
@@ -63,9 +66,9 @@ export class UsersComponent {
       );
   }
 
-  openModalWithComponent(user: UserRegistration) {
+  addUser(user: UserRegistration) {
     console.log(user)
-
+     
     this.selectedUser = user;
     const initialState = {
       list: [{"value": this.selectedUser}]
@@ -75,6 +78,25 @@ export class UsersComponent {
     
   }
 
+  editUser(user: UserRegistration) {
+    console.log(user)
+    
+     if(user.role === Role.STUDENT){
+    this.selectedUser = user;
+    const initialState = {
+      list: [{"value": this.selectedUser}]
+    };
+    this.bsModalRef = this.modalService.show(StudentModalComponent, {initialState});
+    this.bsModalRef.content.closeBtnName = 'Close';
+  }else if(user.role === Role.TEACHER || Role.ORGANIZER || Role .ADMIN || Role.EMPLOYEE){
+    this.selectedUser = user;
+    const initialState = {
+      list: [{"value": this.selectedUser}]
+    };
+    this.bsModalRef = this.modalService.show(EmployeeModalComponent, {initialState});
+    this.bsModalRef.content.closeBtnName = 'Close';
+  }
+  }
 
   afterDone() {
     this.getUsers();
@@ -85,9 +107,6 @@ export class UsersComponent {
     this.selectedUser = new UserRegistration();
   }
 
-  addUser() {
-    this.usersService.setModalOpen(true);
-  }
 
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
@@ -110,7 +129,7 @@ export class UsersComponent {
   }
 
   onAdd() {
-    this.openModalWithComponent(new UserRegistration());
+    this.addUser(new UserRegistration());
   }
   Search(){
     this.getUsers();

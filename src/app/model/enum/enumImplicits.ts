@@ -17,8 +17,11 @@ export function toRole(role:string):Role{
             return Role.TEACHER
         case 'STUDENT':
             return Role.STUDENT
+        case 'EMPLOYEE':
+            return Role.EMPLOYEE
         default:
-            return Role.NONE
+            throw new Error("Role not found");
+            
 
     }
 }

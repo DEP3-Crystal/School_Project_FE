@@ -18,7 +18,8 @@ export class AuthGuard implements CanActivate {
       return false;
     }
     // Get the user's role from the UserService
-    const userRole: Role = this.userService.getUserRole() || Role.NONE;
+    const userRole: Role | undefined = this.userService.getUserRole();
+
     if(userRole === undefined) { return false; }
     console.log('user role is: ' + userRole.toString())
     console.log('accessible only from: '  )
