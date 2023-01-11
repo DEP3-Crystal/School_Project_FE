@@ -2,20 +2,20 @@
     <!-- <div class="modal-content row justify-content-center align-items-center"> -->
     <div class="modal-body">
   
-      <button type="button" class="close" data-dismiss="modal" (click)="bsModalRef.hide()" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
+      <button type="button"  class="close hidden-button" data-dismiss="modal" (click)="bsModalRef.hide()" aria-label="Close">
+        <span  aria-hidden="true">&times;</span>
       </button>
   
       <div class="container card  card-registration border border-success border-shadow-pop" style="border-radius: 15px;">
         <div class="card-body p-4 p-md-5">
           <h2 class="text-center">Edit user</h2>
-          <form [formGroup]="userForm" (ngSubmit)="updateUser()">
+          <form [formGroup]="userForm">
             <div class="controls">
   
               <div class="row">
                 <div class="col-6">
                   <select class="select form-control-lg pr-2" formControlName="role" id="select" name="select"
-                    [(ngModel)]="selectedRole" required>
+                     required>
                     <option value="default" disabled>{{selectedUser.role}}</option>
                     <option value="STUDENT">Student</option>
                     <option value="EMPLOYEE">Employee</option>
@@ -106,7 +106,7 @@
   
   
                     <div class="form-outline">
-                      <input type="date" class="form-control" id="kt_timepicker_4" formControlName="birthDate"
+                      <input type="date" class="form-control" id="birthDate" formControlName="birthDate"
                         [ngClass]="{ 'is-invalid': userForm.controls.birthDate.touched && userForm.controls.birthDate.errors, 'is-valid': userForm.controls.birthDate.valid }" />
                       <div *ngIf="userForm.controls.birthDate.errors?.['required']">
   
@@ -126,10 +126,10 @@
             </div>
             </form>
             <div class="modal-footer">
-                <button [disabled]="userForm.invalid" class="btn btn-primary" (click)="updateUser()"
+                <button [disabled]="userForm.invalid" class="btn btn-primary" (click)="updateUser()" (click)="bsModalRef.hide()"
                   *ngIf="selectedUser.id" type="submit">Update</button>
-                <button [disabled]="userForm.invalid" class="btn btn-primary" (click)="addUser()" *ngIf="!selectedUser.id"
-                  type="submit">Add</button>
+                <!-- <button [disabled]="userForm.invalid" class="btn btn-primary" (click)="addUser()" *ngIf="!selectedUser.id"
+                  type="submit">Add</button> -->
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="bsModalRef.hide()">Close
                 </button>
               </div>

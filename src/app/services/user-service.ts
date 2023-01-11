@@ -5,6 +5,7 @@ import {Role} from "../model/enum/role";
 import { BehaviorSubject, Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { UserRegistration } from "../model/registrations/user-registration.model";
+import { StudentInfo } from "../model/student-info.model";
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +40,7 @@ export class UserService {
   }
 
   getUserRole(): Role | undefined {
-    return this.getUserInfo()?.role
+    return this.getUserInfo()?.role;
   }
   private _isModalOpen$ = new BehaviorSubject<boolean>(false);
 
@@ -65,7 +66,11 @@ export class UserService {
   deleteUser(id: number) {
     return this.http.delete('http://localhost:8080/users/' + id) as Observable<UserInfo>
   }
+   
 
+  deleteStudent(id:number){
+    return this.http.delete('http://localhost:8080/students/' + id) as Observable<StudentInfo>
+  }
   updateUser(user: UserRegistration) {
     return this.http.put('http://localhost:8080/users/updateInfo' , user) as Observable<UserRegistration>
   }

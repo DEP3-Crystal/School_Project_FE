@@ -17,7 +17,6 @@ import { UserService } from '../services/user-service';
   providers:[DatePipe]
 })
 export class EmployeeModalComponent {
-  private url = "http://localhost:8080/users/add";
 
   constructor(private httpClient: HttpClient,
     public bsModalRef: BsModalRef,
@@ -120,25 +119,6 @@ return {
 }
 }
 
-
-  private fillUserModal() {
-    this.selectedUser = this.list[0].value;
-    if (this.selectedUser.id) {
-
-      this.userForm.controls.firstName.setValue(this.selectedUser.firstName);
-      this.userForm.controls.lastName.setValue(this.selectedUser.lastName);
-      // this.userForm.controls.fullName.setValue(this.selectedUser.fullName);
-      this.userForm.controls.email.setValue(this.selectedUser.email);
-      this.userForm.controls.gender.setValue(this.selectedUser.gender);
-      this.userForm.controls.biography.setValue(this.selectedUser.biography);
-      this.userForm.controls.role.setValue(this.selectedUser.role.toString());
-      this.userForm.controls.profilePicture.setValue(JSON.stringify(this.selectedUser.profilePicture ));
-      this.userForm.controls.birthDate.setValue(this.datePipe.transform(this.selectedUser.birthDate, 'dd/MM/YYYY'));
-      this.userForm.controls.password.setValue(this.selectedUser.password);
-
-    }
-
-  }
   gender?:string;
 
   getUserData():

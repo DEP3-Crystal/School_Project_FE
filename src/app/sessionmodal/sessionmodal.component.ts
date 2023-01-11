@@ -132,7 +132,7 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
       description: this.sessionForm.controls.description.value ? this.sessionForm.controls.description.value : '',
       start: new Date(this.sessionForm.controls.start.value ? new Date().toDateString() + ' ' + this.sessionForm.controls.start.value : ''),
       end: new Date(this.sessionForm.controls.end.value ? new Date().toDateString() + ' ' + this.sessionForm.controls.end.value : ''),
-      regDate: new Date(this.sessionForm.controls.regDate.value ? this.sessionForm.controls.regDate.value : ''),
+      regDate: new Date(Date.now()),
       isOptional: Boolean(this.sessionForm.controls.isOptional.value),
       difficultyLevel: this.sessionForm.controls.difficultyLevel.value ? this.sessionForm.controls.difficultyLevel.value : '',
       keywords: this.sessionForm.controls.keywords.value ? this.sessionForm.controls.keywords.value : '',

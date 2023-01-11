@@ -17,8 +17,7 @@ import { UserService } from '../services/user-service';
   providers:[DatePipe]
 })
 export class RegisterformComponent implements OnInit {
-  private url = "http://localhost:8080/users/add";
-
+  
   constructor(private httpClient: HttpClient,
     public bsModalRef: BsModalRef,
     private userService: UserService,
@@ -169,7 +168,7 @@ return {
     this.userAddSubscription = this.userService.addUser(user).subscribe(() => {
       this.afterServerSaveEvent.emit(true);
     })
-
+    this.getUserList();
   }
 
  
@@ -180,7 +179,7 @@ return {
     this.userUpdateSubscription = this.userService.updateUser(user).subscribe(() => {
       this.afterServerSaveEvent.emit(true);
     })
-
+    this.getUserList();
   }
 
   getUserList() {

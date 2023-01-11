@@ -6,18 +6,18 @@ export function toGender(gender:string) : Gender{
   }
 
 export function toRole(role:string):Role{
-    switch (role.toUpperCase()) {
-        case 'ADMIN':
+    switch (role.toLowerCase()) {
+        case 'admin':
             return Role.ADMIN
         
-        case 'ORGANIZER':
+        case 'organizer':
             return Role.ORGANIZER
         
-        case 'TEACHER':
+        case 'teacher':
             return Role.TEACHER
-        case 'STUDENT':
+        case 'student':
             return Role.STUDENT
-        case 'EMPLOYEE':
+        case 'employee':
             return Role.EMPLOYEE
         default:
             throw new Error("Role not found");

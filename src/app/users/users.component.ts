@@ -113,6 +113,11 @@ export class UsersComponent {
   }
 
   deleteUser(id: any) {
+    if(this.user.role===Role.STUDENT){
+      this.userDeleteSubscription = this.usersService.deleteStudent(id).subscribe(() => {
+        this.triggerGetUsers();}
+      )
+    }else
     this.userDeleteSubscription = this.usersService.deleteUser(id).subscribe(() => {
       this.triggerGetUsers();
     })

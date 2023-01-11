@@ -19,6 +19,7 @@ import {AuthGuard} from "./auth-gaurd";
 import {UnauthorizedComponent} from "./unauthorized/unauthorized.component";
 import {Role} from "./model/enum/role";
 import { UsersComponent } from './users/users.component';
+import { EmailAndPasswordComponent } from './email-and-password/email-and-password.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -82,7 +83,13 @@ const routes: Routes = [
     UsersComponent,
     canActivate: [AuthGuard],
     data: {roles: [Role.ADMIN, Role.ORGANIZER,Role.TEACHER]}
+  },
+  {
+    path: 'security', component:
+    EmailAndPasswordComponent,
+    canActivate: [AuthGuard]
   }
+
 
 ];
 

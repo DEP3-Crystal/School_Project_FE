@@ -2,20 +2,20 @@
     <!-- <div class="modal-content row justify-content-center align-items-center"> -->
     <div class="modal-body">
   
-      <button type="button" class="close" data-dismiss="modal" (click)="bsModalRef.hide()" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
+      <button type="button" class="close hidden-button" data-dismiss="modal" (click)="bsModalRef.hide()" aria-label="Close">
+        <span   aria-hidden="true">&times;</span>
       </button>
   
       <div class="container card  card-registration border border-success border-shadow-pop" style="border-radius: 15px;">
         <div class="card-body p-4 p-md-5">
           <h2 class="text-center">Edit user</h2>
-          <form [formGroup]="userForm">
+          <form [formGroup]="employeeForm" >
             <div class="controls">
                 <div class="row">
                     <div class="col-6">
-                      <select class="select form-control-lg pr-2" formControlName="role" id="select" name="select"
-                        [(ngModel)]="selectedRole" required>
-                        <option value="default" disabled>{{selectedUser.role}}</option>
+                      <select class="select form-control-lg pr-2" formControlName="role" id="select"
+                        required>
+                        <option value="default" disabled>{{selectedEmployee.role}}</option>
                         <option value="student">Student</option>
                         <option value="employee">Employee</option>
                         <option value="employee">Teacher</option>
@@ -26,7 +26,7 @@
                     </div>
                   </div>
                 <div  class="row">
-                    <form [formGroup]="employeeForm">
+                    <!-- <form [formGroup]="employeeForm"> -->
                       <div class="row">
                         <div class="col-md-6 mb-4">
       
@@ -98,13 +98,13 @@
       
                           <div class="form-check form-check-inline">
                             <input class="form-check-input" formControlName="gender" type="radio" name="gender"
-                              id="femaleGender" value="female" checked />
+                              id="femaleGender" value="F" checked />
                             <label class="form-check-label" for="femaleGender">Female</label>
                           </div>
       
                           <div class="form-check form-check-inline">
                             <input class="form-check-input" formControlName="gender" type="radio" name="gender"
-                              id="maleGender" value="male" />
+                              id="maleGender" value="M" />
                             <label class="form-check-label" for="maleGender">Male</label>
                           </div>
       
@@ -162,14 +162,14 @@
       
                         </div>
                       </div>
-                    </form>
+                    <!-- </form> -->
                   </div>
               
             </div>
             </form>
             <div class="modal-footer">
                 <button [disabled]="employeeForm.invalid" class="btn btn-primary" (click)="updateUser()"
-                  *ngIf="selectedEmployee.id" type="submit">Update</button>
+                  *ngIf="selectedUser.id" type="submit">Update</button>
                 <!-- <button [disabled]="userForm.invalid" class="btn btn-primary" (click)="addUser()" *ngIf="!selectedUser.id"
                   type="submit">Add</button> -->
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="bsModalRef.hide()">Close

@@ -34,6 +34,7 @@ import {UsersComponent} from "./users/users.component";
 import { DatePipe } from '@angular/common';
 import { StudentModalComponent } from './student-modal/student-modal.component';
 import { EmployeeModalComponent } from './employee-modal/employee-modal.component';
+import { EmailAndPasswordComponent } from './email-and-password/email-and-password.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'}
@@ -61,7 +62,8 @@ const routes: Routes = [
     UsersComponent,
     SessionsPageComponent,
     StudentModalComponent,
-    EmployeeModalComponent
+    EmployeeModalComponent,
+    EmailAndPasswordComponent
   ],
   imports: [
     BrowserModule,
