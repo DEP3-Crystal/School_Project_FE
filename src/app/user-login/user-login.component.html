@@ -1,61 +1,62 @@
 <body>
-  <section class="vh-100">
-    <div class="container py-5 pb-0">
+<section class="vh-100">
+  <div class="container py-5 pb-0">
 
-      <div class="row d-flex justify-content-center align-items-center">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
 
-          <div class="title-login pb-3 pt-3 fw-bold" style="color: #fff;">
-            <i class="material-icons" style="font-size:48px">school</i>
-            <h1>Welcome to
-              College</h1>
-          </div>
-          <div class="card bg-dark text-white" style="border-radius: 1rem;opacity: 0.8;">
-
-
-            <div class="card-body p-5 text-center">
+        <div class="title-login pb-3 pt-3 fw-bold" style="color: #fff;">
+          <i class="material-icons" style="font-size:48px">school</i>
+          <h1>Welcome to
+            College</h1>
+        </div>
+        <div class="card bg-dark text-white" style="border-radius: 1rem;opacity: 0.8;">
 
 
+          <div class="card-body p-5 text-center">
 
-              <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-              <p class="text-white-50 mb-5">Please enter your login credentials!</p>
-              <h5 class="inputH5">Email</h5>
-              <div class="form-outline input-group form-white mb-3">
+
+            <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+            <p class="text-white-50 mb-5">Please enter your login credentials!</p>
+            <h5 class="inputH5">Email</h5>
+            <div class="form-outline input-group form-white mb-3">
                 <span class="input-group-text" id="basic-addon1">
                   <em class="bi bi-person-fill"></em>
                 </span>
-                <input type="email" id="typeEmail" class="form-control form-control-lg" placeholder="Email"
-                  aria-label="Input group example" aria-describedby="basic-addon1" [(ngModel)]="emailValue">
-                <button class="input-group-text" id="basic-addon1" (click)="clearEmailInput()">
-                  <em class="bi bi-trash-fill"></em>
-                </button>
-              </div>
-              <h5 class="inputH5">Password</h5>
-              <div class="form-outline input-group form-white mb-3">
-                <span class="input-group-text" id="basic-addon1">
+              <input type="email" id="typeEmail" class="form-control form-control-lg" placeholder="Email"
+                     aria-label="Input group example" aria-describedby="basic-addon1" [(ngModel)]="emailValue">
+              <button class="input-group-text" id="basic-addon2" (click)="clearEmailInput()">
+                <i class="material-icons xbutton" style="font-size:20px;font-weight: bold;">clear</i>
+              </button>
+            </div>
+            <h5 class="inputH5">Password</h5>
+            <div class="form-outline input-group form-white mb-3">
+                <span class="input-group-text" id="basic-addon3">
                   <em class="bi bi-key-fill"></em>
                 </span>
-                <input matInput type="password" [type]="hide ? 'password':'text'" placeholder="Password"
-                  class="form-control form-control-lg border-end-0" [(ngModel)]="passwordValue" />
-                <button class="bg-white border-0 d-block">
-                  <i class="material-icons material-icons-eye" matSuffix (click)="hide = !hide">{{hide ?
-                    'visibility':'visibility_off'}}</i>
-                </button>
-                <button class="input-group-text" id="basic-addon1" (click)="clearPasswordInput()">
-                  <em class="bi bi-trash-fill"></em>
-                </button>
+              <input matInput type="password" [type]="hide ? 'password':'text'" placeholder="Password"
+                     class="form-control form-control-lg border-end-0" [(ngModel)]="passwordValue"/>
+              <button class="bg-white border-0">
+                <i class="material-icons material-icons-eye pt-1 " style="font-size:20px;" matSuffix
+                   (click)="hide = !hide">{{
+                    hide ?
+                      'visibility' : 'visibility_off'
+                  }}</i>
+              </button>
+              <button class="input-group-text" id="basic-addon4" (click)="clearPasswordInput()">
+                <i class="material-icons xbutton" style="font-size:20px;font-weight: bold;">clear</i>
+              </button>
 
-
-
-              </div>
-
-              <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
-              <p class="small mb-5 pt-lg-3"><a class="text-white-50" href="#!">Forgot password?</a></p>
 
             </div>
+
+            <button (click)="userLogin()" class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+            <p class="small mb-5 pt-lg-3"><a class="text-white-50" href="#!">Forgot password?</a></p>
+
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 </body>

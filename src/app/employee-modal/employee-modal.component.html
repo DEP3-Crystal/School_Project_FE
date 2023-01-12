@@ -1,0 +1,181 @@
+<div class="modal-content" role="document">
+    <!-- <div class="modal-content row justify-content-center align-items-center"> -->
+    <div class="modal-body">
+  
+      <button type="button" class="close hidden-button" data-dismiss="modal" (click)="bsModalRef.hide()" aria-label="Close">
+        <span   aria-hidden="true">&times;</span>
+      </button>
+  
+      <div class="container card  card-registration border border-success border-shadow-pop" style="border-radius: 15px;">
+        <div class="card-body p-4 p-md-5">
+          <h2 class="text-center">Edit user</h2>
+          <form [formGroup]="employeeForm" >
+            <div class="controls">
+                <div class="row">
+                    <div class="col-6">
+                      <select class="select form-control-lg pr-2" formControlName="role" id="select"
+                        required>
+                        <option value="default" disabled>{{selectedEmployee.role}}</option>
+                        <option value="student">Student</option>
+                        <option value="employee">Employee</option>
+                        <option value="employee">Teacher</option>
+                        <option value="employee">Organiser</option>
+                      </select>
+      
+                      <label class="form-label select-label"> Select role</label>
+                    </div>
+                  </div>
+                <div  class="row">
+                    <!-- <form [formGroup]="employeeForm"> -->
+                      <div class="row">
+                        <div class="col-md-6 mb-4">
+      
+                          <div class="form-outline">
+                            <input type="text" id="firstName" class="form-control form-control-lg" formControlName="firstName"
+                              required />
+                            <label class="form-label" for="firstName">First Name</label>
+                          </div>
+      
+                        </div>
+                        <div class="col-md-6 mb-4">
+      
+                          <div class="form-outline">
+                            <input type="text" id="lastName" class="form-control form-control-lg" formControlName="lastName"
+                              required />
+                            <label class="form-label" for="lastName">Last Name</label>
+                          </div>
+      
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 mb-4 pb-2">
+      
+                          <div class="form-outline">
+                            <input type="email" id="emailAddress" class="form-control form-control-lg" formControlName="email"
+                              required />
+                            <label class="form-label" for="emailAddress">Email</label>
+                          </div>
+      
+                        </div>
+                        <div class="col-md-6 mb-4 pb-2">
+      
+      
+                          <div class="form-outline">
+                            <input type="password" id="password" class="form-control form-control-lg"
+                              formControlName="password" required />
+                            <label class="form-label" for="password">Password</label>
+      
+      
+                          </div>
+      
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 mb-4">
+      
+      
+                          <div class="form-outline">
+                            <input type="date" class="form-control" id="birthDate" formControlName="birthDate"
+                              [ngClass]="{ 'is-invalid': userForm.controls.birthDate.touched && userForm.controls.birthDate.errors, 'is-valid': userForm.controls.birthDate.valid }" />
+                            <div *ngIf="userForm.controls.birthDate.errors?.['required']">
+      
+                              <label class="form-label" for="birthdate">Birthdate</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                          <div class="form-outline">
+      
+                            <input type="file" class="form-control" formControlName="profilePicture" id="profilePicture" />
+                            <label class="form-label" for="customFile">Profile Image</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 mb-4">
+      
+                          <h6 class="mb-2 pb-1">Gender: </h6>
+      
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" formControlName="gender" type="radio" name="gender"
+                              id="femaleGender" value="F" checked />
+                            <label class="form-check-label" for="femaleGender">Female</label>
+                          </div>
+      
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" formControlName="gender" type="radio" name="gender"
+                              id="maleGender" value="M" />
+                            <label class="form-check-label" for="maleGender">Male</label>
+                          </div>
+      
+      
+                        </div>
+      
+                        <div class="col-md-6 mb-4">
+      
+                          <div class="form-outline">
+                            <input type="text" id="phone" class="form-control form-control-lg" formControlName="phoneNumber"
+                              required />
+                            <label class="form-label" for="phone">Phone Number</label>
+                          </div>
+      
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            
+                            <textarea id="formDescription" formControlName="biography" class="form-control"
+                              placeholder="Write biography here." rows="4"></textarea>
+                              <label for="formDescription">Biography </label>
+                          </div>
+                      </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+      
+                          <div class="form-outline">
+                            <input type="text" id="title" class="form-control form-control-lg" formControlName="title" />
+                            <label class="form-label" for="title">Title</label>
+                          </div>
+      
+                        </div>
+      
+                        <div class="col-md-6 mb-4">
+      
+                          <input type="date" class="form-control" id="hireDate" formControlName="hireDate"
+                            [ngClass]="{ 'is-invalid': employeeForm.controls.hireDate.touched && employeeForm.controls.hireDate.errors, 'is-valid':employeeForm.controls.hireDate.valid }" />
+                          <div *ngIf="employeeForm.controls.hireDate.errors?.['required']">
+      
+                            <label class="form-label" for="hireDate">Hire Date</label>
+                          </div>
+      
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+      
+                          <div class="form-outline">
+                            <input type="number" id="salary" class="form-control form-control-lg" formControlName="salary" />
+                            <label class="form-label" for="salary">Salary</label>
+                          </div>
+      
+                        </div>
+                      </div>
+                    <!-- </form> -->
+                  </div>
+              
+            </div>
+            </form>
+            <div class="modal-footer">
+                <button [disabled]="employeeForm.invalid" class="btn btn-primary" (click)="updateUser()"
+                  *ngIf="selectedUser.id" type="submit">Update</button>
+                <!-- <button [disabled]="userForm.invalid" class="btn btn-primary" (click)="addUser()" *ngIf="!selectedUser.id"
+                  type="submit">Add</button> -->
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="bsModalRef.hide()">Close
+                </button>
+              </div>
+        </div>
+      </div>
+    </div>
+</div>

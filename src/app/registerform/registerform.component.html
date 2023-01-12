@@ -1,0 +1,282 @@
+<!-- <div tabindex="" role="dialog"> -->
+<div class="modal-content" role="document">
+  <!-- <div class="modal-content row justify-content-center align-items-center"> -->
+  <div class="modal-body">
+
+    <button type="button" class="close" data-dismiss="modal" (click)="bsModalRef.hide()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+    <div class="container card  card-registration border border-success border-shadow-pop" style="border-radius: 15px;">
+      <div class="card-body p-4 p-md-5">
+        <h2 class="text-center">Add/Edit user</h2>
+        <form [formGroup]="userForm" >
+          <div class="controls">
+
+            <div class="row">
+              <div class="col-6">
+                <select class="select form-control-lg pr-2" formControlName="role" id="select" name="select"
+                  [(ngModel)]="selectedRole" required>
+                  <option value="default" disabled>Choose option</option>
+                  <option value="student">Student</option>
+                  <option value="employee">Employee</option>
+                  <option value="employee">Teacher</option>
+                  <option value="employee">Organiser</option>
+                </select>
+
+                <label class="form-label select-label"> Select role</label>
+              </div>
+            </div>
+            <div *ngIf="selectedRole == 'student'" class="row">
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <input type="text" id="firstName" class="form-control form-control-lg" formControlName="firstName"
+                      required />
+                    <label class="form-label" for="firstName">First Name</label>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <input type="text" id="lastName" class="form-control form-control-lg" formControlName="lastName"
+                      required />
+                    <label class="form-label" for="lastName">Last Name</label>
+                  </div>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <input type="email" id="emailAddress" class="form-control form-control-lg" formControlName="email"
+                      required />
+                    <label class="form-label" for="emailAddress">Email</label>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+
+
+                  <div class="form-outline">
+                    <input name="password" type="password" id="password" class="form-control form-control-lg" formControlName="password"
+                      required />
+                    <label class="form-label" for="password">Password</label>
+
+
+                  </div>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <h6 class="mb-2 pb-1">Gender: </h6>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" formControlName="gender" type="radio" 
+                      id="femaleGender" value="female" checked />
+                    <label class="form-check-label" for="femaleGender">Female</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" formControlName="gender" type="radio" 
+                      id="maleGender" value="male" />
+                    <label class="form-check-label" for="maleGender">Male</label>
+                  </div>
+
+
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    
+                    <textarea id="formDescription" formControlName="biography" class="form-control"
+                      placeholder="Write biographyhere." rows="4"></textarea>
+                      <label for="formDescription">Biography </label>
+                  </div>
+              </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+
+                  <div class="form-outline">
+                    <input type="date" class="form-control" id="kt_timepicker_4" formControlName="birthDate"
+                      [ngClass]="{ 'is-invalid': userForm.controls.birthDate.touched && userForm.controls.birthDate.errors, 'is-valid': userForm.controls.birthDate.valid }" />
+                    <div *ngIf="userForm.controls.birthDate.errors?.['required']">
+
+                      <label class="form-label" for="birthdate">Birthdate</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+
+                    <input type="file" class="form-control" formControlName="profilePicture" id="profilePicture" />
+                    <label class="form-label" for="customFile">Profile Image</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="selectedRole === 'employee'" class="row">
+              <form [formGroup]="employeeForm">
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+
+                    <div class="form-outline">
+                      <input type="text" id="firstName" class="form-control form-control-lg" formControlName="firstName"
+                        required />
+                      <label class="form-label" for="firstName">First Name</label>
+                    </div>
+
+                  </div>
+                  <div class="col-md-6 mb-4">
+
+                    <div class="form-outline">
+                      <input type="text" id="lastName" class="form-control form-control-lg" formControlName="lastName"
+                        required />
+                      <label class="form-label" for="lastName">Last Name</label>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-4 pb-2">
+
+                    <div class="form-outline">
+                      <input type="email" id="emailAddress" class="form-control form-control-lg" formControlName="email"
+                        required />
+                      <label class="form-label" for="email">Email</label>
+                    </div>
+
+                  </div>
+                  <div class="col-md-6 mb-4 pb-2">
+
+
+                    <div class="form-outline">
+                      <input type="password" id="password" class="form-control form-control-lg"
+                        formControlName="password" required />
+                      <label class="form-label" for="password">Password</label>
+
+
+                    </div>
+
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+
+
+                    <div class="form-outline">
+                      <input type="date" class="form-control" id="birthDate" formControlName="birthDate"
+                        [ngClass]="{ 'is-invalid': userForm.controls.birthDate.touched && userForm.controls.birthDate.errors, 'is-valid': userForm.controls.birthDate.valid }" />
+                      <div *ngIf="userForm.controls.birthDate.errors?.['required']">
+
+                        <label class="form-label" for="birthDate">Birthdate</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+
+                      <input type="file" class="form-control" formControlName="profilePicture" id="profilePicture" />
+                      <label class="form-label" for="profilePicture">Profile Image</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+
+                    <h6 class="mb-2 pb-1">Gender: </h6>
+
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" formControlName="gender" type="radio" name="gender"
+                        id="femaleGender" value="female" checked />
+                      <label class="form-check-label" for="femaleGender">Female</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" formControlName="gender" type="radio" name="gender"
+                        id="maleGender" value="male" />
+                      <label class="form-check-label" for="maleGender">Male</label>
+                    </div>
+
+
+                  </div>
+
+                  <div class="col-md-6 mb-4">
+
+                    <div class="form-outline">
+                      <input type="text" id="phoneNumber" class="form-control form-control-lg" formControlName="phoneNumber"
+                        required />
+                      <label class="form-label" for="phoneNumber">Phone Number</label>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      
+                      <textarea id="biography" formControlName="biography" class="form-control"
+                        placeholder="Write biography here." rows="4" ></textarea>
+                        <label for="biography">Biography </label>
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+
+                    <div class="form-outline">
+                      <input type="text" id="title" class="form-control form-control-lg" formControlName="title" />
+                      <label class="form-label" for="title">Title</label>
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-6 mb-4">
+
+                    <input type="date" class="form-control" id="hireDate" formControlName="hireDate"
+                      [ngClass]="{ 'is-invalid': employeeForm.controls.hireDate.touched && employeeForm.controls.hireDate.errors, 'is-valid':employeeForm.controls.hireDate.valid }" />
+                    <div *ngIf="employeeForm.controls.hireDate.errors?.['required']">
+
+                      <label class="form-label" for="hireDate">Hire Date</label>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+
+                    <div class="form-outline">
+                      <input type="number" id="salary" class="form-control form-control-lg" formControlName="salary" />
+                      <label class="form-label" for="salary">Salary</label>
+                    </div>
+
+                  </div>
+                </div>
+              </form>
+            </div>
+
+
+            <div class="modal-footer">
+              
+              <button  class="btn btn-primary" (click)="addUser()" (click)="bsModalRef.hide()" *ngIf="!selectedUser.id"
+                type="submit">Add</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="bsModalRef.hide()">Close
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
+  <!-- </div> -->
+</div>

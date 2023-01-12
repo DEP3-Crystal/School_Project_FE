@@ -1,0 +1,20 @@
+<app-navigation-bar></app-navigation-bar>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>session name</th>
+    <th>Description</th>
+    <th>Is optional</th>
+    <th>difficulty Level</th>
+    <th>grade</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let grade of studentGrades">
+    <td>{{ grade.sessionName }}</td>
+    <td>{{ grade.sessionDescription }}</td>
+    <td>{{ grade.isOptional ? "YES" : "NO" }}</td>
+    <td>{{ grade.difficultyLevel }}</td>
+    <td>{{ grade.grade }}</td>
+  </tr>
+</table>

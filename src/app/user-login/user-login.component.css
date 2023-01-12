@@ -1,29 +1,33 @@
 body {
-    background: url('src/images/school1.jpg');
-    background-repeat: no-repeat;
-    height: 100%;
-    width: 100%;
-    background-size: cover;
+  background: url('src/images/school1.jpg');
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
 }
 
 .title-login {
-    justify-content: space-evenly;
-    display: flex;
+  justify-content: space-evenly;
+  display: flex;
 
 }
 
 .bg-dark {
-    --bs-bg-opacity: 0.2;
+  --bs-bg-opacity: 0.3;
 }
 
 .inputH5 {
-    text-align: start;
+  text-align: start;
 }
 
 .bi:hover {
-    color: red;
+  color: red;
 }
 
 .material-icons-eye:hover {
-    color: rgb(100, 166, 189);
+  color: rgb(100, 166, 189);
+}
+
+.xbutton:hover {
+  color: rgb(222, 70, 10);
 }

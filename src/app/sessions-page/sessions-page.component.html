@@ -1,0 +1,42 @@
+<app-navigation-bar></app-navigation-bar>
+
+<div class="container pr-0 mr-0 ">
+  <div class="pr-0 mr-0">
+    <div class="text-end">
+      <button type="button" class="btn btn-success" (click)="onAdd()"><i class="fa fa-plus"></i></button>
+
+    </div>
+    <div class="">
+      <div class="col-xl-7 pt-3">
+        <div class="card card-margin border border-success"
+             *ngFor="let session of sessionList | paginate: {itemsPerPage:5,currentPage:page};">
+          <div class="card-header no-border">
+            <h5 class="card-title">{{ session.title }}</h5>
+          </div>
+          <div class="card-body pt-0">
+            <div class="widget-49">
+              <div class="widget-49-title-wrapper">
+                <div class="">
+
+                </div>
+              </div>
+              <p>{{ session.description }}</p>
+              <div class="widget-49-meeting-action d-flex gap-2 justify-content-end">
+                <!-- <button class="btn btn-primary" (click)="editSession(session)" *ngIf="selectedSession.id" type="submit">Update</button> -->
+                <button type="button" class="btn btn-success" (click)="openModalWithComponent(session)"><i
+                  class="fa fa-pen"></i></button>
+                <button type="button" class="btn btn-danger" (click)="deleteSession(session.id)"><i
+                  class="bi bi-trash"></i></button>
+                <!-- <button (click)="deleteSession(session.id)">Delete</button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <pagination-controls (pageChange)="page = $event" class="text-center"></pagination-controls>
+</div>

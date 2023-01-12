@@ -1,0 +1,224 @@
+<div class="" tabindex="" role="dialog">
+  <div class="modal-content" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" (click)="bsModalRef.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+
+          <div class="mx-auto">
+            <div class="card mt-2 mx-auto p-4 bg-light">
+              <div class="card-body bg-light">
+
+                <div class="">
+                  <form [formGroup]="sessionForm"
+                    class="needs-validation">
+
+
+                    <div class="controls">
+
+                      <div class="row">
+                        <div class="col-md-6">
+
+                          <div class="form-group">
+                            <label for="sessionTitle">Title *</label>
+                            <input id="sessionTitle" type="text" formControlName="title" class="form-control"
+                              placeholder="Enter session title *" required="required" data-error="Title is required." 
+                              [ngClass]="{ 'is-invalid': sessionForm.controls.title.touched && sessionForm.controls.title.errors, 'is-valid': sessionForm.controls.title.valid }">
+                            <div *ngIf="sessionForm.controls.title.touched && sessionForm.controls.title.errors"
+                              class="invalid-feedback">
+                              <div *ngIf="sessionForm.controls.title.errors?.['required']">
+                                Title is required.
+                              </div>
+                              <div *ngIf="sessionForm.controls.title.errors?.['minlength']">
+                                Title must be at least 3 characters long.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="formSessionType">Type *</label>
+                            <select id="formSessionType" formControlName="isOptional" class="form-control"
+                              required="required" 
+                               [ngClass]="{ 'is-invalid': sessionForm.controls.isOptional.touched && sessionForm.controls.isOptional.errors, 'is-valid': sessionForm.controls.isOptional.valid }">
+                              <option value="" selected disabled>--Choose session
+                                type--
+                              </option>
+                              <option value="false">Mandatory</option>
+                              <option value="true">Optional</option>
+                            </select>
+                            <div *ngIf="sessionForm.controls.isOptional.errors?.['required']">
+                              Type is required.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="formSessionRoom">Room *</label>
+                            <select id="formSessionRoom" formControlName="roomId" class="form-control"
+                              required="required" 
+                              [ngClass]="{ 'is-invalid': sessionForm.controls.roomId.touched && sessionForm.controls.roomId.errors, 'is-valid': sessionForm.controls.roomId.valid }">
+                              <option value="" selected disabled>--Select room --
+                              </option>
+                              <option *ngFor="let room of roomList" [value]="room.roomId">{{ room.doorNumber+' ('+room.type+')' }}
+
+                              </select>
+                            <div *ngIf="sessionForm.controls.roomId.errors?.['required']">
+                              Room is required.
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="formDepartment">Select department
+                              *</label>
+                            <select id="formDepartment" formControlName="departmentId" class="form-control"
+                              required="required" 
+                              [ngClass]="{ 'is-invalid': sessionForm.controls.departmentId.touched && sessionForm.controls.departmentId.errors, 'is-valid': sessionForm.controls.departmentId.valid }">
+                              <option value="" selected disabled>--Select Department--
+                              </option>
+                              <option *ngFor="let department of departmentList" [value]="department.departmentId">
+                                {{ department.name}}
+                              </option>
+
+                            </select>
+                            <div *ngIf="sessionForm.controls.departmentId.errors?.['required']">
+                              Department is required.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="formSessionTeacher">Teacher *</label>
+                            <!-- <input class="form-control" type="text" name="credentials"
+                                        [(ngModel)]="credentials" (ngModelChange)="Search()"
+                                        placeholder="Enter teacher credentials"> -->
+                            <select type="text" id="formSessionTeacher" formControlName="teacherId" class="form-control"
+                              required="required" 
+                              [ngClass]="{ 'is-invalid': sessionForm.controls.teacherId.touched && sessionForm.controls.teacherId.errors, 'is-valid': sessionForm.controls.teacherId.valid }">
+
+                              <option value="" selected disabled>--Select teacher --
+                              </option>
+                              <option *ngFor="let teacher of teacherList" [value]="teacher.id">
+                                {{ teacher.fullName}}
+                              </option>
+                            </select>
+                            <div *ngIf="sessionForm.controls.teacherId.errors?.['required']">
+                              Teacher is required.
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="formDifficulty">Difficulty level *</label>
+                            <select id="formDifficulty" formControlName="difficultyLevel" class="form-control"
+                              required="required" 
+                              [ngClass]="{ 'is-invalid': sessionForm.controls.difficultyLevel.touched && sessionForm.controls.difficultyLevel.errors, 'is-valid': sessionForm.controls.difficultyLevel.valid }">
+                              <option value="" selected disabled>--Difficulty level--
+                              </option>
+                              <option value="beginner">Beginner</option>
+                              <option value="intermediate">Intermediate</option>
+                              <option value="advanced">Advanced</option>
+                            </select>
+                            <div *ngIf="sessionForm.controls.difficultyLevel.errors?.['required']">
+                              Difficulty level is required.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="formDescription">Description </label>
+                            <textarea id="formDescription" formControlName="description" class="form-control"
+                              placeholder="Write session description here." rows="4"></textarea>
+                          </div>
+
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="formKeywords">Keywords </label>
+                            <textarea id="formKeywords" formControlName="keywords" class="form-control"
+                              placeholder="Write session keywords here." rows="1"></textarea>
+                          </div>
+
+                        </div>
+
+                        <div class="col-md-12">
+
+
+                        </div>
+
+                      </div>
+                      <div class="row">
+
+                        <div class="col-md-6">
+                          <label for="start">Start Time</label>
+                          <div class="input-group timepicker">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="la la-exclamation-circle"></i>
+                              </span>
+                            </div>
+                            <input type="time" class="form-control" id="kt_timepicker_4" formControlName="start" 
+                            [ngClass]="{ 'is-invalid': sessionForm.controls.start.touched && sessionForm.controls.start.errors, 'is-valid': sessionForm.controls.start.valid }"/>
+                            <div *ngIf="sessionForm.controls.start.errors?.['required']">
+                              Start time is required.
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="end">End Time</label>
+                          <div class="input-group timepicker">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="la la-exclamation-circle"></i>
+                              </span>
+                            </div>
+                            <input type="time" class="form-control" id="kt_timepicker_4" formControlName="end" t
+                            [ngClass]="{ 'is-invalid': sessionForm.controls.end.touched && sessionForm.controls.end.errors, 'is-valid': sessionForm.controls.end.valid }"/>
+                            <div *ngIf="sessionForm.controls.end.errors?.['required']">
+                              End time is required.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </div>
+
+                  </form>
+
+                </div>
+
+              </div>
+              <div class="modal-footer">
+                <button   class="btn btn-primary" (click)="updateSession()" (click)="bsModalRef.hide()"
+                  *ngIf="selectedSession.id" type="submit">Update</button>
+                <button  class="btn btn-primary" (click)="addSession()" (click)="bsModalRef.hide()"
+                  *ngIf="!selectedSession.id" type="submit">Add</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="bsModalRef.hide()">Close
+                </button>
+              </div>
+
+            </div>
+            <!-- /.8 -->
+            <!-- [disabled]="sessionForm.invalid" -->
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

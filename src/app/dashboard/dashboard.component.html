@@ -1,0 +1,178 @@
+<app-navigation-bar></app-navigation-bar>
+
+<section id="wrapper" class="d-flex">
+
+  <div class="col-2 d-flex col-2  flex-column  p-3 bg-light shadow">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+      <svg class="bi me-2" width="40" height="32">
+        <use xlink:href="#bootstrap"></use>
+      </svg>
+      <span class="fs-4">School App</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link active" aria-current="page">
+          <i class="bi bi-speedometer" width="16" height="16"></i>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="/session" class="nav-link link-dark">
+          <i class="bi bi-clock" width="16" height="16"></i>
+          Sessions
+        </a>
+      </li>
+      <li>
+        <a href="/schedule" class="nav-link link-dark">
+          <i class="bi bi-calendar3" width="16" height="16"></i>
+          Schedule
+        </a>
+      </li>
+      <li>
+        <a href="/users" class="nav-link link-dark">
+          <i class="bi bi-person" width="16" height="16"></i>
+          Users
+        </a>
+      </li>
+      <div>
+        <button type="button" (click)="showSubjects()" class="nav-link link-dark ">
+          <i class="bi bi-book-half" width="16" height="16"></i>
+          School Subjects
+        </button>
+        <nav *ngIf="show" class="nav nav-pills flex-column">
+          <a class="nav-link ms-4" href="http://localhost:4200/mandatory">Mandatory</a>
+          <a class="nav-link ms-4" href="http://localhost:4200/optional">Optional</a>
+        </nav>
+
+      </div>
+      <li *ngIf="userInfo.role!==status">
+        <a href="/grades" class="nav-link link-dark">
+          <i class="bi bi-journal-text" width="16" height="16"></i>
+          Grades
+        </a>
+      </li>
+      <li>
+        <a href="/rooms" class="nav-link link-dark" style="display: none;">
+          <i class="bi bi-people"></i>
+          rooms
+        </a>
+      </li>
+    </ul>
+    <hr>
+    <!-- <div class="dropdown">
+      <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"
+         data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong>mdo</strong>
+      </a>
+      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div> -->
+    <div class="">
+      <a class="text-danger p-auto" (click)="logoutFunction()">Logout</a>
+    </div>
+  </div>
+
+  <div class="col-10 text-center">
+
+    <div class=" container p-5">
+      <img [src]="imageUrl" width="100px" class="rounded-circle row-12">
+      <h3>Welcome, {{ userInfo.fullName }}</h3>
+      <p>Manage your info, privacy and security to make Google work better for you.</p>
+    </div>
+
+
+    <section class="mb-2 text-left">
+      <div class="row mb-2">
+        <div class=" card-item flex-row col-md-6">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-row align-items-center position-static">
+              <div class="col-7">
+                <strong class="d-inline-block mb-2 text-primary">Personalisation</strong>
+                <h3 class="mb-0">Profile & personalisation</h3>
+                <p class="card-text mb-auto">Personal info and options to manage it. You can make some of this info,
+                  like
+                  your contact details, you can see a summary of your profiles.</p>
+              </div>
+              <div class="col-5 d-none d-lg-block">
+                <img width="100%"
+                     src="https://www.shareicon.net/download/2015/05/15/38873_sign.ico">
+              </div>
+
+            </div>
+            <div class="text-center mt-auto pb-3">
+              <hr>
+              <a href="http://localhost:4200/profile" class="stretched-link">Profile & personalisation</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-item flex-row col-md-6">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-row align-items-center position-static">
+              <div class="col-7">
+                <strong class="d-inline-block mb-2 text-success">Security</strong>
+                <h3 class="mb-0">Passwords & security</h3>
+                <p class="card-text mb-auto">Here you can change manage your account security like changing password,
+                  email
+                  etc.</p>
+              </div>
+              <div class="col-5 d-none d-lg-block">
+                <img width="80%"
+                     src="https://iconarchive.com/download/i98433/dakirby309/simply-styled/Security-Approved.ico">
+              </div>
+
+            </div>
+            <div class="text-center mt-auto pb-3">
+              <hr>
+              <a href="http://localhost:4200/security" class="stretched-link">Passwords & security</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="card-item col-md-12">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 pb-0 pe-0 d-flex flex-row align-items-center position-static">
+              <div class="col-12">
+                <strong class="d-inline-block mb-2 text-success">More</strong>
+                <h3 class="mb-0">Looking for something else?</h3>
+                <hr>
+                <div >
+                  <a href="" class="btn d-flex justify-content-between">
+                    <div>
+                      <i class="bi bi-search"></i>
+                      <span class=""> Search in account</span>
+                    </div>
+                    <i class="bi bi-chevron-right"></i>
+                  </a>
+                  <hr>
+                  <a href="" class="btn d-flex justify-content-between pb-3">
+                    <div>
+                      <i class="bi bi-chat-right-text"></i>
+                      <span class=""> Send feedback</span>
+                    </div>
+                    <i class="bi bi-chevron-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+<!--            <div class="text-center mt-auto pb-2">-->
+<!--              <hr>-->
+<!--              <a href="#" class="stretched-link">Continue reading</a>-->
+<!--            </div>-->
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+</section>

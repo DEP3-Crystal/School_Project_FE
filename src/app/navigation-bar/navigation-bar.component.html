@@ -1,1 +1,44 @@
-<p>navigation-bar works!</p>
+
+<nav class="navbar navbar-expand-lg border border-success">
+  <div class="container">
+    <a class="navbar-brand" href="">
+      <img src="https://cdn-icons-png.flaticon.com/512/211/211952.png" class="rounded-circle" height="35"
+           width="35"/>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse pe-3" id="navmenu">
+      <ul class="navbar-nav ms-auto gap-3">
+        <li class="nav-item">
+          <form class="d-flex gap-2">
+            <input class="form-control" type="text" placeholder="Search">
+            <button class="btn btn-success font-weight-bold" type="button">Search</button>
+          </form>
+        </li>
+        <li class="nav-item">
+          <div class="btn-group ">
+            <a  href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+               id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+              <img [src]="imageUrl" alt="" width="32" height="32"
+                   class="border border-success border-3 rounded-circle me-2">
+            </a >
+
+            <ul class="dropdown-menu text-small shadow dropdown-menu-end" aria-labelledby="dropdownUser2">
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li><a class="dropdown-item" href="http://localhost:4200/profile">Settings</a></li>
+              <li><a class="dropdown-item" href="http://localhost:4200/profile">Profile</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" (click)="this.userService.signOut()" href="" >Sign out</a></li>
+            </ul>
+
+          </div>
+
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

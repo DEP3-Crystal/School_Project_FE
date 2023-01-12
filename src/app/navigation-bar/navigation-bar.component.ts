@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from "../services/user-service";
+import {UserInfo} from "../model/user-info.model";
+import {ImageService} from "../services/image-service";
 
 @Component({
   selector: 'app-navigation-bar',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationBarComponent implements OnInit {
 
-  constructor() { }
+  userInfo!: UserInfo;
+  showDropdown = false;
+  imageUrl!: string | undefined;
+
+  constructor(public userService: UserService, private imageService: ImageService) {
+  }
 
   ngOnInit(): void {
+    this.userInfo = this.userService.getUserInfo() || new UserInfo();
+    this.imageService.getImage(this.userInfo.profilePicture?.id || 0).subscribe(data => {
+      const reader = new FileReader();
+      reader.addEventListener('load', () => {
+        this.imageUrl = reader.result as string;
+      }, false);
+
+      if (data) {
+        reader.readAsDataURL(data);
+      }
+    })
   }
 
 }
