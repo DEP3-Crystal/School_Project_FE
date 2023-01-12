@@ -4,6 +4,7 @@ import {UserService} from "../services/user-service";
 import {ImageService} from "../services/image-service";
 import {Observable} from "rxjs";
 import {UserInfo} from "../model/user-info.model";
+import { Role } from '../model/enum/role';
 
 @Component({
   selector: 'app-dashboard',
@@ -38,7 +39,7 @@ export class DashboardComponent implements OnInit {
         }
       });
   }
-
+  status = Role.ADMIN ||Role.ORGANIZER ||Role.EMPLOYEE || Role.TEACHER;
   logoutFunction() {
     this.router.navigate([this.returnUrl]);
     localStorage.removeItem('currentUserEmail');

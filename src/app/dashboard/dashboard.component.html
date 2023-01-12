@@ -46,14 +46,14 @@
         </nav>
 
       </div>
-      <li>
+      <li *ngIf="userInfo.role!==status">
         <a href="/grades" class="nav-link link-dark">
           <i class="bi bi-journal-text" width="16" height="16"></i>
           Grades
         </a>
       </li>
       <li>
-        <a href="/rooms" class="nav-link link-dark">
+        <a href="/rooms" class="nav-link link-dark" style="display: none;">
           <i class="bi bi-people"></i>
           rooms
         </a>

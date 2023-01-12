@@ -16,7 +16,8 @@ export class AuthGuard implements CanActivate {
     if (!this.userService.isLoggedIn()) {
       // Store the attempted URL for redirecting
       this.userService.redirectUrl = state.url;
-      this.router.navigate(['/unauthorized']);
+      // this.router.navigate(['/unauthorized']);
+      this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
       return false;
     }
     // Get the user's role from the UserService

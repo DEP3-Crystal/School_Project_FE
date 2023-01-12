@@ -43,7 +43,8 @@ const routes: Routes = [
   },
   {
     path: 'grades', component: GradesPageComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: {roles: [Role.STUDENT]}
   },
   {
     path: 'session', component: SessionsPageComponent,
