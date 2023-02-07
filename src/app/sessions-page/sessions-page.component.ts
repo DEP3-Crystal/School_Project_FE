@@ -76,6 +76,9 @@ export class SessionsPageComponent implements OnInit {
       list: [{"value": this.selectedSession}]
     };
     this.bsModalRef = this.modalService.show(SessionmodalComponent, {initialState});
+    this.bsModalRef.content.afterServerSaveEvent.subscribe(()=>{
+      this.getSessions()
+    })
     this.bsModalRef.content.closeBtnName = 'Close';
   }
 
@@ -109,7 +112,7 @@ export class SessionsPageComponent implements OnInit {
   }
 
   deleteSession(id: any) {
-    if(!this.selectedSession.studentGrades || !this.selectedSession.studentRegistrations || !this.selectedSession.sessionRatings){
+    if(this.selectedSession.studentGrades || !this.selectedSession.studentRegistrations || !this.selectedSession.sessionRatings){
       alert("You cannot delete this session since it has session ratings and students.");
     }else{
     this.sessionDeleteSubscription = this.sessionService.deleteSession(id).subscribe(() => {

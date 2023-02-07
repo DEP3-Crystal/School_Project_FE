@@ -201,6 +201,10 @@ export class SessionmodalComponent implements OnInit, OnDestroy {
     return this.http.post('http://localhost:8080/sessions', session) as Observable<Session>;
 
 }
+// triggerGetSessions() {
+//   this.afterServerSaveEvent.emit(true);
+// }
+
 }
 
 // ngOnInit():void{
